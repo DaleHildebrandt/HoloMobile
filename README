@@ -1,4 +1,6 @@
 ####HoloMobile README####
 
-HoloMobile is a research project investigating use of mobile devices with holograms positioned on the top, positioning and orienting itself
-in accordance with the position and orientation of the mobile device.
+Description:
+HoloMobile is a research project investigating use of mobile devices that have holograms positioned around the top area of the device. 
+The hologram positions and orients itself in accordance movements of the mobile device. For example, the hologram may display
+a cube. If the user rotates the mobile 180 degrees, the cube will also rotate 180 degrees, revealing the backside of the cube.
