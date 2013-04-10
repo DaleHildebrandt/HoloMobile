@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSDNSocketServer", "MSDNSocketServer\MSDNSocketServer.vcxproj", "{F4D84EAE-E3D2-4C7D-BEEA-5E34A7316929}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSDNSocketClient", "MSDNSocketClient\MSDNSocketClient.vcxproj", "{8A4CF813-58C0-4745-B64E-3051A8AC2EC0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSDNSocketServer_Sender", "MSDNSocketServer_Sender\MSDNSocketServer_Sender.vcxproj", "{FDABDF3B-B20A-41C1-B1F6-B0159A05F133}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSDNSocketClient_Listener", "MSDNSocketClient_Listener\MSDNSocketClient_Listener.vcxproj", "{1F7282C0-D8BA-49E8-920A-5D32CA63407A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4D84EAE-E3D2-4C7D-BEEA-5E34A7316929}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F4D84EAE-E3D2-4C7D-BEEA-5E34A7316929}.Debug|Win32.Build.0 = Debug|Win32
+		{F4D84EAE-E3D2-4C7D-BEEA-5E34A7316929}.Release|Win32.ActiveCfg = Release|Win32
+		{F4D84EAE-E3D2-4C7D-BEEA-5E34A7316929}.Release|Win32.Build.0 = Release|Win32
+		{8A4CF813-58C0-4745-B64E-3051A8AC2EC0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8A4CF813-58C0-4745-B64E-3051A8AC2EC0}.Debug|Win32.Build.0 = Debug|Win32
+		{8A4CF813-58C0-4745-B64E-3051A8AC2EC0}.Release|Win32.ActiveCfg = Release|Win32
+		{8A4CF813-58C0-4745-B64E-3051A8AC2EC0}.Release|Win32.Build.0 = Release|Win32
+		{FDABDF3B-B20A-41C1-B1F6-B0159A05F133}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FDABDF3B-B20A-41C1-B1F6-B0159A05F133}.Debug|Win32.Build.0 = Debug|Win32
+		{FDABDF3B-B20A-41C1-B1F6-B0159A05F133}.Release|Win32.ActiveCfg = Release|Win32
+		{FDABDF3B-B20A-41C1-B1F6-B0159A05F133}.Release|Win32.Build.0 = Release|Win32
+		{1F7282C0-D8BA-49E8-920A-5D32CA63407A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1F7282C0-D8BA-49E8-920A-5D32CA63407A}.Debug|Win32.Build.0 = Debug|Win32
+		{1F7282C0-D8BA-49E8-920A-5D32CA63407A}.Release|Win32.ActiveCfg = Release|Win32
+		{1F7282C0-D8BA-49E8-920A-5D32CA63407A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
