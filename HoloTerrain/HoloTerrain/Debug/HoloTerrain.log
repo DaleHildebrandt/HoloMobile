@@ -1,16 +1,14 @@
-﻿Build started 4/11/2013 4:21:11 PM.
+﻿Build started 4/11/2013 4:41:09 PM.
      1>Project "C:\Users\z-space\HoloMobile\HoloTerrain\HoloTerrain\HoloTerrain.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\HoloTerrain.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\Cube.cpp
-         Cube.cpp
-     1>c:\users\z-space\holomobile\holoterrain\source\cube.cpp(109): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
-     1>c:\users\z-space\holomobile\holoterrain\source\cube.cpp(109): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
-     1>c:\users\z-space\holomobile\holoterrain\source\cube.cpp(109): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
-     1>c:\users\z-space\holomobile\holoterrain\source\cube.cpp(110): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
-     1>c:\users\z-space\holomobile\holoterrain\source\cube.cpp(110): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
-     1>c:\users\z-space\holomobile\holoterrain\source\cube.cpp(110): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\Terrain.cpp
+         Terrain.cpp
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(298): warning C4101: 'color' : unreferenced local variable
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1214): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1256): warning C4018: '<' : signed/unsigned mismatch
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.exe" /NOLOGO ZSCommon_D.lib ZSStereo_D.lib ZSTracker_D.lib glew32.lib openGL32.lib glu32.lib SOIL.lib ViconDataStreamSDK_CPP.lib SDL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\HoloTerrain.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.lib" /MACHINE:X86 Debug\Color3f.obj
          Debug\Cube.obj
@@ -43,4 +41,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.20
+Time Elapsed 00:00:01.37

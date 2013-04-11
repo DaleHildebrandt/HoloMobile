@@ -1,8 +1,8 @@
 TODOs:
 -Allow for 3D screenshots
--Create a Matrix 4x4 class
+-Create a Matrix 4x4 class to simplify rotation matrix for drawable objects
 -Clean up Calibrator code (ensure it still works)
--Organize Terrain code (maybe additional classes)
+-Organize Terrain code (maybe seperate interaction )
 -Fix issue preventing accurate selection when terrain is rotated
 -Restrict clipping to only the terrain, not selector ray (potentially markers as well)
 

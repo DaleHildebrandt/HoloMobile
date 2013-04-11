@@ -250,7 +250,7 @@ int currDelay = 0;
 	// Initializes the heightfield terrain data
 	void Terrain::initTerrain()
 	{
-		//Store boundaries of the terrain
+		//Record boundaries of the terrain
 		maxX = MAP_X * MAP_SCALE;
 		minX = 0.0f;
 		maxZ = 0.0f;
@@ -295,10 +295,7 @@ int currDelay = 0;
 	void Terrain::render()
 	{
 		glEnable(GL_TEXTURE_2D);
-		//float dist = 100.0f;
 		Color3f *color;
-		//float angle = 60.0f;
-		//radians = float(PI*(angle-90.0f)/180.0f);
 
 		//server->parseData();
 		handleMessages();
@@ -392,7 +389,7 @@ int currDelay = 0;
 			botClipY = firstClipY;
 			topClipY = secondClipY;
 		}
-		//Position & set clipping planes
+		//Position & initialize clipping planes
 		glTranslatef(0.0f, botClipY, 0.0f);
 		glClipPlane(GL_CLIP_PLANE0, botPlaneEq);
 		
@@ -465,7 +462,11 @@ int currDelay = 0;
 
 		}
 
-		if(start){
+		//############################
+		//##      Draw Markers      ##
+		//############################
+
+			if(start){
 				startCube->setPosition(MHTypes::Point3D(start->x, (terrain[(int)(start->x *(1/MAP_SCALE))][(int)(start->z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , start->z));
 				startCube->render();
 			}
@@ -474,17 +475,17 @@ int currDelay = 0;
 				endCube->setPosition(MHTypes::Point3D(end->x, (terrain[(int)(end->x *(1/MAP_SCALE))][(int)(end->z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , end->z));
 				endCube->render();
 			}
-			//if(roi){
-				roiCube->setPosition(MHTypes::Point3D(roi.x, (terrain[(int)(roi.x *(1/MAP_SCALE))][(int)(roi.z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , roi.z));
-				roiCube->render();
-			//}
-				poiCube->setPosition(MHTypes::Point3D(poi.x, (terrain[(int)(poi.x *(1/MAP_SCALE))][(int)(poi.z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , poi.z));
-				poiCube->render();
 
-				if(isFirst){
-					lightingCube->render();
-					isFirst = false;
-				}
+			roiCube->setPosition(MHTypes::Point3D(roi.x, (terrain[(int)(roi.x *(1/MAP_SCALE))][(int)(roi.z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , roi.z));
+			roiCube->render();
+
+			poiCube->setPosition(MHTypes::Point3D(poi.x, (terrain[(int)(poi.x *(1/MAP_SCALE))][(int)(poi.z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , poi.z));
+			poiCube->render();
+
+			if(isFirst){
+				lightingCube->render();
+				isFirst = false;
+			}
 				
 		glPopMatrix();
 		
@@ -541,6 +542,7 @@ int currDelay = 0;
 		glEnable (GL_BLEND); 
 		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+		//If enabled, render the visualization of the first clip plane
 		if(enableFirstClipVis){
 			glPushMatrix();
 
@@ -554,6 +556,7 @@ int currDelay = 0;
 
 			glPopMatrix();
 		}
+		//If enabled, render the visualization of the second clip plane
 		if(enableSecondClipVis){
 			glPushMatrix();
 
@@ -567,6 +570,7 @@ int currDelay = 0;
 
 			glPopMatrix();
 		}
+		//If enabled, render the height selector
 		if(enableHeightVis){
 			glPushMatrix();
 
@@ -618,29 +622,6 @@ int currDelay = 0;
 		//setColor
 		glColor3f(pathColor->getRed(), pathColor->getGreen(), pathColor->getBlue());
 	}
-	
-	// Calculating the Normalized Cross Product of Two Vectors
-	void Terrain::normalize( float v[3] )
-	{
-		GLfloat d = sqrt( float(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]) );
-		if( d==0.0 )
-		{
-			cerr<<"zero length vector"<<endl;
-			return;
-		}
-		v[0] /= d;
-		v[1] /= d;
-		v[2] /= d;
-	}
-
-	void Terrain::normcrossprod(float v1[3], float v2[3], float out[3])
-	{
-		out[0] = v1[1]*v2[2] - v1[2]*v2[1];
-		out[1] = v1[2]*v2[0] - v1[0]*v2[2];
-		out[2] = v1[0]*v2[1] - v1[1]*v2[0];
-		normalize( out );
-	}
-
 
 	//Determines whether a pinch is being held (pinchHold) or has just been released (pinch)
 	void Terrain::testPinch(MHTypes::Point3D finger, MHTypes::Point3D thumb)
@@ -665,14 +646,11 @@ int currDelay = 0;
 			oldPinchHold = false;
 		}
 
-		/*if(pinch != prevPinch){
-			currDelay = 10;
-		}*/
 		if (currDelay > 0){
 			currDelay--;
 		}
 
-		//Invoke handler for current mode
+		//Invoke state machine for current mode
 		if(mode == ENDPOINT_DRAWING_MODE)
 			handleEndpointDrawing(state);
 		else if (mode == DIRECT_DRAWING_MODE)
@@ -688,7 +666,7 @@ int currDelay = 0;
 
 	}
 
-	//Sets the interaction mode based on command send from tablet
+	//Sets the interaction mode based on command sent from tablet
 	//Echoes a confirmation message back to tablet
 	void Terrain::handleMessages(){
 		std::string msg;
@@ -779,7 +757,7 @@ int currDelay = 0;
 				roiCube->hide();
 				radius = 2;
 				roiCenterPlaced = false;
-				//roi = NULL;
+
 				if(pinchHold && currDelay == 0)
 				{
 					state = PLACING;
