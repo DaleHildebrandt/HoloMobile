@@ -1,12 +1,14 @@
+//CLASS DEF: Simplifies a lot of the basic head (movement) and stylus (movement + button inputs) tracking.
+//USAGE: Initialize ObjectTracker
+//		Call UpdateHead and UpdateStylus in the update loop of your program.
+
 #include "ObjectTracker.h"
 #include "OpenGlScene.h"
 #include <sstream>
 #include "ZSpace/Common/Math/MathConverterGl.h"
 
 using namespace std;
-//CLASS DEF: Simplifies a lot of the basic head (movement) and stylus (movement + button inputs) tracking.
-//USAGE: Initialize ObjectTracker
-//		Call UpdateHead and UpdateStylus in the update loop of your program.
+
 
 ObjectTracker::ObjectTracker(zspace::stereo::StereoFrustum* stereoFrustum, zspace::stereo::StereoWindow* stereoWindow)
 {
@@ -225,5 +227,5 @@ void ObjectTracker::convertPoseToWorldSpace(const zspace::common::Matrix4& pose,
 
   worldPose = cameraLocalToWorld * trackerToCameraSpace * zspace::common::Matrix4::getTrans(-viewportOffset) * pose;
   displayWorldPose = worldPose;
-  OpenGlScene::updateTranslation(displayWorldPose.getTrans().x, displayWorldPose.getTrans().y, displayWorldPose.getTrans().z);
+  //OpenGlScene::updateTranslation(displayWorldPose.getTrans().x, displayWorldPose.getTrans().y, displayWorldPose.getTrans().z);
 }

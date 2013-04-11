@@ -1,0 +1,9 @@
+TODOs:
+-Allow for 3D screenshots
+-Create a Matrix 4x4 class
+-Clean up Calibrator code (ensure it still works)
+-Organize Terrain code (maybe additional classes)
+-Fix issue preventing accurate selection when terrain is rotated
+-Restrict clipping to only the terrain, not selector ray (potentially markers as well)
+
+-Verify that the clipPlane code has not been messed up

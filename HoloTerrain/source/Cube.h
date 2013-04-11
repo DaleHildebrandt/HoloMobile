@@ -3,6 +3,7 @@
 #include <GL\glew.h>
 #include "ZSpace\Common\Math\Vector3.h"
 #include "ZSpace\Common\Math\Math.h"
+#include "Color3f.h"
 
 class Cube{
 
@@ -28,9 +29,7 @@ private:
 	zspace::common::Radian cubeAngle;
 	zspace::common::Vector3 cubeAxis;
 	float cubeSize;
-	float red;
-	float green;
-	float blue;
+	Color3f* color;
 	bool isHidden;
 	MHTypes::Point3D *loc;
 	MHTypes::Point3D *trans;

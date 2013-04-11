@@ -57,22 +57,11 @@ class Terrain{
 		void testIntersect(MHTypes::Point3D point);
 		void setRotation(MHTypes::Quaternion rot);
 		void setRotMat(float* rotMat);
-		//void setStart();
-		//void setEnd();
-		//void setDrawing();
-		//void setDrawingEnd();
-		//void setMinHeightFilter();
+
 		void testPinch(MHTypes::Point3D finger, MHTypes::Point3D thumb);
 		void send(const char* str);
 		bool testInRoi(int roiX, int roiZ, int x, int z, int radius);
 
-		//Mode-setting functions
-		/*void setROIMode();
-		void setPOIMode();
-		void setEndpointDrawingMode();
-		void setDirectDrawingMode();
-		void setHeightFilterMode();
-		void setHeightSelectMode();*/
 
 		void setInteractionMode(int mode);
 
@@ -127,23 +116,19 @@ class Terrain{
 		bool pinch; //Is a pinching gesture currently happening?
 		bool pinchHold;
 		bool oldPinchHold;
-		bool creatingPath; //Are we currently creating a path //Usless?
-		bool adjustMinHeight; //Adjusting minimum height of clip plane //Deprecated?
-		bool startPath; //Enable user to position start point of path if true;
-		bool endPath; //Enable user to position end point of path if true;
+		bool settingStartPath; //Enable user to position start point of path if true;
+		bool settingEndPath; //Enable user to position end point of path if true;
 		bool drawingPath; //Enables freehand drawing of path 
-		bool placeRoi; //Enables user to position ROI
-		bool setRoiRadius; //Enables user to set radius of a placed ROI
-		bool setBotClip; //User can adjust position of bottom clipping plane.
-		bool setTopClip; //User can adjust position of top clipping plane.
+		bool settingRoi; //Enables user to position ROI
+		bool settingRoiRadius; //Enables user to set radius of a placed ROI
 		bool enableBotClip; //Enable bottom clipping plane
 		bool enableTopClip; //Enable top clipping plane
 		bool enableTopClipVis;
 		bool enableBotClipVis;
 		bool enableHeightVis;
 		bool setHeight;
-		bool setRoi;
-		bool setPoi;
+		bool roiCenterPlaced;
+		bool settingPoi;
 		bool dispRoiRadius;
 		bool isFirst;
 
@@ -201,7 +186,6 @@ class Terrain{
 		Cube *poiCube;
 		Cube *startCube;
 		Cube *endCube;
-		Cube *yawCube;
 		Cube *lightingCube;
 
 		Cube *fingerCube;

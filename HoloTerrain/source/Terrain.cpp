@@ -1,3 +1,7 @@
+//Terrain.cpp
+//## Description ##
+//3D terrain which can be drawn to the screen and interacted with
+//via a connected mobile devie and Vicon-tracked pinch gestures.
 #define WIN32_LEAN_AND_MEAN
 
 #include "Terrain.h"
@@ -11,56 +15,18 @@
 #include <math.h>
 #include <iostream>
 
-
-
-
-
-
-
-
+//## Defines ##
 #define WINDOW_WIDTH	640				// Window Width  Default
 #define WINDOW_HEIGHT 480				// Window Height Default
 
-// definition of PI
-#define PI						3.14159265
-#define FINGER_PINCH_MAX_DIST	0.04
+#define PI						3.14159265 //Mathematical PI constant
+#define FINGER_PINCH_MAX_DIST	0.04	   //Furthest distance between fingers before a pinch is registered.
 #define MIN_DELAY				100
 
-// Used to defien the title of the window
-#define WINDOW_TITLE  "Vahe Karamian - OpenGL Terrain Generation - CodeProject Version 1.0"
-
-// A simple structure to define a point whose coordinates are integers
-/*typedef struct { GLint x, y; } GLintPoint;
-
-// This structure is used to store the vertices of a polyline
-typedef struct { int num; GLintPoint pt[100]; } GLintPointArray;
-
-// Data for an Icosahedron
-#define ICO_X	0.525731112119133606
-#define ICO_Z	0.850650808352039932*/
-
-/*static GLfloat vdataICO[12][3] =
-{
-	{ -ICO_X, 0.0, ICO_Z }, { ICO_X, 0.0, ICO_Z }, { -ICO_X, 0.0, -ICO_Z }, { ICO_X, 0.0, -ICO_Z },
-	{ 0.0, ICO_Z, ICO_X }, { 0.0, ICO_Z, -ICO_X }, { 0.0, -ICO_Z, ICO_X }, { 0.0, -ICO_Z, -ICO_X },
-	{ ICO_Z, ICO_X, 0.0 }, { -ICO_Z, ICO_X, 0.0 }, { ICO_Z, -ICO_X, 0.0 }, { -ICO_Z, -ICO_X, 0.0 }
-};
-
-static GLuint tindicesICO[20][3] =
-{
-	{ 1, 4, 0 }, { 4, 9, 0 }, { 4, 5, 9 }, { 8, 5, 4 }, { 1, 8, 4 },
-	{ 1, 10, 8 }, { 10, 3, 8 }, { 8, 3, 5 }, { 3, 2, 5 }, { 3, 7, 2 },
-	{ 3, 10, 7 }, { 10, 6, 7 }, { 6, 11, 7 }, { 6, 0, 11 }, {6, 1, 0 },7
-	{ 10, 1, 6 }, { 11, 0, 9 }, { 2, 11, 9 }, { 5, 2, 9 }, { 11, 2, 7 }
-};*/
-
-////// Defines
-#define BITMAP_ID 0x4D42		      // the universal bitmap ID
+#define BITMAP_ID 0x4D42		     // the universal bitmap ID
 #define MAP_X	32			         // size of map along x-axis
 #define MAP_Z	32			         // size of map along z-axis
-//#define MAP_SCALE 0.03125f//1.0f	  // the scale of the terrain map
-#define MAP_SCALE 0.00625f
-//#define MAP_SCALE 0.00166f
+#define MAP_SCALE 0.00625f		     // the scale of the terrain map
 
 ////// Texture Information
 BITMAPINFOHEADER	bitmapInfoHeader;	// temp bitmap info header
@@ -78,66 +44,71 @@ unsigned char*	      imageData;		   // the map image data
 unsigned char*       landTexture;	   // land texture data
 unsigned int		   land;			      // the land texture object
 
-////// Terrain Data
+//## Terrain Data ##
 float terrain[MAP_X][MAP_Z][3];		// heightfield terrain data (0-255); 256x256
-//float cameraX, cameraY, cameraZ;	   // camera coordinates
-//float lookX, lookY, lookZ;			   // camera look-at coordinates
-//
-//float radians = 0.0f;			   // camera angle in radians
+
 
 int currDelay = 0;
 
-
+	//## Constructor ##
 	Terrain::Terrain(TabletServer *server) : DEFAULT_MODE(0), ROI_MODE(1), POI_MODE(2), ENDPOINT_DRAWING_MODE(3), DIRECT_DRAWING_MODE(4), HEIGHT_FILTERING_MODE(5), HEIGHT_SELECT_MODE(6)	
 	{
 		this->server = server;
 		loc = new MHTypes::Point3D(0.0f, 0.0f, 0.0f);
 		eulerAngle = MHTypes::EulerAngle(0.0f, 0.0f, 0.0f);
 		currFingerPos = MHTypes::Point3D(0.0f, 0.0f, 0.0f);
-		adjustMinHeight = true;
-		minSet = false;
-		maxSet = false;
-		intersecting = false;
-		startPath = false;
-		endPath = false;
-		drawingPath = false;
-		creatingPath = false;
-		pinch = false;
-		pinchHold = false;
-		oldPinchHold = false;
-		inRoi = false;
-		placeRoi = false;
-		setRoiRadius = false;
-		setBotClip = false;
-		setTopClip = false;
-		enableBotClip = false;
-		enableTopClip = false;
-		enableBotClipVis = false;
-		enableTopClipVis = false;
-		setHeight = false;
-		enableHeightVis = false;
-		setRoi = false;
-		setPoi = false;
-		dispRoiRadius = false;
-		isFirst = true;
 
-		setFirstClip = false; //User can adjust position of bottom clipping plane.
-		setSecondClip = false; //User can adjust position of top clipping plane.
-		enableFirstClip = false; //Enable bottom clipping plane
-		enableSecondClip = false; //Enable top clipping plane
-		enableSecondClipVis = false;
-		enableFirstClipVis = false;
-		clipPlaneFirstVisOffset = 0.0;
+		minSet = false; //have we found a potential minumum, Y-value for the terrain?
+		maxSet = false; //have we found a potential maximum Y-value for the terrain?
+
+		intersecting = false; //does the selection ray intersect the terrain
+		pinch = false;				//Have we just completed a pinching gesture?
+		pinchHold = false;			//Are we currently holding a pinch
+		oldPinchHold = false;		//What was the previous state of pinchHold last time we checked?
+
+		inRoi = false;				//Is a point within the ROI?
+
+		//## Interaction State Flags ##
+		settingStartPath = false;	//Currently setting location of the start of an endpoint-defined path
+		settingEndPath = false;		//Currently setting location of the end of an endpoint-defined path
+		drawingPath = false;		//Currently drawing a freehand-defined path
+		settingRoi = false;			//Currently setting the center of an ROI
+		settingRoiRadius = false;	//Either currently setting the radius of an ROI, or have already set it
+		setHeight = false;			//Currently setting the height filter.
+		enableHeightVis = false;	//Should the visualization of the current height filter plane be shown?
+		roiCenterPlaced = false;	//The center of the ROI has already been placed. (dispRoiCenter)				
+		settingPoi = false;			//Currently setting location of the POI
+		dispRoiRadius = false;		//Can ROI radius be displayed?
+		setFirstClip = false;		//User can adjust position of bottom clipping plane.
+		setSecondClip = false;		//User can adjust position of top clipping plane.
+		enableFirstClip = false;	//Enable bottom clipping plane
+		enableSecondClip = false;	//Enable top clipping plane
+		enableSecondClipVis = false;//Show visualization for second clipping plane?
+		enableFirstClipVis = false;	//Show visualization for first clipping plane?
+
+
+		isFirst = true;				//Is first time through render loop?
+
+		//Offset prevents z-fighting between clip planes and their visualizations
+		clipPlaneFirstVisOffset = 0.0;	
 		clipPlaneSecondVisOffset = 0.0;
+
+		//Height of clipping planes
 		firstClipY = 0.0;
 		secondClipY = 0.0;
 
-		radius = 5;
-		clipPlaneVisOffset = 0.0f;
 		botClipY = 0.001f;
 		topClipY = 0.0f;
-		mode = DEFAULT_MODE;
-		pathColor = new Color3f(1.0f, 1.0f, 1.0f);
+
+		radius = 5;
+
+		mode = DEFAULT_MODE; //Set current mode to the default interaction mode
+
+		pathColor = new Color3f(1.0f, 1.0f, 1.0f); //Initialize color of path to an arbitrary color
+
+		//Initialize 2D array for freeform path 
+		//true at [x][z]  => color terrain vertex at x,z to path color
+		//false at [x][z] => leave terrain vertex at x,z default color
 		freeformPath = new bool*[MAP_X+1];
 		for(int i = 0; i < MAP_X+1; i++){
 			freeformPath[i] = new bool[MAP_Z+1];
@@ -148,16 +119,18 @@ int currDelay = 0;
 			}
 		}
 
-		yawCube = new Cube();
-		startCube = new Cube();
-		roiCube = new Cube();
-		poiCube = new Cube();
-		poiCube->hide();
-		roiCube->hide();
-		endCube = new Cube();
-		fingerCube = new Cube();
-		lightingCube = new Cube();
+		//## Displayed Markers ##
+		startCube = new Cube();		//Denotes the start of an endpoint-defined path
+		endCube = new Cube();		//Denotes end of an endpoint-defined path
+		roiCube = new Cube();		//Denotes center of an ROI
+		poiCube = new Cube();		//Denotes location of a POI
+		fingerCube = new Cube();	//Denotes current finger position
 
+		lightingCube = new Cube();  //Provides light to terrain (not actually rendered)
+
+		//Hide markers initially
+		poiCube->hide();	
+		roiCube->hide();
 		start = NULL;
 		end = NULL;
 
@@ -165,6 +138,8 @@ int currDelay = 0;
 
 	}
 
+
+	//## Destructor ##
 	Terrain::~Terrain(void)
 	{
 		delete pathColor;
@@ -174,9 +149,17 @@ int currDelay = 0;
 		for(int i = 0; i < MAP_X+1; ++i)
 			delete[] freeformPath[i];
 		delete[] freeformPath;
+
+		delete startCube;
+		delete endCube;
+		delete roiCube;
+		delete poiCube;
+		delete fingerCube;
+		delete lightingCube;
 	}
 
 
+	//## Initalization ##
 	void Terrain::init()
 	{
 		glClearColor(0.0f, 1.0f, 0.0f, 0.0f);		// clear to black
@@ -188,8 +171,10 @@ int currDelay = 0;
 
 		glEnable(GL_TEXTURE_2D);					   // enable 2D texturing
 
-		imageData = loadBitmapFile("Terrain2.bmp", &bitmapInfoHeader);
+		imageData = loadBitmapFile("Terrain2.bmp", &bitmapInfoHeader); //Loads the source height map from which the terrain is generated
 
+		//## Initialize the cubes
+		//TODO: Modify cube constructor, moving these up to constructor
 		startCube->setSize(MAP_SCALE*1.5);
 		startCube->setColor(1.0f, 0.0f, 0.0f);
 
@@ -198,9 +183,6 @@ int currDelay = 0;
 
 		poiCube->setSize(MAP_SCALE*1.5);
 		poiCube->setColor(1.0f, 1.0f, 0.0f);
-
-		yawCube->setSize(MAP_SCALE * 3.0f);
-		yawCube->setColor(0.0f, 1.0f, 0.0f);
 
 		endCube->setSize(MAP_SCALE*1.5);
 		endCube->setColor(0.0f, 0.0f, 1.0f);
@@ -211,86 +193,66 @@ int currDelay = 0;
 		lightingCube->setSize(MAP_SCALE*1.5f);
 		lightingCube->setColor(1.0f, 1.0f, 1.0f);
 
-		// initialize the terrain data and load the textures
+		// initialize the terrain data, load the textures, and set up clipping planes
 		initTerrain();
 		loadTextures();
 		initClipPlanes();
 	}
 
-
-	//Defines 4 clipping planes to limit the visible region of the map
+	//Defines 2 clipping planes to restrict the visible terrain to a particular height range.
+	//These are only activated once height filtering mode is used.
 	void Terrain::initClipPlanes()
 	{
 
 		//Create clipping planes
-		//Left side
-		  botPlaneEq[0] = 0; //A
-		  botPlaneEq[1] = -1; //B
-		  botPlaneEq[2] = 0; //C (A,B,C) is a normal vector resulting clip plane.
-		  botPlaneEq[3] = 0.0; //Value for D in eq. of plane given Ax + By + Cz + D = 0 (where (x,y,z) is any point on the resulting plane)
+		//Top Clip Plane
+		  topPlaneEq[0] = 0; //A
+		  topPlaneEq[1] = -1; //B
+		  topPlaneEq[2] = 0; //C (A,B,C) is a normal vector of resulting clip plane.
+		  topPlaneEq[3] = 0.0; //Value for D in eq. of plane given by Ax + By + Cz + D = 0 (where (x,y,z) is any point on the resulting plane)
 
-		//far side
-		  topPlaneEq[0] = 0;
-		  topPlaneEq[1] = 1;
-		  topPlaneEq[2] = 0;
-		  topPlaneEq[3] = 0.0;
-
+		//Bottom Clip Plane
+		  botPlaneEq[0] = 0;
+		  botPlaneEq[1] = 1;
+		  botPlaneEq[2] = 0;
+		  botPlaneEq[3] = 0.0;
 	}
+
+	//Sends data to mobile device through socket
 	void Terrain::send(const char* str){
-	// cout << "Sending this event: " << str << endl;
-		//if (connectTablet)
 		server->sendData(str);
 	}
 
+	//## Setters ##
 	void Terrain::setPosition(MHTypes::Point3D point)
 	{
 		loc = new MHTypes::Point3D(point.x, point.y, point.z);
-
 	}
 
 	void Terrain::setRotMat(float* rotMat)
 	{
-		//Store transformation matrix for use with glMultMatrix();
+		//Stores 4x4 rotation matrix for use with glMultMatrix();
 		for(int i = 0; i < 16; i++){
 			rotMatrix[i] = rotMat[i];
 		}
-		//Store the inverse rotation matrix as well
+		//Store the 4x4 inverse rotation matrix as well
 		for(int i = 0; i <16; i++){
 			invRotMatrix[i] = rotMatrix[((i%4)*4) + (i/4)];
 		}
 	}
 
-	//Sets rotation via Euler angles
+	//Sets rotation via Quaternion
 	void Terrain::setRotation(MHTypes::Quaternion rot)
 	{
 		quat = rot;
-		/*float yaw = eulerAngle.yaw *(PI/180.0f);
-		rotMatrixY[0] = cos(yaw);
-		rotMatrixY[1] = 0;
-		rotMatrixY[2] = -sin(yaw);
-		rotMatrixY[3] = 0;
-		rotMatrixY[4] = 0;
-		rotMatrixY[5] = 1;
-		rotMatrixY[6] = 0;
-		rotMatrixY[7] = 0;
-		rotMatrixY[8] = sin(yaw);
-		rotMatrixY[9] = 0;
-		rotMatrixY[10] = cos(yaw);
-		rotMatrixY[11] = 0;
-		rotMatrixY[12] = 0;
-		rotMatrixY[13] = 0;
-		rotMatrixY[14] = 0;
-		rotMatrixY[15] = 1;*/
-
 	}
 
-	// InitializeTerrain()
-	// desc: initializes the heightfield terrain data
+	// Initializes the heightfield terrain data
 	void Terrain::initTerrain()
 	{
+		//Store boundaries of the terrain
 		maxX = MAP_X * MAP_SCALE;
 		minX = 0.0f;
-
 		maxZ = 0.0f;
 		minZ = -MAP_Z*MAP_SCALE;
 
@@ -304,6 +266,7 @@ int currDelay = 0;
 				terrain[x][z][1] = (float)imageData[(z*MAP_Z+x)*3];
 				terrain[x][z][2] = -float(z)*MAP_SCALE;
 
+				//Record minimum and maximum Y-values of terrain
 				if(!minSet || minY > (float)imageData[(z*MAP_Z+x)*3])
 				{
 					minSet = true;
@@ -317,8 +280,12 @@ int currDelay = 0;
 			}
 		}
 
+		//Get maxY & minY in terms of the coordinate system for displaying
 		minDisplayY = minY * (MAP_SCALE/20.0);
 		maxDisplayY = maxY * (MAP_SCALE/20.0);
+
+		//Position cube to produce lighting for terrain (note, this cube is not actually displayed
+		// but affects the lighting of the terrain)
 		lightingCube->setPosition(MHTypes::Point3D(16*MAP_SCALE, maxDisplayY, 16*MAP_SCALE));
 	}
 
@@ -327,11 +294,11 @@ int currDelay = 0;
 	// desc: handles drawing of scene
 	void Terrain::render()
 	{
-				glEnable(GL_TEXTURE_2D);
-		float dist = 100.0f;
+		glEnable(GL_TEXTURE_2D);
+		//float dist = 100.0f;
 		Color3f *color;
-		float angle = 60.0f;
-		radians = float(PI*(angle-90.0f)/180.0f);
+		//float angle = 60.0f;
+		//radians = float(PI*(angle-90.0f)/180.0f);
 
 		//server->parseData();
 		handleMessages();
@@ -405,13 +372,18 @@ int currDelay = 0;
 		//##Draw Holo-Mobile Terrain##
 		//############################
 		glBindTexture(GL_TEXTURE_2D, land);
-		glPushMatrix();
+		glPushMatrix(); //Save pre-terrain view matrix
 
-		glTranslatef(loc->x, loc->y, loc->z);
-		glMultMatrixf(rotMatrix);
-		glTranslatef(-((MAP_X*MAP_SCALE)/2.0f), 0.0, ((MAP_Z*MAP_SCALE)/2.0f));
+		glTranslatef(loc->x, loc->y, loc->z); //Positions Terrain
+		glMultMatrixf(rotMatrix); //Rotates Terrain
+		glTranslatef(-((MAP_X*MAP_SCALE)/2.0f), 0.0, ((MAP_Z*MAP_SCALE)/2.0f)); //Moves terrain to origin
 
-		glPushMatrix();
+		glPushMatrix(); //Save pre-clip view matrix
+
+		//Determine which clipping plane is the upper and which is lower
+		//based on their height relative to one another.
+		// ------first => upper     OR    -------second => upper
+		// ------second => lower          -------first  => lower
 		if(firstClipY > secondClipY){
 			botClipY = secondClipY;
 			topClipY = firstClipY;
@@ -420,14 +392,12 @@ int currDelay = 0;
 			botClipY = firstClipY;
 			topClipY = secondClipY;
 		}
+		//Position & set clipping planes
 		glTranslatef(0.0f, botClipY, 0.0f);
-
-		//Set clipping planes
-		glClipPlane(GL_CLIP_PLANE0, topPlaneEq);
+		glClipPlane(GL_CLIP_PLANE0, botPlaneEq);
 		
 		glTranslatef(0.0f, topClipY - botClipY, 0.0f);
-		glClipPlane(GL_CLIP_PLANE1, botPlaneEq);
-
+		glClipPlane(GL_CLIP_PLANE1, topPlaneEq);
 
 		//Enable clipping planes
 		if(enableFirstClip){
@@ -448,10 +418,8 @@ int currDelay = 0;
 			}
 		}
 
-		glPopMatrix();
+		glPopMatrix(); //Restore pre-clip (post-terrain) view matrix
 
-		
-		//float d = TestDistanceFromLineSegmentToPoint(0.0,0.0, 20.0, 20.0,20.0, 32.0);
 
 		// we are going to loop through all of our terrain's data points,
 		// but we only want to draw one triangle strip for each set along the x-axis.
@@ -472,82 +440,23 @@ int currDelay = 0;
 				   2  ---> 3
 				*/
 
+				// draw vertex 0
 				setVertexColor(x, z);
 				glTexCoord2f(0.0f, 0.0f);
-
 				glVertex3f(terrain[x][z][0], terrain[x][z][1] * (MAP_SCALE/20.0f), terrain[x][z][2]);
 
-				//if(!(start && end) || dist > 0.5f || drawingPath){
-				//	if(freeformPath[x+1][z]){
-				//		pathColor->setRGB(1.0f);
-				//	}
-				//	/*else if(adjustMinHeight)
-				//	{
-				//		if(terrain[x+1][z][1]* (MAP_SCALE/20.0f) < selectorRay.y){
-				//			pathColor->setRGB(1.0f);
-				//		}
-				//	}*/
-				//	else{
-				//		pathColor->setRGB(terrain[x+1][z][1]/255.0f);
-				//	}
-				//	
-				//}
-
-				setVertexColor(x+1, z);
 				// draw vertex 1
+				setVertexColor(x+1, z);
 				glTexCoord2f(1.0f, 0.0f);
-				//glColor3f(terrain[x+1][z][1]/255.0f, terrain[x+1][z][1]/255.0f, terrain[x+1][z][1]/255.0f);
-				glColor3f(pathColor->getRed(), pathColor->getGreen(), pathColor->getBlue());
 				glVertex3f(terrain[x+1][z][0], terrain[x+1][z][1] * (MAP_SCALE/20.0f), terrain[x+1][z][2]);
 
-				//if(!(start && end) || dist > 0.5f || drawingPath){
-				//	if(freeformPath[x][z+1]){
-				//		pathColor->setRGB(1.0f);
-				//	}
-				//	//else if(adjustMinHeight)
-				//	//{
-				//	//	//ostringstream ss;
-				//	//	//ss << "Terrain: " << terrain[x][z+1][1] << "testPoint: "<< testPoint.y*(1.0/MAP_SCALE) << std::endl;
-				//	//	//OutputDebugString(ss.str().c_str());
-				//	//	if(terrain[x][z+1][1]* (MAP_SCALE/20.0f) < selectorRay.y){
-				//	//	
-				//	//		pathColor->setRGB(1.0f);
-				//	//	}
-				//	//	else{
-				//	//		pathColor->setRGB(0.0f);
-				//	//	}
-				//	//}
-				//	else{
-				//		pathColor->setRGB(terrain[x][z+1][1]/255.0f);
-				//	}
-				//	
-				//}
-				setVertexColor(x, z+1);
 				// draw vertex 2
+				setVertexColor(x, z+1);
 				glTexCoord2f(0.0f, 1.0f);
-				//glColor3f(terrain[x][z+1][1]/255.0f, terrain[x][z+1][1]/255.0f, terrain[x][z+1][1]/255.0f);
-				glColor3f(pathColor->getRed(), pathColor->getGreen(), pathColor->getBlue());
 				glVertex3f(terrain[x][z+1][0], terrain[x][z+1][1] * (MAP_SCALE/20.0f), terrain[x][z+1][2]);
 
-				//if(!(start && end) || dist > 0.5f || drawingPath){
-				//	if(freeformPath[x+1][z+1]){
-				//		pathColor->setRGB(1.0f);
-				//	}
-				//	/*else if(adjustMinHeight)
-				//	{
-				//		if(terrain[x+1][z+1][1]* (MAP_SCALE/20.0f) < selectorRay.y){
-				//			pathColor->setRGB(1.0f);
-				//		}
-				//	}*/
-				//	else{
-				//		pathColor->setRGB(terrain[x+1][z+1][1]/255.0f);
-				//	}
-				//	
-				//}
-				setVertexColor(x+1, z+1);
 				// draw vertex 3
-				//glColor3f(terrain[x+1][z+1][1]/255.0f, terrain[x+1][z+1][1]/255.0f, terrain[x+1][z+1][1]/255.0f);
-				glColor3f(pathColor->getRed(), pathColor->getGreen(), pathColor->getBlue());
+				setVertexColor(x+1, z+1);
 				glTexCoord2f(1.0f, 1.0f);
 				glVertex3f(terrain[x+1][z+1][0], terrain[x+1][z+1][1] * (MAP_SCALE/20.0f), terrain[x+1][z+1][2]);
 			}
@@ -555,7 +464,7 @@ int currDelay = 0;
 
 
 		}
-		//glDisable(GL_TEXTURE_2D);
+
 		if(start){
 				startCube->setPosition(MHTypes::Point3D(start->x, (terrain[(int)(start->x *(1/MAP_SCALE))][(int)(start->z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , start->z));
 				startCube->render();
@@ -593,273 +502,123 @@ int currDelay = 0;
 
 		// disable blending
 		glDisable(GL_BLEND);
-				//glTranslatef(loc->x, loc->y, loc->z);
-		//glMultMatrixf(rotMatrix);
-		////glScalef(0.2f, 0.2f, 0.2f);
-		//glTranslatef(-((MAP_X*MAP_SCALE)/2.0f), 0.0, ((MAP_Z*MAP_SCALE)/2.0f));
-
-		/*glPushMatrix();
-		glColor3f(1.0f, 1.0f, 1.0f);
-		glBegin(GL_LINES);
-				glVertex3f(curr.x, -1000.0f, curr.z);
-				glVertex3f(curr.x, 1000.0f, curr.z);
-				glEnd();
-		glPopMatrix();*/
-
-		//if(showGround){
-					//############################################
-				//############ Renders Selection Ray #########
-				//############################################
-				glPushMatrix();
-				glTranslatef(loc->x, loc->y, loc->z);
-				glMultMatrixf(rotMatrix);
-				glTranslatef(-((MAP_X*MAP_SCALE)/2.0f), 0.0, ((MAP_Z*MAP_SCALE)/2.0f));
-
-				glLineWidth(10.0f);
-				glColor3f(1.0f, 0.0f, 0.0f);
-				if(intersecting){
-					glColor3f(0.0f, 0.0f, 1.0f);
-				}
-				if(pinch || pinchHold){
-					glColor3f(0.0f, 1.0f, 0.0f);
-				}
-				glBegin(GL_LINES);
-				//Disable SelectorRay
-				glVertex3f(selectorRay.x, -1000.0f, selectorRay.z);
-				glVertex3f(selectorRay.x, 1000.0f, selectorRay.z);
-				glEnd();
-
-				glColor4f(0.0f, 0.0f, 1.0f, 0.5f);
-
-				//#######################################
-				//########### Renders Clip Plane ########
-				//#######################################
-				glEnable (GL_BLEND); 
-				glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-				if(enableFirstClipVis){
-					glPushMatrix();
-
-					glTranslatef(0.0f, clipPlaneFirstVisOffset, 0.0f);
-					glBegin(GL_QUADS);
-						glVertex3f(0.0f, firstClipY, -MAP_Z*MAP_SCALE);
-						glVertex3f(0.0f, firstClipY, 0.0f);
-						glVertex3f(MAP_X*MAP_SCALE, firstClipY, 0.0f);
-						glVertex3f(MAP_X*MAP_SCALE, firstClipY, -MAP_Z*MAP_SCALE);
-					glEnd();
-
-					glPopMatrix();
-				}
-				if(enableSecondClipVis){
-					glPushMatrix();
-
-					glTranslatef(0.0f, clipPlaneSecondVisOffset, 0.0f);
-					glBegin(GL_QUADS);
-						glVertex3f(0.0f,secondClipY, -MAP_Z*MAP_SCALE);
-						glVertex3f(0.0f, secondClipY, 0.0f);
-						glVertex3f(MAP_X*MAP_SCALE, secondClipY, 0.0f);
-						glVertex3f(MAP_X*MAP_SCALE, secondClipY, -MAP_Z*MAP_SCALE);
-					glEnd();
-
-					glPopMatrix();
-				}
-				if(enableHeightVis){
-					glPushMatrix();
-
-					glTranslatef(0.0f, 0.0f, 0.0f);
-					glBegin(GL_QUADS);
-						glVertex3f(0.0f, selectorRay.y, -MAP_Z*MAP_SCALE);
-						glVertex3f(0.0f, selectorRay.y, 0.0f);
-						glVertex3f(MAP_X*MAP_SCALE, selectorRay.y, 0.0f);
-						glVertex3f(MAP_X*MAP_SCALE, selectorRay.y, -MAP_Z*MAP_SCALE);
-					glEnd();
-
-					glPopMatrix();
-				}
-				/*if(enableTopClipVis && enableBotClipVis){
-					glBegin(GL_QUADS);
-						glVertex3f(minX,botClipY, maxZ);
-						glVertex3f(maxX, botClipY, maxZ);
-						glVertex3f(maxX, topClipY, maxZ);
-						glVertex3f(minX,topClipY, maxZ);
-					glEnd();
-
-				}*/
-
 				
-
-				glPopMatrix();
-		//}
-
-
-		//glPushMatrix();
-		//if(originalRay){
-		//	
-		//	glColor3f(1.0f, 0.0f, 0.0f);
-		//	/*float drawMinX = minX, drawMinY = minY, drawMinZ = minZ;
-		//	float drawMaxX = maxX, drawMaxY = maxY, drawMaxZ = maxZ;
-
-		//	drawMinX = drawMinX - loc->x;
-		//	drawMaxX = drawMaxX - loc->x;
-		//	drawMinY = drawMinY - loc->y;
-		//	drawMaxY = drawMaxY - loc->y;
-		//	drawMinZ = drawMinZ - loc->z;
-		//	drawMaxZ = drawMaxZ - loc->z;
-
-		//		glBegin(GL_QUADS);
-
-		//		glVertex3f(drawMinX, drawMaxY* (MAP_SCALE/20.0f), drawMaxZ);
-		//		glVertex3f(drawMaxX, drawMaxY* (MAP_SCALE/20.0f), drawMaxZ);
-		//		glVertex3f(drawMaxX, drawMaxY* (MAP_SCALE/20.0f), drawMinZ);
-		//		glVertex3f(drawMinX, drawMaxY* (MAP_SCALE/20.0f), drawMinZ);
-		//		
-		//		glEnd();*/
-
-		//		//#############################################
-		//		//### Renders untransformed finger position ###
-		//		//#############################################
-		//		glPushMatrix();
-		//		fingerCube->setPosition(MHTypes::Point3D(originalRay->x, originalRay->y, originalRay->z));
-		//		fingerCube->render();
-		//		glPopMatrix();
-
-
-		//		//############################################
-		//		//############ Renders Selection Ray #########
-		//		//############################################
-		//		glPushMatrix();
-		//		glTranslatef(loc->x, loc->y, loc->z);
-		//		//glMultMatrixf(rotMatrix);
-		//		glTranslatef(-((MAP_X*MAP_SCALE)/2.0f), 0.0, ((MAP_Z*MAP_SCALE)/2.0f));
-		//		glLineWidth(10.0f);
-		//		glColor3f(0.0f, 0.0f, 1.0f);
-		//		glBegin(GL_LINES);
-		//		glVertex3f(selectorRay->x, -1000.0f, selectorRay->z);
-		//		glVertex3f(selectorRay->x, 1000.0f, selectorRay->z);
-		//		glEnd();
-		//		glPopMatrix();
-
-		//		//#############################################
-		//		//### Renders Untransformed Ray ###############
-		//		//#############################################
-		//		//Draw Origianl Ray
-		//		glPushMatrix();
-
-		//		glColor3f(1.0f, 0.0f, 0.0f);
-		//		//glTranslatef(((MAP_X*MAP_SCALE)/2.0f), 0.0, -((MAP_Z*MAP_SCALE)/2.0f));
-		//		//glMultMatrixf(rotMatrix);
-		//		//glTranslatef(-((MAP_X*MAP_SCALE)/2.0f), 0.0, ((MAP_Z*MAP_SCALE)/2.0f));
-		//		glBegin(GL_LINES);
-
-		//		MHTypes::Point3D dirVector = MHTypes::Point3D(originalRayExtend->x - originalRay->x, originalRayExtend->y - originalRay->y, originalRayExtend->z - originalRay->z);
-		//		glVertex3f(originalRay->x + (dirVector.x * 1000.0f), originalRay->y + (dirVector.y * 1000.0f), originalRay->z + (dirVector.z * 1000.0f));
-		//		glVertex3f(originalRay->x - (dirVector.x * 1000.0f), originalRay->y - (dirVector.y * 1000.0f), originalRay->z - (dirVector.z * 1000.0f));
-
-		//		glEnd();
-		//		glPopMatrix();
-		//}
 		//############################################
-		//### Renders Untransformed Starting Point ###
+		//############ Renders Selection Ray #########
 		//############################################
-		//if(start){
-		//	glPushMatrix();
-		//	float startX = start->x;
-		//	float startZ = start->z;
-		//	startX -= ((MAP_X*MAP_SCALE)/2.0f); 
-		//	startZ += (MAP_Z*MAP_SCALE)/2.0f;
+		glPushMatrix();
+		glTranslatef(loc->x, loc->y, loc->z);
+		glMultMatrixf(rotMatrix);
+		glTranslatef(-((MAP_X*MAP_SCALE)/2.0f), 0.0, ((MAP_Z*MAP_SCALE)/2.0f));
 
-		//	startX = rotMatrix[0]*startX + rotMatrix[8]*startZ + rotMatrix[12];//rotMatrix[4]*testPoint.y + rotMatrix[8]*testPoint.z + rotMatrix[12];
-		//	//float yawY = rotMatrix[1]*0.1f + rotMatrix[13];//+ rotMatrix[5]*testPoint.y + rotMatrix[9]*testPoint.z + rotMatrix[13];
-		//	startZ = rotMatrix[2]*startX + rotMatrix[10]*startZ + rotMatrix[14];
-		//	startX += ((MAP_X*MAP_SCALE)/2.0f); 
-		//	startZ -= (MAP_Z*MAP_SCALE)/2.0f;
+		glLineWidth(10.0f);
 
-		//	//glMultMatrixf(rotMatrix);
-		//	//glTranslatef(((MAP_X*MAP_SCALE)/2.0f), 0.0, -((MAP_Z*MAP_SCALE)/2.0f)); //from origin
-		//	//glTranslatef(-((MAP_X*MAP_SCALE)/2.0f), 0.0, ((MAP_Z*MAP_SCALE)/2.0f)); //to origin
-		//	glBegin(GL_LINES);
-		//					
-		//	glVertex3f(startX, -1000.0f, startZ);
-		//	glVertex3f(startX, 1000.0f, startZ);
-		//	glEnd();
-		//	glPopMatrix();
-		//}
+		//Determine selection ray color
+		//red => not intersecting, not pinching
+		//blue => intersecting, not pinching
+		//green => pinching
+		glColor3f(1.0f, 0.0f, 0.0f);
+		if(intersecting){
+			glColor3f(0.0f, 0.0f, 1.0f);
+		}
+		if(pinch || pinchHold){
+			glColor3f(0.0f, 1.0f, 0.0f);
+		}
+		//Draw SelectorRay
+		glBegin(GL_LINES);
+		//Disable SelectorRay (comment following 2 lines out to disable)
+		glVertex3f(selectorRay.x, -1000.0f, selectorRay.z);
+		glVertex3f(selectorRay.x, 1000.0f, selectorRay.z);
+		glEnd();
+
+
+		//#######################################
+		//########### Renders Clip Plane ########
+		//#######################################
+
+		//Set up transparency for clip plane visualizations
+		glColor4f(0.0f, 0.0f, 1.0f, 0.5f);
+		glEnable (GL_BLEND); 
+		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		if(enableFirstClipVis){
+			glPushMatrix();
+
+			glTranslatef(0.0f, clipPlaneFirstVisOffset, 0.0f);
+			glBegin(GL_QUADS);
+				glVertex3f(0.0f, firstClipY, -MAP_Z*MAP_SCALE);
+				glVertex3f(0.0f, firstClipY, 0.0f);
+				glVertex3f(MAP_X*MAP_SCALE, firstClipY, 0.0f);
+				glVertex3f(MAP_X*MAP_SCALE, firstClipY, -MAP_Z*MAP_SCALE);
+			glEnd();
+
+			glPopMatrix();
+		}
+		if(enableSecondClipVis){
+			glPushMatrix();
+
+			glTranslatef(0.0f, clipPlaneSecondVisOffset, 0.0f);
+			glBegin(GL_QUADS);
+				glVertex3f(0.0f, secondClipY, -MAP_Z*MAP_SCALE);
+				glVertex3f(0.0f, secondClipY, 0.0f);
+				glVertex3f(MAP_X*MAP_SCALE, secondClipY, 0.0f);
+				glVertex3f(MAP_X*MAP_SCALE, secondClipY, -MAP_Z*MAP_SCALE);
+			glEnd();
+
+			glPopMatrix();
+		}
+		if(enableHeightVis){
+			glPushMatrix();
+
+			glTranslatef(0.0f, 0.0f, 0.0f);
+			glBegin(GL_QUADS);
+				glVertex3f(0.0f, selectorRay.y, -MAP_Z*MAP_SCALE);
+				glVertex3f(0.0f, selectorRay.y, 0.0f);
+				glVertex3f(MAP_X*MAP_SCALE, selectorRay.y, 0.0f);
+				glVertex3f(MAP_X*MAP_SCALE, selectorRay.y, -MAP_Z*MAP_SCALE);
+			glEnd();
+
+			glPopMatrix();
+		}
+
+		glPopMatrix();
 
 		glFlush();
 		
-		//SwapBuffers(g_HDC);			// bring backbuffer to foreground
 	}
 
-	//Determine color of terrain (on path vs. off-path color)
+	//Determines color of terrain (on path vs. off-path color)
 	void Terrain::setVertexColor(int x, int z)
 	{
 		float dist;
 
-		if(dispRoiRadius){
+		if(dispRoiRadius){ //Tests if point is within ROI
 			inRoi = testInRoi(roi.x *(1/MAP_SCALE), -(roi.z *(1/MAP_SCALE)), x, z, radius);
 		}
-		if(start && end){
+		if(start && end){ //Tests if point is sufficiently close to the path (from start to end).
 			dist = TestDistanceFromLineSegmentToPoint(start->x *(1/MAP_SCALE),-(start->z *(1/MAP_SCALE)), end->x *(1/MAP_SCALE), -(end->z *(1/MAP_SCALE)),x, z);
 		}
-
 		if((start && end) && (dist < 1.0f))//Endpoint path coloring case
 		{
-			pathColor->setRed((terrain[x][z][1]/255.0f)/2.0f);
-			pathColor->setGreen((terrain[x][z][1]/255.0f)/2.0f);
-			pathColor->setBlue(1.0);
-			//- (dist));
+			pathColor->setRGB((terrain[x][z][1]/255.0f)/2.0f, (terrain[x][z][1]/255.0f)/2.0f, 1.0);
 		}
 		else if(freeformPath[x][z]) //Freehand path coloring case
 		{
-			pathColor->setRed(1.0f);
-			pathColor->setGreen((terrain[x][z][1]/255.0f)/2.0f);
-			//pathColor->setBlue((terrain[x][z][1]/255.0f)/2.0f);
-			pathColor->setBlue(1.0f);
+			pathColor->setRGB(1.0f, (terrain[x][z][1]/255.0f)/2.0f, 1.0f);
 		}	
 		else if(inRoi) //Roi radius coloring case
 		{ 
-			pathColor->setRed(1.0);
-			pathColor->setGreen(1.0);
-			pathColor->setBlue((terrain[x][z][1]/255.0f)/2.0f);
+			pathColor->setRGB(1.0, 1.0, (terrain[x][z][1]/255.0f)/2.0f);
 		}			
 		else //Ordinary case
 		{
 			pathColor->setRGB(terrain[x][z][1]/255.0f);
 		}
 
-		////Not highlighted via path endpoints case
-		//if(!(start && end) || dist > 1.0f){
-		//	
-		//	//Roi radius coloring case
-		//	if(inRoi){
-		//		pathColor->setRed(1.0);
-		//		pathColor->setGreen(1.0);
-		//		pathColor->setBlue((terrain[x][z][1]/255.0f)/2.0f);
-		//	}
-		//	//Ordinary case
-		//	else{
-		//		pathColor->setRGB(terrain[x][z][1]/255.0f);
-		//	}
-		//			
-		//}
-		////Near endpoints path case
-		//else if (start && end)
-		//{
-		//	pathColor->setRed((terrain[x][z][1]/255.0f)/2.0f);
-		//	pathColor->setGreen((terrain[x][z][1]/255.0f)/2.0f);
-		//	pathColor->setBlue(1.0 - (dist));
-		//}
-		////Freeform path case
-		//else if(freeformPath[x][z]){
-		//	pathColor->setRed(1.0f);
-		//	pathColor->setGreen((terrain[x][z][1]/255.0f)/2.0f);
-		//	pathColor->setBlue((terrain[x][z][1]/255.0f)/2.0f);
-		//}
-
+		//setColor
 		glColor3f(pathColor->getRed(), pathColor->getGreen(), pathColor->getBlue());
-
 	}
-
+	
 	// Calculating the Normalized Cross Product of Two Vectors
 	void Terrain::normalize( float v[3] )
 	{
@@ -881,32 +640,6 @@ int currDelay = 0;
 		out[2] = v1[0]*v2[1] - v1[1]*v2[0];
 		normalize( out );
 	}
-
-	//void Terrain::setStart()
-	//{
-	//	//startPath = true;
-	//	creatingPath = true;
-	//}
-
-	//void Terrain::setEnd()
-	//{
-	//	endPath = true;
-	//}
-
-	//void Terrain::setDrawing()
-	//{
-	//	drawingPath = true;
-	//}
-
-	//void Terrain::setDrawingEnd()
-	//{
-	//	drawingPath = false;
-	//}
-
-	//void Terrain::setMinHeightFilter()
-	//{
-	//	adjustMinHeight = true;
-	//}
 
 
 	//Determines whether a pinch is being held (pinchHold) or has just been released (pinch)
@@ -1004,7 +737,7 @@ int currDelay = 0;
 			case RESET: //Resets any previously drawn path
 				server->sendData("clear,poi\n");
 				poiCube->hide();
-				setPoi = false;
+				settingPoi = false;
 				//roi = NULL;
 				if(pinchHold && currDelay == 0)
 				{
@@ -1014,14 +747,14 @@ int currDelay = 0;
 				break;
 			case PLACING: //Currently drawing path, pinch to finish
 				poiCube->show();
-				setPoi = true;
+				settingPoi = true;
 				if(pinch && currDelay == 0){
 					state = FINISH;
 					currDelay = 40;
 				}
 				break;
 			case FINISH: //Currently drawing path, pinch to finish
-				setPoi = false;
+				settingPoi = false;
 				if(pinch && currDelay == 0){
 					state = RESET;
 					currDelay = 40;
@@ -1045,7 +778,7 @@ int currDelay = 0;
 				server->sendData("clear,roi\n");
 				roiCube->hide();
 				radius = 2;
-				setRoi = false;
+				roiCenterPlaced = false;
 				//roi = NULL;
 				if(pinchHold && currDelay == 0)
 				{
@@ -1055,8 +788,8 @@ int currDelay = 0;
 				break;
 			case PLACING: //Currently drawing path, pinch to finish
 				roiCube->show();
-				placeRoi = true;
-				setRoi = true;
+				settingRoi = true;
+				roiCenterPlaced = true;
 				if(pinch && currDelay == 0){
 					state = SET_RADIUS;
 					currDelay = 40;
@@ -1064,16 +797,16 @@ int currDelay = 0;
 				break;
 			case SET_RADIUS: //Currently drawing path, pinch to finish
 				dispRoiRadius = true;
-				placeRoi = false;
-				setRoiRadius = true;
+				settingRoi = false;
+				settingRoiRadius = true;
 				if(pinch && currDelay == 0){
 					state = FINISH;
 					currDelay = 40;
 				}
 				break;
 			case FINISH: //Start and End have both been placed, pinch to go back to starting state
-				setRoi = false;
-				setRoiRadius = false;
+				roiCenterPlaced = false;
+				settingRoiRadius = false;
 				if(pinch && currDelay == 0){
 					state = RESET;
 					currDelay = 40;
@@ -1143,10 +876,9 @@ int currDelay = 0;
 					}
 					break;
 				case PLACING_START: //Placing the starting position of path
-					startPath = true;
+					settingStartPath = true;
 					if(pinch)//&& currDelay == 0){
 					{
-
 						state = PLACING_END;
 						currDelay = 40;
 					}
@@ -1159,7 +891,7 @@ int currDelay = 0;
 					}
 					break;
 				case PLACING_END: //Placing the ending position of path
-					endPath = true;
+					settingEndPath = true;
 					if(pinch && currDelay == 0){
 						state = FINISH;
 						currDelay = 40;
@@ -1274,7 +1006,6 @@ int currDelay = 0;
 				break;
 		}
 
-
 	}
 
 	void Terrain::setInteractionMode(int mode)
@@ -1308,18 +1039,18 @@ int currDelay = 0;
 		clipPlaneSecondVisOffset = 0.0001f;
 
 		//Reset endpoint-drawing states
-		startPath = false;
-		endPath = false;
+		settingStartPath = false;
+		settingEndPath = false;
 
 		//Reset direct freehand drawing states
 		drawingPath = false;
 
 		//Reset ROI drawing states
-		placeRoi = false;
-		setRoiRadius = false;
+		settingRoi = false;
+		settingRoiRadius = false;
 
 		//Reset POI drawing states
-		setPoi = false;
+		settingPoi = false;
 
 	}
 
@@ -1383,7 +1114,7 @@ int currDelay = 0;
 			//selectorRay = MHTypes::Point3D(newPoint.x, newPoint.y, newPoint.z);
 			originalRay = MHTypes::Point3D(testPoint.x, testPoint.y, testPoint.z);
 			originalRayExtend = MHTypes::Point3D(testPointRay.x, testPointRay.y, testPointRay.z);
-			if(startPath){
+			if(settingStartPath){
 				start = new MHTypes::Point3D(testPoint.x, testPoint.y, testPoint.z);
 				ostringstream msg;
 				msg << "startpoint," << (start->x*(1.0f/MAP_SCALE)) << "," << (start->z*(1.0f/MAP_SCALE)) << std::endl;
@@ -1392,7 +1123,7 @@ int currDelay = 0;
 				ss << "Start point created at: " << "X: " << testPoint.x << " Z: " << testPoint.z << std::endl;
 				//OutputDebugString(ss.str().c_str());
 			}
-			if(endPath){
+			if(settingEndPath){
 				end = new MHTypes::Point3D(testPoint.x, testPoint.y, testPoint.z);
 				ostringstream msg;
 				msg << "endpoint," << (end->x*(1.0f/MAP_SCALE)) << "," << (end->z*(1.0f/MAP_SCALE)) << std::endl;
@@ -1415,7 +1146,7 @@ int currDelay = 0;
 					freeformPath[vertexX][-vertexZ] = true;
 				}
 			}
-			if(placeRoi){
+			if(settingRoi){
 				roi = MHTypes::Point3D(testPoint.x, testPoint.y, testPoint.z);
 				ostringstream msg;
 				msg << "roi," << (roi.x*(1.0f/MAP_SCALE)) << "," << (roi.z*(1.0f/MAP_SCALE)) << ",0" << std::endl;
@@ -1424,7 +1155,7 @@ int currDelay = 0;
 				ss << "ROI created at: " << "X: " << testPoint.x << " Z: " << testPoint.z << std::endl;
 				//OutputDebugString(ss.str().c_str());
 			}
-			if(setPoi){
+			if(settingPoi){
 				poi = MHTypes::Point3D(testPoint.x, testPoint.y, testPoint.z);
 				ostringstream msg;
 				msg << "poi," << (poi.x*(1.0f/MAP_SCALE)) << "," << (poi.z*(1.0f/MAP_SCALE)) << std::endl;
@@ -1433,7 +1164,7 @@ int currDelay = 0;
 				ss << "POI created at: " << "X: " << testPoint.x << " Z: " << testPoint.z << std::endl;
 			}
 
-			if(setRoiRadius){
+			if(settingRoiRadius){
 				radius = calcDist(roi, testPoint);
 				ostringstream msg;
 				msg << "roi," << (roi.x*(1.0f/MAP_SCALE)) << "," << (roi.z*(1.0f/MAP_SCALE)) << "," << radius << std::endl;
@@ -1456,8 +1187,8 @@ int currDelay = 0;
 		else{
 			intersecting = false;
 		}
-		startPath = false;
-		endPath = false;
+		settingStartPath = false;
+		settingEndPath = false;
 	}
 
 

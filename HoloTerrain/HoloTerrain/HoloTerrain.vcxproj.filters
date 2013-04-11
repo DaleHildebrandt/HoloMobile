@@ -88,9 +88,6 @@
     <ClCompile Include="..\source\Model\Finger.cpp">
       <Filter>Source Files\trackedObjects</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\SocketCom.cpp">
-      <Filter>Source Files\sockets</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\Terrain.cpp">
       <Filter>Source Files\drawing</Filter>
     </ClCompile>
@@ -118,9 +115,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\source\PointLineDist.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\SocketCom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\source\TabletServer.h">
@@ -163,6 +157,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\source\Input\ViconDataStreamClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

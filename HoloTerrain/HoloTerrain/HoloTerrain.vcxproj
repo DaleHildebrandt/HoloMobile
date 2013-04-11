@@ -92,7 +92,6 @@
     <ClCompile Include="..\source\ObjectTracker.cpp" />
     <ClCompile Include="..\source\OpenGlScene.cpp" />
     <ClCompile Include="..\source\OpenGlWindow.cpp" />
-    <ClCompile Include="..\source\SocketCom.cpp" />
     <ClCompile Include="..\source\TabletServer.cpp" />
     <ClCompile Include="..\source\Terrain.cpp" />
   </ItemGroup>
@@ -118,8 +117,8 @@
     <ClInclude Include="..\source\OpenGlScene.h" />
     <ClInclude Include="..\source\OpenGlWindow.h" />
     <ClInclude Include="..\source\PointLineDist.h" />
-    <ClInclude Include="..\source\SocketCom.h" />
     <ClInclude Include="..\source\TabletServer.h" />
+    <ClInclude Include="..\source\Terrain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

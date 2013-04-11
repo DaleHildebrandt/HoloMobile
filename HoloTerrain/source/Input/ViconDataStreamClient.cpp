@@ -8,13 +8,16 @@
 // without the written permission of the copyright owner.
 //
 ///////////////////////////////////////////////////////////////////////////////
+//ViconDataStreamClient.cpp
+//## Definition ##
+//Class through which real-time Vicon data can be accessed.
+
 #include "Client.h"
 #include "ViconDataStreamClient.h"
 #include <sstream>
 #include <Windows.h>
 
 using namespace ViconDataStreamSDK::CPP;
-
 
 CRITICAL_SECTION m_cs2;
 //std::vector<double> ViconDataStreamClient::tempCoords;
@@ -122,7 +125,7 @@ void ViconDataStreamClient::createViconClient(){
     // MyClient->SetStreamMode( ViconDataStreamSDK::CPP::StreamMode::ClientPullPreFetch );
     // MyClient->SetStreamMode( ViconDataStreamSDK::CPP::StreamMode::ServerPush );
 
-    //#### Set the global up axis
+    //#### Set the global up axis 
 	/*MyClient->SetAxisMapping( Direction::Right, 
                             Direction::Forward, 
                             Direction::Up );*/ // Y-up
@@ -554,30 +557,4 @@ MHTypes::Quaternion ViconDataStreamClient::getObjectRotationQuaternion(std::stri
     return tablet_rotation_quaternion;
 }
 
-
-
-/*void ViconDataStreamClient::parse3DData(){
-
-// Lock the Critical section
-EnterCriticalSection(&m_cs2);
-
-coords.clear();
-
-// do critical things here
-for (unsigned int i = 0; i < ViconDataStreamClient::tempCoords.size(); ++i) {
-coords.push_back( tempCoords[i]);
-}
-
-//Release the Critical section
-LeaveCriticalSection(&m_cs2);
-
-
-// Display coords vector
-std::cout << "Coords vector size " << ViconDataStreamClient::coords.size() << " : " ;
-for (unsigned int i = 0; i < ViconDataStreamClient::coords.size(); ++i) {
-std::cout << ViconDataStreamClient::coords[i] << " ";
-}
-std::cout << std::endl;
-
-}*/
 

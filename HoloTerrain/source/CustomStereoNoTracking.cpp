@@ -9,10 +9,9 @@
 #include <Windows.h>
 
 #include <iostream>
-#include <iostream>  
 #include <boost/thread.hpp>  
 #include <boost/date_time.hpp> 
-#include "SocketCom.h"
+//#include "SocketCom.h"
 #include "CustomStereoNoTracking.h"
 using namespace std;
 	
@@ -51,10 +50,10 @@ using namespace std;
 
 OpenGlWindow* g_applicationWindow = NULL;
 
-
 zspace::stereo::StereoWindow* g_stereoWindow     = NULL;
 zspace::stereo::StereoViewport* g_stereoViewport = NULL;
 zspace::stereo::StereoFrustum* g_stereoFrustum   = NULL;
+
 
 Tablet *samsungTab; //Tracks the samsung_tablet Vicon object, manages any attached hologram objects
 Finger *finger; //Tracks index finger
@@ -126,6 +125,7 @@ int WINAPI WinMain(HINSTANCE	hInstance,			// Instance
       PostMessage(g_applicationWindow->getWindowHandle(), WM_DESTROY, 0, 0);
 	   
 	//Press the E-Key to take a screenshot 
+	//TODO: Modify to allow for taking 3D screenshots
 	if (GetAsyncKeyState(0x45)) //E-Key Test
 	{
 		SDL_Surface * image = SDL_CreateRGBSurface(SDL_SWSURFACE, g_applicationWindow->getWidth(), g_applicationWindow->getHeight(), 24, 0x000000FF, 0x0000FF00, 0x00FF0000, 0);
@@ -156,7 +156,7 @@ int WINAPI WinMain(HINSTANCE	hInstance,			// Instance
 }
 
 //Sets up calibration system, which converts Vicon coordinates to
-// zspace coordinates.
+// zSpace coordinates.
 void calibratorInit()
 {
 	calibrator = new Calibrator();
@@ -264,12 +264,12 @@ void zSpaceShutdown()
 
 void renderFrame()
 {
-	//const std::string TABLET_NAME = "samsung_tablet";
+	//Names of the Vicon objects to be tracked. (names can be set in Vicon software)
 	const std::string FINGER_NAME = "terrain_index2";
 	const std::string THUMB_NAME = "terrain_thumb";
 	const std::string TABLET_NAME = "samsung_tablet";
 
-	//Update tablet information
+	//Update Vicon object information
 	viconClient->getTabletPosition(TABLET_NAME, *samsungTab);
 	viconClient->getTabletRotation(TABLET_NAME, *samsungTab);
 
@@ -281,7 +281,7 @@ void renderFrame()
 
 	//Continue calibration process if not yet calibrated
 	if(!calibrator->isDisplayCalibrated()){
-		MHTypes::Point3D pos = viconClient->getObjectPosition("zspace_stylus4");
+		MHTypes::Point3D pos = viconClient->getObjectPosition("zspace_stylus4"); //Object name of zSpace stylus in Vicon system
 		calibrator->setWandViconPosition(MHTypes::Point3D(pos.x, pos.y, pos.z));
 		calibrator->setWandVisBoxPosition(objectTracker->getStylusPos(), objectTracker->getStylusTipPos());
 		calibrator->updateCalibrationState();

@@ -1,3 +1,12 @@
+//Calibrator.cpp
+//## Definition ##
+//Used to convert between Vicon coordinate system and zSpace coordinate system.
+//Either uses an existing calibration file (by default), or a new calibration can be made by
+//pressing [cntrl + c] while running the application.
+//Calibration can be performed by moving the zSpace stylus in order to line up two on-screen
+//boxes (one will be attached to stylus, the other will be fixed). The boxes must be lined up
+//a total of three times before calibration is complete.
+
 #include <Windows.h>
 #include "../Cube.h"
 #include "Calibrator.h"
@@ -142,8 +151,6 @@ void Calibrator::setWandVisboxRotation(zspace::common::Radian angle, zspace::com
 	str = ss.str();
 	OutputDebugString(str.c_str());
 
-
-
 }
 
 void Calibrator::setWandViconPosition(MHTypes::Point3D pos)
@@ -168,7 +175,6 @@ void Calibrator::setWandViconPosition(MHTypes::Point3D pos)
 	if(wand_Vicon_pos.x > 0.0f || wand_Vicon_pos.x < 0.0f || wand_Vicon_pos.y > 0.0f || wand_Vicon_pos.y < 0.0f || wand_Vicon_pos.z > 0.0f || wand_Vicon_pos.z < 0.0f){
 		//OutputDebugString(str.c_str());
 	}
-
 
 }
 

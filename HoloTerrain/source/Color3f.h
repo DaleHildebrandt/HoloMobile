@@ -13,6 +13,7 @@ public:
 	void setGreen(float green);
 	void setBlue(float blue);
 	void setRGB(float color);
+	void setRGB(float red, float green, float blue);
 
 private:
 	float red;

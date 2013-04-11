@@ -36,15 +36,11 @@ GLfloat LIGHT_COLOR[]         = {0.4f, 0.4f, 0.4f, 1.0f};
 GLfloat LIGHT_POSITION[]      = {0.2f, 0.2f, 0.6f, 1.0f}; 
 GLfloat AMBIENT_LIGHT_MODEL[] = {0.5f, 0.5f, 0.5f, 1.0f}; 
 GLfloat AMBIENT_MATERIAL[]    = {1.0f, 1.0f, 1.0f, 1.0f};
-//string filename = "C:\Program Files\Assimp\test\models-nonbsd\3DS\pyramob.3ds";
-string filename = "B3D\\WusonBlitz.b3d";
 
 
 //////////////////////////////////////////////////////////////////////////
 // Static Member Initialization
 //////////////////////////////////////////////////////////////////////////
-int OpenGlScene::currTexture = 0; //Selected texture
-GLuint	texture[5];	//Array of all possible textures to display
 
 bool OpenGlScene::m_isStylusEnabled = true;
 zspace::common::Matrix4 OpenGlScene::m_stylusTransform = zspace::common::Matrix4::IDENTITY();
@@ -54,9 +50,7 @@ float OpenGlScene::r = 1.0f;
 float OpenGlScene::g = 1.0f;
 float OpenGlScene::b = 1.0f;
 
-float OpenGlScene::xTrans = 0.0f;
-float OpenGlScene::yTrans = 0.0f;
-float OpenGlScene::zTrans = 0.0f;
+
 
 zspace::common::Vector3 position = zspace::common::Vector3::ZERO();
 zspace::common::Vector3 direction = zspace::common::Vector3::ZERO();
@@ -64,8 +58,6 @@ Terrain *terrain;
 Cube *pointCube;
 
 
-bool OpenGlScene::white = true;
-bool OpenGlScene::red = false;
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -80,26 +72,23 @@ void OpenGlScene::initialize()
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  //Initial color is white
-  r = 1.0f;
-  g = 1.0f;
-  b = 1.0f;
+  //Position & orient the camera in the scene with gluLookAt
 
-  /*gluLookAt(0.0f,   0.345f,   0.222f,   // Position
-            0.0f,   0.0f,     0.0f,     // Lookat
-            0.0f,   1.0f,     0.0f);    // Up */
-
-  //HoloMobile
+  //For HoloMobile
   gluLookAt(0.0f,  0.43f,   0.35f,   // Position
             0.0f,   0.0f,     0.0f,     // Lookat
             0.0f,   1.0f,     0.0f);    // Up 
 
-  //Terrain ScreenShots
+  //For Terrain ScreenShots
   //gluLookAt(0.0001f,  0.4f,   0.0f,   // Position
   //          0.0f,   0.0f,     0.0f,     // Lookat
   //          0.0f,   1.0f,     0.0f);    // Up 
-  
 
+    /*gluLookAt(0.0f,   0.345f,   0.222f,   // Position
+            0.0f,   0.0f,     0.0f,     // Lookat
+            0.0f,   1.0f,     0.0f);    // Up */
+  
+  //What is this doing?
   glRotatef((GLfloat)-0.8, (GLfloat)0.0, (GLfloat)1.0, (GLfloat)0.0);
   
   // Set material light reflection properties
@@ -141,76 +130,77 @@ void OpenGlScene::initialize()
   glEnable(GL_TEXTURE_2D);
 
 
-  	// Load texture from bmp file. If load fails, try parent dir.
-	    texture[0] = SOIL_load_OGL_texture
-        (
-        "C:\\images\\1.jpg",
-        SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_INVERT_Y
-        );
+  //	// Load texture from bmp file. If load fails, try parent dir.
+	 //   texture[0] = SOIL_load_OGL_texture
+  //      (
+  //      "C:\\images\\1.jpg",
+  //      SOIL_LOAD_AUTO,
+  //      SOIL_CREATE_NEW_ID,
+  //      SOIL_FLAG_INVERT_Y
+  //      );
 
-		texture[1] = SOIL_load_OGL_texture
-        (
-        "C:\\images\\2.jpg",
-        SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_INVERT_Y
-        );
+		//texture[1] = SOIL_load_OGL_texture
+  //      (
+  //      "C:\\images\\2.jpg",
+  //      SOIL_LOAD_AUTO,
+  //      SOIL_CREATE_NEW_ID,
+  //      SOIL_FLAG_INVERT_Y
+  //      );
 
-		texture[2] = SOIL_load_OGL_texture
-        (
-        "C:\\images\\3.jpg",
-        SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_INVERT_Y
-        );
+		//texture[2] = SOIL_load_OGL_texture
+  //      (
+  //      "C:\\images\\3.jpg",
+  //      SOIL_LOAD_AUTO,
+  //      SOIL_CREATE_NEW_ID,
+  //      SOIL_FLAG_INVERT_Y
+  //      );
 
-		texture[3] = SOIL_load_OGL_texture
-        (
-        "C:\\images\\4.jpg",
-        SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_INVERT_Y
-        );
+		//texture[3] = SOIL_load_OGL_texture
+  //      (
+  //      "C:\\images\\4.jpg",
+  //      SOIL_LOAD_AUTO,
+  //      SOIL_CREATE_NEW_ID,
+  //      SOIL_FLAG_INVERT_Y
+  //      );
 
-		texture[4] = SOIL_load_OGL_texture
-        (
-        "C:\\images\\5.jpg",
-        SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_INVERT_Y
-        );
+		//texture[4] = SOIL_load_OGL_texture
+  //      (
+  //      "C:\\images\\5.jpg",
+  //      SOIL_LOAD_AUTO,
+  //      SOIL_CREATE_NEW_ID,
+  //      SOIL_FLAG_INVERT_Y
+  //      );
 
 
-  // Set up and enable texture mapping
-    glBindTexture(GL_TEXTURE_2D, texture[0]);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+  //// Set up and enable texture mapping
+  //  glBindTexture(GL_TEXTURE_2D, texture[0]);
+  //  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+  //  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 
   
   
 }
 
 
-
+//Renders/Draws the scene
 void OpenGlScene::render(bool msg, Calibrator* calibrator, Tablet* samsungTab, Finger* finger, Finger* thumb)
 {
-	//OutputDebugString("Testing\n");
+
   // Clear color and depth buffers
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  glBindTexture(GL_TEXTURE_2D, texture[currTexture]);
+  //glBindTexture(GL_TEXTURE_2D, texture[currTexture]);
   
   //renderNoTexCube();
   //renderAxes();
   //calibrator->render();
   terrain = samsungTab->getTerrain();
-  //fingerPointCube = finger->getPointCube();
-  //thumbPointCube = thumb->getPosition();
+  //Interaction testing
   terrain->testPinch(finger->getPosition(), thumb->getPosition());
   terrain->testIntersect(finger->getPosition());
+
+  //Drawing mobile-mounted hologram
   samsungTab->renderHolo();
   finger->renderHolo();
 
@@ -228,13 +218,6 @@ void OpenGlScene::setStylusVisualizationEnabled(bool isStylusEnabled)
 void OpenGlScene::setStylusTransform(const zspace::common::Matrix4& stylusTransform)
 {
   m_stylusTransform = stylusTransform;
-}
-
-void OpenGlScene::updateTranslation(float x, float y, float z){
-	xTrans = x;
-	yTrans = y;
-	zTrans = z;
-
 }
 
 void OpenGlScene::rotateScene(bool* previousButtonStates)
@@ -328,6 +311,7 @@ fail:
   return false;
 }
 
+//NON-FUNCTIONAL
 void OpenGlScene::renderText(){
 
 /*	glPushMatrix();
@@ -335,23 +319,19 @@ void OpenGlScene::renderText(){
 	glutStrokeCharacter(GLUT_STROKE_ROMAN, 'a');
 	glPopMatrix(); */
 
-	glPushMatrix();
-	glTranslatef(0.05f, 0.0f, 0.0f);
-	glScalef(0.003,0.003,1.5);
+	//glPushMatrix();
+	//glTranslatef(0.05f, 0.0f, 0.0f);
+	//glScalef(0.003,0.003,1.5);
 	//glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
 	//glutStrokeCharacter(GLUT_STROKE_ROMAN, 'B');
-	glPopMatrix(); 
+	//glPopMatrix(); 
 
 }
 
 void OpenGlScene::renderNoTexCube()
 {
-  if(white){
-	  glColor3f(1.0f, 1.0f, 1.0f);
-  }
-  else{
-	  glColor3f(1.0f, 0.0f, 0.0f);
-  }
+	glColor3f(1.0f,1.0f,1.0f);
+
   //############V I C O N############
   //glColor3f(r,g,b);
   //############V I C O N############
@@ -491,25 +471,27 @@ void OpenGlScene::renderCube()
 
 }
 
+//Draws the axes for the coordinate system for drawing
 void OpenGlScene::renderAxes()
 {
-
 	glLineWidth(5);
 	glBegin(GL_LINES);
+	//x-axis
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glVertex3f(0.1f, 0.0f, 0.0f);
 	glVertex3f(0.0f, 0.0f, 0.0f);
 
+	//y-axis
 	glColor3f(0.0f, 1.0f, 0.0f);
 	glVertex3f(0.0f, 0.1f, 0.0f);
 	glVertex3f(0.0f, 0.0f, 0.0f);
 
+	//z-axis
 	glColor3f(0.0f, 0.0f, 1.0f);
 	glVertex3f(0.0f, 0.0f, 0.1f);
 	glVertex3f(0.0f, 0.0f, 0.0f);
 	glEnd();
 	glLineWidth(1);
-
 }
 
 
@@ -570,16 +552,11 @@ void OpenGlScene::renderStylus()
 
   glColor3f(color.x, color.y, color.z);
 
-  //Disabkle Lines
+  //Disable Lines
   glBegin(GL_LINES);
  /* glVertex3f(0.0f, 0.0f, 0.0f);
   glVertex3f(0.0f, 0.0f, -stylusLength);*/
   glEnd();
 
   glPopMatrix();
-}
-
-void OpenGlScene::setCurrTexture(int i)
-{
-	currTexture = i;
 }
