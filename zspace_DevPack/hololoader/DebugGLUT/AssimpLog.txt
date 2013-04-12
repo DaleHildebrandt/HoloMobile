@@ -1,0 +1,465 @@
+Info,  T5612: Load iphone.dae
+Debug, T5612: Assimp 2.0.863 amd64 msvc shared singlethreaded
+Info,  T5612: Found a matching importer for this file format
+Info,  T5612: Import root directory is '.\'
+Debug, T5612: Collada schema version is 1.4.n
+Info,  T5612: Entering post processing pipeline
+Debug, T5612: RemoveRedundantMatsProcess begin
+Info,  T5612: RemoveRedundantMatsProcess finished. 1 redundant and 0 unused materials
+Debug, T5612: FindDegeneratesProcess begin
+Debug, T5612: FindDegeneratesProcess finished
+Debug, T5612: GenUVCoordsProcess begin
+Debug, T5612: GenUVCoordsProcess finished
+Debug, T5612: TriangulateProcess begin
+Debug, T5612: TriangulateProcess finished. There was nothing to be done.
+Debug, T5612: SortByPTypeProcess begin
+Info,  T5612: Points: 0, Lines: 3, Triangles: 70, Polygons: 0 (Meshes, X = removed)
+Debug, T5612: SortByPTypeProcess finished
+Debug, T5612: FindInvalidDataProcess begin
+Debug, T5612: FindInvalidDataProcess finished. Everything seems to be OK.
+Debug, T5612: SplitLargeMeshesProcess_Triangle begin
+Debug, T5612: SplitLargeMeshesProcess_Triangle finished. There was nothing to do
+Debug, T5612: Generate spatially-sorted vertex cache
+Debug, T5612: GenVertexNormalsProcess begin
+Info,  T5612: Normal vectors are undefined for line and point meshes
+Skipping one or more lines with the same contents
+Debug, T5612: GenVertexNormalsProcess finished. Normals are already there
+Debug, T5612: CalcTangentsProcess begin
+Error, T5612: Unable to compute tangents: UV0 and normals must be there 
+Skipping one or more lines with the same contents
+Info,  T5612: Tangents are undefined for line and point meshes
+Skipping one or more lines with the same contents
+Debug, T5612: CalcTangentsProcess finished
+Debug, T5612: JoinVerticesProcess begin
+Debug, T5612: Mesh 0 (unnamed) | Verts in: 264 out: 84 | ~68.1818%
+Debug, T5612: Mesh 1 (unnamed) | Verts in: 264 out: 84 | ~68.1818%
+Debug, T5612: Mesh 2 (unnamed) | Verts in: 318 out: 122 | ~61.6352%
+Debug, T5612: Mesh 3 (unnamed) | Verts in: 318 out: 122 | ~61.6352%
+Debug, T5612: Mesh 4 (unnamed) | Verts in: 258 out: 96 | ~62.7907%
+Debug, T5612: Mesh 5 (unnamed) | Verts in: 258 out: 96 | ~62.7907%
+Debug, T5612: Mesh 6 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 7 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 8 (unnamed) | Verts in: 12 out: 8 | ~33.3333%
+Debug, T5612: Mesh 9 (unnamed) | Verts in: 24 out: 16 | ~33.3333%
+Debug, T5612: Mesh 10 (unnamed) | Verts in: 24 out: 16 | ~33.3333%
+Debug, T5612: Mesh 11 (unnamed) | Verts in: 84 out: 28 | ~66.6667%
+Debug, T5612: Mesh 12 (unnamed) | Verts in: 84 out: 28 | ~66.6667%
+Debug, T5612: Mesh 13 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 14 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 15 (unnamed) | Verts in: 66 out: 24 | ~63.6364%
+Debug, T5612: Mesh 16 (unnamed) | Verts in: 66 out: 24 | ~63.6364%
+Debug, T5612: Mesh 17 (unnamed) | Verts in: 903 out: 297 | ~67.1096%
+Debug, T5612: Mesh 18 (unnamed) | Verts in: 903 out: 297 | ~67.1096%
+Debug, T5612: Mesh 19 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 20 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 21 (unnamed) | Verts in: 30 out: 18 | ~40%
+Debug, T5612: Mesh 22 (unnamed) | Verts in: 30 out: 18 | ~40%
+Debug, T5612: Mesh 23 (unnamed) | Verts in: 36 out: 22 | ~38.8889%
+Debug, T5612: Mesh 24 (unnamed) | Verts in: 36 out: 22 | ~38.8889%
+Debug, T5612: Mesh 25 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 26 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 27 (unnamed) | Verts in: 186 out: 102 | ~45.1613%
+Debug, T5612: Mesh 28 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 29 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 30 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 31 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 32 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 33 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 34 (unnamed) | Verts in: 24 out: 16 | ~33.3333%
+Debug, T5612: Mesh 35 (unnamed) | Verts in: 24 out: 16 | ~33.3333%
+Debug, T5612: Mesh 36 (unnamed) | Verts in: 84 out: 28 | ~66.6667%
+Debug, T5612: Mesh 37 (unnamed) | Verts in: 84 out: 28 | ~66.6667%
+Debug, T5612: Mesh 38 (unnamed) | Verts in: 66 out: 24 | ~63.6364%
+Debug, T5612: Mesh 39 (unnamed) | Verts in: 66 out: 24 | ~63.6364%
+Debug, T5612: Mesh 40 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 41 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 42 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 43 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 44 (unnamed) | Verts in: 156 out: 54 | ~65.3846%
+Debug, T5612: Mesh 45 (unnamed) | Verts in: 156 out: 54 | ~65.3846%
+Debug, T5612: Mesh 46 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 47 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 48 (unnamed) | Verts in: 24 out: 16 | ~33.3333%
+Debug, T5612: Mesh 49 (unnamed) | Verts in: 24 out: 16 | ~33.3333%
+Debug, T5612: Mesh 50 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 51 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 52 (unnamed) | Verts in: 48 out: 16 | ~66.6667%
+Debug, T5612: Mesh 53 (unnamed) | Verts in: 48 out: 32 | ~33.3333%
+Debug, T5612: Mesh 54 (unnamed) | Verts in: 336 out: 114 | ~66.0714%
+Debug, T5612: Mesh 55 (unnamed) | Verts in: 336 out: 114 | ~66.0714%
+Debug, T5612: Mesh 56 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 57 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Debug, T5612: Mesh 58 (unnamed) | Verts in: 3 out: 3 | ~0%
+Debug, T5612: Mesh 59 (unnamed) | Verts in: 3 out: 3 | ~0%
+Debug, T5612: Mesh 60 (unnamed) | Verts in: 66 out: 24 | ~63.6364%
+Debug, T5612: Mesh 61 (unnamed) | Verts in: 66 out: 24 | ~63.6364%
+Debug, T5612: Mesh 62 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 63 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 64 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 65 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 66 (unnamed) | Verts in: 66 out: 24 | ~63.6364%
+Debug, T5612: Mesh 67 (unnamed) | Verts in: 66 out: 24 | ~63.6364%
+Debug, T5612: Mesh 68 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 69 (unnamed) | Verts in: 144 out: 48 | ~66.6667%
+Debug, T5612: Mesh 70 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 71 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 72 (unnamed) | Verts in: 2 out: 2 | ~0%
+Info,  T5612: JoinVerticesProcess finished | Verts in: 7752 out: 2832 | ~63.5%
+Debug, T5612: SplitLargeMeshesProcess_Vertex begin
+Debug, T5612: SplitLargeMeshesProcess_Vertex finished. There was nothing to do
+Debug, T5612: LimitBoneWeightsProcess begin
+Debug, T5612: LimitBoneWeightsProcess end
+Debug, T5612: ImproveCacheLocalityProcess begin
+Debug, T5612: Mesh 0 | ACMR in: 1.102273 out: 1.102273 | ~0.0%
+Debug, T5612: Mesh 1 | ACMR in: 1.125000 out: 1.136364 | ~-1.0%
+Debug, T5612: Mesh 2 | ACMR in: 1.150943 out: 1.150943 | ~0.0%
+Debug, T5612: Mesh 3 | ACMR in: 1.150943 out: 1.150943 | ~0.0%
+Debug, T5612: Mesh 4 | ACMR in: 1.209302 out: 1.139535 | ~5.8%
+Debug, T5612: Mesh 5 | ACMR in: 1.232558 out: 1.139535 | ~7.5%
+Debug, T5612: Mesh 6 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 7 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 8 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 9 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 10 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 11 | ACMR in: 1.142857 out: 1.071429 | ~6.3%
+Debug, T5612: Mesh 12 | ACMR in: 1.142857 out: 1.071429 | ~6.3%
+Debug, T5612: Mesh 13 | ACMR in: 1.000000 out: 1.041667 | ~-4.2%
+Debug, T5612: Mesh 14 | ACMR in: 1.000000 out: 1.041667 | ~-4.2%
+Debug, T5612: Mesh 15 | ACMR in: 1.090909 out: 1.090909 | ~0.0%
+Debug, T5612: Mesh 16 | ACMR in: 1.090909 out: 1.090909 | ~0.0%
+Debug, T5612: Mesh 17 | ACMR in: 1.099668 out: 1.066445 | ~3.0%
+Debug, T5612: Mesh 18 | ACMR in: 1.102990 out: 1.063123 | ~3.6%
+Debug, T5612: Mesh 19 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 20 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 21 | ACMR in: 1.800000 out: 1.800000 | ~0.0%
+Debug, T5612: Mesh 22 | ACMR in: 1.800000 out: 1.800000 | ~0.0%
+Debug, T5612: Mesh 23 | ACMR in: 1.833333 out: 1.833333 | ~0.0%
+Debug, T5612: Mesh 24 | ACMR in: 1.833333 out: 1.833333 | ~0.0%
+Debug, T5612: Mesh 25 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 26 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 27 | ACMR in: 1.741935 out: 1.645161 | ~5.6%
+Debug, T5612: Mesh 28 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 29 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 30 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 31 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 32 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 33 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 34 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 35 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 36 | ACMR in: 1.178571 out: 1.107143 | ~6.1%
+Debug, T5612: Mesh 37 | ACMR in: 1.178571 out: 1.071429 | ~9.1%
+Debug, T5612: Mesh 38 | ACMR in: 1.090909 out: 1.090909 | ~0.0%
+Debug, T5612: Mesh 39 | ACMR in: 1.090909 out: 1.090909 | ~0.0%
+Debug, T5612: Mesh 40 | ACMR in: 1.000000 out: 1.041667 | ~-4.2%
+Debug, T5612: Mesh 41 | ACMR in: 1.000000 out: 1.041667 | ~-4.2%
+Debug, T5612: Mesh 42 | ACMR in: 1.083333 out: 1.104167 | ~-1.9%
+Debug, T5612: Mesh 43 | ACMR in: 1.083333 out: 1.041667 | ~3.8%
+Debug, T5612: Mesh 44 | ACMR in: 1.038462 out: 1.038462 | ~0.0%
+Debug, T5612: Mesh 45 | ACMR in: 1.038462 out: 1.038462 | ~0.0%
+Debug, T5612: Mesh 46 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 47 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 48 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 49 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 50 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 51 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 52 | ACMR in: 1.000000 out: 1.000000 | ~0.0%
+Debug, T5612: Mesh 53 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 54 | ACMR in: 1.035714 out: 1.035714 | ~0.0%
+Debug, T5612: Mesh 55 | ACMR in: 1.035714 out: 1.035714 | ~0.0%
+Debug, T5612: Mesh 56 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Debug, T5612: Mesh 57 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Warn,  T5612: Mesh 58: Not suitable for vcache optimization
+Warn,  T5612: Mesh 59: Not suitable for vcache optimization
+Debug, T5612: Mesh 60 | ACMR in: 1.090909 out: 1.090909 | ~0.0%
+Debug, T5612: Mesh 61 | ACMR in: 1.090909 out: 1.090909 | ~0.0%
+Debug, T5612: Mesh 62 | ACMR in: 1.083333 out: 1.062500 | ~1.9%
+Debug, T5612: Mesh 63 | ACMR in: 1.083333 out: 1.083333 | ~0.0%
+Debug, T5612: Mesh 64 | ACMR in: 1.000000 out: 1.041667 | ~-4.2%
+Debug, T5612: Mesh 65 | ACMR in: 1.000000 out: 1.041667 | ~-4.2%
+Debug, T5612: Mesh 66 | ACMR in: 1.090909 out: 1.090909 | ~0.0%
+Debug, T5612: Mesh 67 | ACMR in: 1.090909 out: 1.090909 | ~0.0%
+Debug, T5612: Mesh 68 | ACMR in: 1.000000 out: 1.041667 | ~-4.2%
+Debug, T5612: Mesh 69 | ACMR in: 1.000000 out: 1.041667 | ~-4.2%
+Error, T5612: This algorithm works on triangle meshes only
+Skipping one or more lines with the same contents
+Info,  T5612: Cache relevant are 68 meshes (2580 faces). Average output ACMR is 1.140698
+Debug, T5612: ImproveCacheLocalityProcess finished. 
+Info,  T5612: Leaving post processing pipeline
+Info,  T5612: Load dwarf2.b3d
+Debug, T5612: Assimp 2.0.863 amd64 msvc shared singlethreaded
+Info,  T5612: Found a matching importer for this file format
+Info,  T5612: Import root directory is '.\'
+Info,  T5612: B3D file format version: 1
+Debug, T5612: MakeLeftHandedProcess begin
+Debug, T5612: MakeLeftHandedProcess finished
+Debug, T5612: FlipWindingOrderProcess begin
+Debug, T5612: FlipWindingOrderProcess finished
+Debug, T5612: ScenePreprocessor: Dummy scaling track has been generated
+Skipping one or more lines with the same contents
+Info,  T5612: Entering post processing pipeline
+Debug, T5612: RemoveRedundantMatsProcess begin
+Debug, T5612: RemoveRedundantMatsProcess finished 
+Debug, T5612: FindDegeneratesProcess begin
+Debug, T5612: FindDegeneratesProcess finished
+Debug, T5612: GenUVCoordsProcess begin
+Debug, T5612: GenUVCoordsProcess finished
+Debug, T5612: TriangulateProcess begin
+Debug, T5612: TriangulateProcess finished. There was nothing to be done.
+Debug, T5612: SortByPTypeProcess begin
+Info,  T5612: Points: 0, Lines: 0, Triangles: 4, Polygons: 0 (Meshes, X = removed)
+Debug, T5612: SortByPTypeProcess finished
+Debug, T5612: FindInvalidDataProcess begin
+Warn,  T5612: Simplified dummy tracks with just one key
+Skipping one or more lines with the same contents
+Debug, T5612: FindInvalidDataProcess finished. Everything seems to be OK.
+Debug, T5612: SplitLargeMeshesProcess_Triangle begin
+Debug, T5612: SplitLargeMeshesProcess_Triangle finished. There was nothing to do
+Debug, T5612: Generate spatially-sorted vertex cache
+Debug, T5612: GenVertexNormalsProcess begin
+Info,  T5612: GenVertexNormalsProcess finished. Vertex normals have been calculated
+Debug, T5612: CalcTangentsProcess begin
+Debug, T5612: CalcTangentsProcess finished. Tangents have been calculated
+Debug, T5612: JoinVerticesProcess begin
+Debug, T5612: Mesh 0 (unnamed) | Verts in: 264 out: 114 | ~56.8182%
+Debug, T5612: Mesh 1 (unnamed) | Verts in: 1980 out: 584 | ~70.5051%
+Debug, T5612: Mesh 2 (unnamed) | Verts in: 2748 out: 1064 | ~61.2809%
+Debug, T5612: Mesh 3 (unnamed) | Verts in: 696 out: 239 | ~65.6609%
+Info,  T5612: JoinVerticesProcess finished | Verts in: 5688 out: 2001 | ~64.8%
+Debug, T5612: SplitLargeMeshesProcess_Vertex begin
+Debug, T5612: SplitLargeMeshesProcess_Vertex finished. There was nothing to do
+Debug, T5612: LimitBoneWeightsProcess begin
+Debug, T5612: LimitBoneWeightsProcess end
+Debug, T5612: ImproveCacheLocalityProcess begin
+Debug, T5612: Mesh 0 | ACMR in: 1.761364 out: 1.431818 | ~18.7%
+Debug, T5612: Mesh 1 | ACMR in: 1.395455 out: 1.012121 | ~27.5%
+Debug, T5612: Mesh 2 | ACMR in: 1.789301 out: 1.234716 | ~31.0%
+Debug, T5612: Mesh 3 | ACMR in: 1.228448 out: 1.103448 | ~10.2%
+Info,  T5612: Cache relevant are 4 meshes (1896 faces). Average output ACMR is 1.150316
+Debug, T5612: ImproveCacheLocalityProcess finished. 
+Info,  T5612: Leaving post processing pipeline
+Info,  T5612: Load dwarf2.b3d
+Debug, T5612: Assimp 2.0.863 amd64 msvc shared singlethreaded
+Info,  T5612: Found a matching importer for this file format
+Info,  T5612: Import root directory is '.\'
+Info,  T5612: B3D file format version: 1
+Debug, T5612: MakeLeftHandedProcess begin
+Debug, T5612: MakeLeftHandedProcess finished
+Debug, T5612: FlipWindingOrderProcess begin
+Debug, T5612: FlipWindingOrderProcess finished
+Debug, T5612: ScenePreprocessor: Dummy scaling track has been generated
+Skipping one or more lines with the same contents
+Info,  T5612: Entering post processing pipeline
+Debug, T5612: RemoveRedundantMatsProcess begin
+Debug, T5612: RemoveRedundantMatsProcess finished 
+Debug, T5612: FindDegeneratesProcess begin
+Debug, T5612: FindDegeneratesProcess finished
+Debug, T5612: GenUVCoordsProcess begin
+Debug, T5612: GenUVCoordsProcess finished
+Debug, T5612: TriangulateProcess begin
+Debug, T5612: TriangulateProcess finished. There was nothing to be done.
+Debug, T5612: SortByPTypeProcess begin
+Info,  T5612: Points: 0, Lines: 0, Triangles: 4, Polygons: 0 (Meshes, X = removed)
+Debug, T5612: SortByPTypeProcess finished
+Debug, T5612: FindInvalidDataProcess begin
+Warn,  T5612: Simplified dummy tracks with just one key
+Skipping one or more lines with the same contents
+Debug, T5612: FindInvalidDataProcess finished. Everything seems to be OK.
+Debug, T5612: SplitLargeMeshesProcess_Triangle begin
+Debug, T5612: SplitLargeMeshesProcess_Triangle finished. There was nothing to do
+Debug, T5612: Generate spatially-sorted vertex cache
+Debug, T5612: GenVertexNormalsProcess begin
+Info,  T5612: GenVertexNormalsProcess finished. Vertex normals have been calculated
+Debug, T5612: CalcTangentsProcess begin
+Debug, T5612: CalcTangentsProcess finished. Tangents have been calculated
+Debug, T5612: JoinVerticesProcess begin
+Debug, T5612: Mesh 0 (unnamed) | Verts in: 264 out: 114 | ~56.8182%
+Debug, T5612: Mesh 1 (unnamed) | Verts in: 1980 out: 584 | ~70.5051%
+Debug, T5612: Mesh 2 (unnamed) | Verts in: 2748 out: 1064 | ~61.2809%
+Debug, T5612: Mesh 3 (unnamed) | Verts in: 696 out: 239 | ~65.6609%
+Info,  T5612: JoinVerticesProcess finished | Verts in: 5688 out: 2001 | ~64.8%
+Debug, T5612: SplitLargeMeshesProcess_Vertex begin
+Debug, T5612: SplitLargeMeshesProcess_Vertex finished. There was nothing to do
+Debug, T5612: LimitBoneWeightsProcess begin
+Debug, T5612: LimitBoneWeightsProcess end
+Debug, T5612: ImproveCacheLocalityProcess begin
+Debug, T5612: Mesh 0 | ACMR in: 1.761364 out: 1.431818 | ~18.7%
+Debug, T5612: Mesh 1 | ACMR in: 1.395455 out: 1.012121 | ~27.5%
+Debug, T5612: Mesh 2 | ACMR in: 1.789301 out: 1.234716 | ~31.0%
+Debug, T5612: Mesh 3 | ACMR in: 1.228448 out: 1.103448 | ~10.2%
+Info,  T5612: Cache relevant are 4 meshes (1896 faces). Average output ACMR is 1.150316
+Debug, T5612: ImproveCacheLocalityProcess finished. 
+Info,  T5612: Leaving post processing pipeline
+Info,  T5612: Load Sofa.dae
+Debug, T5612: Assimp 2.0.863 amd64 msvc shared singlethreaded
+Info,  T5612: Found a matching importer for this file format
+Info,  T5612: Import root directory is '.\'
+Debug, T5612: Collada schema version is 1.4.n
+Info,  T5612: Entering post processing pipeline
+Debug, T5612: RemoveRedundantMatsProcess begin
+Info,  T5612: RemoveRedundantMatsProcess finished. 2 redundant and 0 unused materials
+Debug, T5612: FindDegeneratesProcess begin
+Debug, T5612: FindDegeneratesProcess finished
+Debug, T5612: GenUVCoordsProcess begin
+Debug, T5612: GenUVCoordsProcess finished
+Debug, T5612: TriangulateProcess begin
+Debug, T5612: TriangulateProcess finished. There was nothing to be done.
+Debug, T5612: SortByPTypeProcess begin
+Info,  T5612: Points: 0, Lines: 26, Triangles: 41, Polygons: 0 (Meshes, X = removed)
+Debug, T5612: SortByPTypeProcess finished
+Debug, T5612: FindInvalidDataProcess begin
+Debug, T5612: FindInvalidDataProcess finished. Everything seems to be OK.
+Debug, T5612: SplitLargeMeshesProcess_Triangle begin
+Debug, T5612: SplitLargeMeshesProcess_Triangle finished. There was nothing to do
+Debug, T5612: Generate spatially-sorted vertex cache
+Debug, T5612: GenVertexNormalsProcess begin
+Info,  T5612: Normal vectors are undefined for line and point meshes
+Skipping one or more lines with the same contents
+Debug, T5612: GenVertexNormalsProcess finished. Normals are already there
+Debug, T5612: CalcTangentsProcess begin
+Info,  T5612: Tangents are undefined for line and point meshes
+Skipping one or more lines with the same contents
+Debug, T5612: CalcTangentsProcess finished. Tangents have been calculated
+Debug, T5612: JoinVerticesProcess begin
+Debug, T5612: Mesh 0 (unnamed) | Verts in: 276 out: 200 | ~27.5362%
+Debug, T5612: Mesh 1 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 2 (unnamed) | Verts in: 141 out: 111 | ~21.2766%
+Debug, T5612: Mesh 3 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 4 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 5 (unnamed) | Verts in: 276 out: 176 | ~36.2319%
+Debug, T5612: Mesh 6 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 7 (unnamed) | Verts in: 132 out: 72 | ~45.4545%
+Debug, T5612: Mesh 8 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 9 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 10 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 11 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 12 (unnamed) | Verts in: 132 out: 72 | ~45.4545%
+Debug, T5612: Mesh 13 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 14 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 15 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 16 (unnamed) | Verts in: 138 out: 80 | ~42.029%
+Debug, T5612: Mesh 17 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 18 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 19 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 20 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 21 (unnamed) | Verts in: 990 out: 912 | ~7.87879%
+Debug, T5612: Mesh 22 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 23 (unnamed) | Verts in: 276 out: 176 | ~36.2319%
+Debug, T5612: Mesh 24 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 25 (unnamed) | Verts in: 276 out: 176 | ~36.2319%
+Debug, T5612: Mesh 26 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 27 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 28 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 29 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 30 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 31 (unnamed) | Verts in: 132 out: 72 | ~45.4545%
+Debug, T5612: Mesh 32 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 33 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 34 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 35 (unnamed) | Verts in: 666 out: 474 | ~28.8288%
+Debug, T5612: Mesh 36 (unnamed) | Verts in: 612 out: 458 | ~25.1634%
+Debug, T5612: Mesh 37 (unnamed) | Verts in: 612 out: 436 | ~28.7582%
+Debug, T5612: Mesh 38 (unnamed) | Verts in: 612 out: 440 | ~28.1046%
+Debug, T5612: Mesh 39 (unnamed) | Verts in: 930 out: 834 | ~10.3226%
+Debug, T5612: Mesh 40 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 41 (unnamed) | Verts in: 660 out: 462 | ~30%
+Debug, T5612: Mesh 42 (unnamed) | Verts in: 612 out: 440 | ~28.1046%
+Debug, T5612: Mesh 43 (unnamed) | Verts in: 612 out: 440 | ~28.1046%
+Debug, T5612: Mesh 44 (unnamed) | Verts in: 138 out: 86 | ~37.6812%
+Debug, T5612: Mesh 45 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 46 (unnamed) | Verts in: 612 out: 434 | ~29.085%
+Debug, T5612: Mesh 47 (unnamed) | Verts in: 612 out: 432 | ~29.4118%
+Debug, T5612: Mesh 48 (unnamed) | Verts in: 612 out: 446 | ~27.1242%
+Debug, T5612: Mesh 49 (unnamed) | Verts in: 612 out: 448 | ~26.7974%
+Debug, T5612: Mesh 50 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 51 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 52 (unnamed) | Verts in: 132 out: 72 | ~45.4545%
+Debug, T5612: Mesh 53 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 54 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 55 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 56 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 57 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 58 (unnamed) | Verts in: 144 out: 100 | ~30.5556%
+Debug, T5612: Mesh 59 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 60 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 61 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 62 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 63 (unnamed) | Verts in: 276 out: 168 | ~39.1304%
+Debug, T5612: Mesh 64 (unnamed) | Verts in: 2 out: 2 | ~0%
+Debug, T5612: Mesh 65 (unnamed) | Verts in: 144 out: 96 | ~33.3333%
+Debug, T5612: Mesh 66 (unnamed) | Verts in: 6 out: 4 | ~33.3333%
+Info,  T5612: JoinVerticesProcess finished | Verts in: 15013 out: 10553 | ~29.7%
+Debug, T5612: SplitLargeMeshesProcess_Vertex begin
+Debug, T5612: SplitLargeMeshesProcess_Vertex finished. There was nothing to do
+Debug, T5612: LimitBoneWeightsProcess begin
+Debug, T5612: LimitBoneWeightsProcess end
+Debug, T5612: ImproveCacheLocalityProcess begin
+Debug, T5612: Mesh 0 | ACMR in: 2.217391 out: 2.173913 | ~2.0%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 2 | ACMR in: 2.404255 out: 2.361702 | ~1.8%
+Debug, T5612: Mesh 3 | ACMR in: 1.978261 out: 1.826087 | ~7.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 5 | ACMR in: 2.065217 out: 1.913043 | ~7.4%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 7 | ACMR in: 1.954545 out: 1.636364 | ~16.3%
+Error, T5612: This algorithm works on triangle meshes only
+Skipping one or more lines with the same contents
+Debug, T5612: Mesh 10 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 12 | ACMR in: 2.000000 out: 1.636364 | ~18.2%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 14 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 16 | ACMR in: 1.913043 out: 1.739130 | ~9.1%
+Debug, T5612: Mesh 17 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 19 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 21 | ACMR in: 2.781818 out: 2.763636 | ~0.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 23 | ACMR in: 2.000000 out: 1.913043 | ~4.3%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 25 | ACMR in: 2.021739 out: 1.913043 | ~5.4%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 27 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 29 | ACMR in: 1.934783 out: 1.826087 | ~5.6%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 31 | ACMR in: 1.954545 out: 1.636364 | ~16.3%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 33 | ACMR in: 1.978261 out: 1.826087 | ~7.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 35 | ACMR in: 2.153153 out: 2.135135 | ~0.8%
+Debug, T5612: Mesh 36 | ACMR in: 2.245098 out: 2.245098 | ~0.0%
+Debug, T5612: Mesh 37 | ACMR in: 2.137255 out: 2.137255 | ~0.0%
+Debug, T5612: Mesh 38 | ACMR in: 2.156863 out: 2.156863 | ~0.0%
+Debug, T5612: Mesh 39 | ACMR in: 2.696774 out: 2.690323 | ~0.2%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 41 | ACMR in: 2.100000 out: 2.100000 | ~0.0%
+Debug, T5612: Mesh 42 | ACMR in: 2.156863 out: 2.156863 | ~0.0%
+Debug, T5612: Mesh 43 | ACMR in: 2.156863 out: 2.156863 | ~0.0%
+Debug, T5612: Mesh 44 | ACMR in: 2.043478 out: 1.869565 | ~8.5%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 46 | ACMR in: 2.127451 out: 2.127451 | ~0.0%
+Debug, T5612: Mesh 47 | ACMR in: 2.117647 out: 2.117647 | ~0.0%
+Debug, T5612: Mesh 48 | ACMR in: 2.186275 out: 2.186275 | ~0.0%
+Debug, T5612: Mesh 49 | ACMR in: 2.196079 out: 2.196079 | ~0.0%
+Debug, T5612: Mesh 50 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 52 | ACMR in: 1.818182 out: 1.636364 | ~10.0%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 54 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 56 | ACMR in: 1.934783 out: 1.826087 | ~5.6%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 58 | ACMR in: 2.083333 out: 2.083333 | ~0.0%
+Debug, T5612: Mesh 59 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 61 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 63 | ACMR in: 1.956522 out: 1.826087 | ~6.7%
+Error, T5612: This algorithm works on triangle meshes only
+Debug, T5612: Mesh 65 | ACMR in: 2.020833 out: 2.000000 | ~1.0%
+Debug, T5612: Mesh 66 | ACMR in: 2.000000 out: 2.000000 | ~0.0%
+Info,  T5612: Cache relevant are 41 meshes (4987 faces). Average output ACMR is 2.105675
+Debug, T5612: ImproveCacheLocalityProcess finished. 
+Info,  T5612: Leaving post processing pipeline

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>EbonGL Overview</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>EbonGL Overview</h1>
+
+    <p>
+    <br />
+    <br />
+    <img src = "overview.png">
+    </p>
+</div>
+
+<h2>EG_Engine and Related Classes</h2>
+
+<h3><a href="egengine.html">EG_Engine</a></h3>
+<p>
+EG_Engine contains all of the objects and lights to be drawn in the graphics scene. It's built to interface well with VRJuggler's GLApp class, which has event handlers that can be hooked up to different EG_Engine functions.
+</p>
+
+<h3><a href="eglight.html">EG_Light</a></h3>
+<p>
+An OpenGL light. New lights should never be created; every available light is already contained within EG_Engine. They can be modified, turned on or off, and moved around.
+</p>
+
+<h3><a href="egobject.html">EG_Object</a></h3>
+<p>
+EG_Object is an abstract class that is inherited by graphical objects we'd like to draw in EG_Engine. It keeps track of the object's color, position, rotation, and lighting.
+</p>
+
+<h3><a href="egcuboid.html">EG_Cuboid</a> <a href="egpointlist.html">EG_PointList</a> <a href="egsphere.html">EG_Sphere</a> <a href="egcylinder.html">EG_Cylinder</a></h3>
+<p>
+These are simple 3D shapes that can be added to the scene in EG_Engine. They inherit from EG_Object.
+</p>
+
+<h3><a href="egmodel.html">EG_Model</a></h3>
+<p>
+A 3D model loaded from file, with support for textures. EG_Model can be added to the scene in EG_Engine.
+</p>
+
+<p>
+<br />
+</p>
+<h2>Utility Classes</h2>
+
+<h3><a href="egconfigwriter.html">EG_ConfigWriter</a></h3>
+<p>
+Allows reading and writing values to configuration files.
+</p>
+
+<h3><a href="egcolor.html">EG_Color</a></h3>
+<p>
+Represents a 32-bit RGBA color.
+</p>
+
+<h3><a href="egmutex.html">EG_Mutex</a></h3>
+<p>
+A simple cross-platform mutex. VRJuggler draws its OpenGL contexts in different threads, and we sometimes need to perform cross-thread synchronization.
+</p>
+
+<h3><a href="egpolygon.html">EG_Polygon</a></h3>
+<p>
+A polygon that makes up part of a graphical object. EG_Polygon is used internally by EG_Cuboid, and can be used to make your own custom objects.
+</p>
+
+<h3><a href="egstring.html">EG_String</a></h3>
+<p>
+A string class that we can export through a DLL interface.
+</p>
+
+<h3><a href="egtimekeeper.html">EG_TimeKeeper</a></h3>
+<p>
+Obtains the current system time, and keeps track of time elapsed.
+</p>
+
+<h3><a href="egutils.html">EG_Utils</a></h3>
+<p>
+EG_Utils is a collection of functions and objects that are used by multiple classes within EbonGL. The first thing you should do in any EbonGL program is call the <a href="egutils.html#initEbonGL">initEbonGL</a> function.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

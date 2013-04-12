@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Sphere</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Sphere</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A 3D OpenGL Sphere. EG_Sphere inherits from <a href="egobject.html">EG_Object</a>. The number of polygons making up a sphere is determined by the number of <a href="#getStacks">stacks</a> and <a href="#getSlices">slices</a> it has.
+</p>
+
+<ul>
+    <li><a href="#constructor1">EG_Sphere</a>(void)</li>
+    <li><a href="#constructor2">EG_Sphere</a>(GLdouble radius, GLdouble height, GLint slices, GLint stacks)</li>
+    <li><a href="#constructor3">EG_Sphere</a>(const EG_Cylinder &amp;source)>/li>
+    <li>EG_Sphere&amp; operator<a href="#equal">=</a> (const EG_Sphere &amp;source)</li>
+    <li>virtual EG_Object* <a href="#generateInstance">generateInstance</a>(void)</li>
+    <li>GLdouble <a href="#getRadius">getRadius</a>(void)</li>
+    <li>GLint <a href="#getSlices">getSlices</a>(void)</li>
+    <li>GLint <a href="#getStacks">getStacks</a>(void)</li>
+    <li>void <a href="#setRadius">setRadius</a>(GLdouble newRadius)</li>
+    <li>void <a href="#setSlices">setSlices</a>(GLint newSlices)</li>
+    <li>void <a href="#setStacks">setStacks</a>(GLint newStacks)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_Sphere</a>(void)</h3>
+<p>
+Default constructor, creates a sphere with the <a href="#getSlices">slices</a> and <a href="#getStacks">stacks</a> set to 20, and <a href="#getRadius">radius</a> set to 0.25.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EG_Sphere</a>(GLdouble radius, GLdouble height, GLint slices, GLint stacks)</h3>
+<p>
+Normal constructor where you specify <a href="#getSlices">slices</a> and <a href="#getStacks">stacks</a>, and <a href="#getRadius">radius</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor3">EG_Sphere</a>(const EG_Sphere &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a sphere that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_Sphere&amp; operator<a name="equal">=</a> (const EG_Sphere &amp;<span class="param">source</span>)</h3>
+<p>
+Sets this sphere to be a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual EG_Object* <a name="generateInstance">generateInstance</a>(void)</h3>
+<p>
+Returns a deep copy of this Sphere.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLdouble <a name="getRadius">getRadius</a>(void)</h3>
+<p>
+Returns the sphere's radius.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLint <a name="getSlices">getSlices</a>(void)</h3>
+<p>
+Returns the number of slices in the sphere. Slices refer to the number of subdivisions around the z-axis (similar to lines of longitude).
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLint <a name="getStacks">getStacks</a>(void)</h3>
+<p>
+Returns the number of stacks in the sphere. Stacks refer to the number of subdivisions along the z-axis (similar to lines of latitude)
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setRadius">setRadius</a>(GLdouble <span class="param">newRadius</span>)</h3>
+<p>
+Sets the sphere's new radius.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setSlices">setSlices</a>(GLint <span class="param">newSlices</span>)</h3>
+<p>
+Sets the number of slices in the sphere.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setStacks">setStacks</a>(GLint <span class="param">newStacks</span>)</h3>
+<p>
+Sets the number of stacks in the sphere.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

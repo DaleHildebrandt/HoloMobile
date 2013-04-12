@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_String</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_String</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+EG_String is used when text needs to be sent between EbonGL and the user's program. We use our own custom string class rather than std::string, since std::string can't be exported from a DLL.
+</p>
+
+<ul>
+    <li><a href="#constructor1">EG_String</a>(void)</li>
+    <li><a href="#constructor2">EG_String</a>(const char *source)</li>
+    <li><a href="#constructor3">EG_String</a>(const EG_String &amp;source)</li>
+    <li>EG_String&amp; operator<a href="#equal">=</a> (const EG_String &amp;source)</li>
+    <li>void <a href="#append">append</a>(char newValue)</li>
+    <li>void <a href="#appendCString">appendCString</a>(const char *source)</li>
+    <li>void <a href="#clear">clear</a>(void)</li>
+    <li>static EG_String <a href="#fromDouble">fromDouble</a>(double source)</li>
+    <li>static EG_String <a href="#fromInt">fromInt</a>(long int source)</li>
+    <li>char <a href="#getChar">getChar</a>(unsigned int index) const</li>
+    <li>void <a href="#setChar">setChar</a>(unsigned int index, char newValue)</li>
+    <li>unsigned int <a href="#size">size</a>(void) const</li>
+    <li>const char* <a href="#toCString">toCString</a>(void) const</li>
+    <li>bool <a href="#toInt1">toInt</a>(int &amp;theInt) const</li>
+    <li>bool <a href="#toInt2">toInt</a>(long int &amp;theInt) const</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_String</a>(void)</h3>
+<p>
+Default constructor, creates an empty string.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EG_String</a>(const char *<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a string that's a copy of <i>source</i>. <i>source</i> should be a NULL-terminated C string.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor3">EG_String</a>(const EG_String &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a string that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_String&amp; operator<a name="equal">=</a> (const EG_String &amp;<span class="param">source</span>)</h3>
+<p>
+Equal operator, sets this EG_String to be a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="append">append</a>(char <span class="param">newValue</span>)</h3>
+<p>
+Appends a single character to the end of the string.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="appendCString">appendCString</a>(const char *<span class="param">source</span>)</h3>
+<p>
+Appends a NULL-terminated C string to the end of the EG_String.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="clear">clear</a>(void)</h3>
+<p>
+Clear the string contents, setting <a href="#size">size</a> to zero.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static EG_String <a name="fromDouble">fromDouble</a>(double <span class="param">source</span>)</h3>
+<p>
+Creates an EG_String that contains the text version of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static EG_String <a name="fromInt">fromInt</a>(long int <span class="param">source</span>)</h3>
+<p>
+Creates an EG_String that contains the text version of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>char <a name="getChar">getChar</a>(unsigned int <span class="param">index</span>) const</h3>
+<p>
+Returns the character at the specified <i>index</i> in the string.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setChar">setChar</a>(unsigned int <span class="param">index</span>, char <span class="param">newValue</span>)</h3>
+<p>
+Set the character at the specified <i>index</i> to <i>newValue</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>unsigned int <a name="size">size</a>(void) const</h3>
+<p>
+Returns the number of characters in the string.
+</p>
+
+<p>
+<br />
+</p>
+<h3>const char* <a name="toCString">toCString</a>(void) const</h3>
+<p>
+Returns this string as a NULL-terminated array of characters. The return value points to the EG_String's internal storage, and should not be modified. The values will change if the EG_String is later modified.
+</p>
+
+<p>
+<br />
+</p>
+<h3>bool <a name="toInt1">toInt</a>(int &amp;<span class="param">theInt</span>) const</h3>
+<h3>bool <a name="toInt2">toInt</a>(long int &amp;<span class="param">theInt</span>) const</h3>
+<p>
+Sets <i>theInt</i> to the integer contained within this string. Returns false if the string doesn't contain a valid integer.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

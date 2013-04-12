@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Color</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Color</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A 32-bit color. It contains a red, green and blue component to set the color, and an alpha value to set transparency.
+</p>
+
+<ul>
+    <li><a href="#constructor1">EG_Color</a>(void)</li>
+    <li><a href="#constructor2">EG_Color</a>(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)</li>
+    <li><a href="#constructor3">EG_Color</a>(const EG_Color &amp;source)</li>
+    <li>EG_Color&amp; operator<a href="#equal">=</a> (const EG_Color &amp;source)</li>
+    <li>GLfloat <a href="#alpha">alpha</a>(void) const</li>
+    <li>GLfloat <a href="#blue">blue</a>(void) const</li>
+    <li>GLfloat <a href="#green">green</a>(void) const</li>
+    <li>void <a href="#setColor1">setColor</a>(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)</li>
+    <li>void <a href="#setColor2">setColor</a>(const EG_Color &amp;newColor)</li>
+    <li>GLfloat* <a href="#toArray">toArray</a>(void)</li>
+    <li>GLfloat <a href="#red">red</a>(void) const</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_Color</a>(void)</h3>
+<p>
+Default constructor, creates a color with <a href="#red">red</a>, <a href="#green">green</a>, <a href="#blue">blue</a> and <a href="#alpha">alpha</a> all set to 1.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EG_Color</a>(GLfloat <span class="param">red</span>, GLfloat <span class="param">green</span>, GLfloat <span class="param">blue</span>, GLfloat <span class="param">alpha</span>)</h3>
+<p>
+Constructor, creates the specified color.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor3">EG_Color</a>(const EG_Color &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a color that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_Color&amp; <a name="equal">operator=</a> (const EG_Color &amp;<span class="param">source</span>)</h3>
+<p>
+Sets this color to <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLfloat <a name="alpha">alpha</a>(void) const</h3>
+<p>
+Returns the color's alpha component. It ranges from 1 (completely solid) to 0 (completely transparent).
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLfloat <a name="blue">blue</a>(void) const</h3>
+<p>
+Returns the amount of blue in this color. The value ranges from 1 (max blue) to 0 (no blue).
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLfloat <a name="green">green</a>(void) const</h3>
+<p>
+Returns the amount of green in this color. The value ranges from 1 (max green) to 0 (no green).
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setColor1">setColor</a>(GLfloat <span class="param">red</span>, GLfloat <span class="param">green</span>, GLfloat <span class="param">blue</span>, GLfloat <span class="param">alpha</span>)</h3>
+<h3>void <a name="setColor2">setColor</a>(const EG_Color &amp;<span class="param">newColor</span>)</h3>
+<p>
+Sets this color to the specified values.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLfloat* <a name="toArray">toArray</a>(void)</h3>
+<p>
+Returns this color as an array of four values. In order, these are <a href="#red">red</a>, <a href="#green">green</a>, <a href="#blue">blue</a> and <a href="#alpha">alpha</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLfloat <a name="red">red</a>(void) const</h3>
+<p>
+Returns the amount of red in this color. The value ranges from 1 (max red) to 0 (no red).
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

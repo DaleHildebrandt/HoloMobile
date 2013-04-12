@@ -1,0 +1,38 @@
+#The file name of the model to load
+%Model Name
+>iphone.dae
+
+#The model's orientation in the scene, in degrees
+%Pitch
+>90
+%Yaw
+>0
+%Roll
+>0
+
+#Set the camera's initial position in the scene, by offsetting it from
+#the origin (0, 0, 0)
+%X Offset
+>0
+%Y Offset
+>-2.5
+%Z Offset
+>2
+
+#The scaling factor to apply to the model
+%Scale
+>0.1
+
+#The amount to move the camera after each logic update.
+#0.05 is a reasonable default value
+%Navigation Velocity
+>0.05
+
+#The intensity of ambient light in the scene. Should be between 0 and 1.
+%Ambient Light
+>0.5
+
+#The intensity of a local light that's centered on the wand.
+#Should be between 0 and 1.
+%Local Light
+>0.5

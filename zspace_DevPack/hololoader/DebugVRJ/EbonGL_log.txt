@@ -1,0 +1,3 @@
+EbonGL Log File
+
+EG_Utils::checkInitialized(): initEbonGL must be called before using EbonGL

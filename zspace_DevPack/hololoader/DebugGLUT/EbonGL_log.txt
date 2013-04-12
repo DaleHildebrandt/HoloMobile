@@ -1,0 +1,48 @@
+EbonGL Log File
+
+EG_ModelInt::loadMesh(): loading iphone.dae
+EG_ModelInt::loadMesh(): loading dwarf2.b3d
+EG_ModelInt::loadMesh(): loading dwarf2.b3d
+EG_ModelInt::loadMesh(): loading Sofa.dae
+OpenGL Version: 4.3.0
+Vendor: NVIDIA Corporation
+Renderer: Quadro 4000/PCIe/SSE2
+ 
+Initializing OpenGL context...
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Loading 'default.jpg'
+Binding to OpenGL...
+Loading 'axe.jpg'
+Binding to OpenGL...
+Loading 'dwarf.jpg'
+Binding to OpenGL...
+Loading 'dwarf2.jpg'
+Binding to OpenGL...
+Loading 'axe.jpg'
+Binding to OpenGL...
+Loading 'dwarf.jpg'
+Binding to OpenGL...
+Loading 'dwarf2.jpg'
+Binding to OpenGL...
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Found a texture with an empty name, using default.jpg
+Loading 'default.jpg'
+Binding to OpenGL...

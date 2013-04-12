@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D1493534-F003-4301-8418-6DA2D3B087CC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>EbonGL</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>libebongl_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>libebongl_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>libebongl</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;EBONGL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\tools\devil_64bit_vs2010\include;C:\tools\assimp_64bit_vs2010\include;C:\tools\hcilibs_64bit_vs2010\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(OutDir)libebongl_d$(TargetExt)</OutputFile>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;assimp.lib;DevIL.lib;libmathhelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\tools\hcilibs_64bit_vs2010\lib;C:\tools\devil_64bit_vs2010\lib;C:\tools\assimp_64bit_vs2010\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;EBONGL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\tools\devil_64bit_vs2010\include;C:\tools\assimp_64bit_vs2010\include;C:\tools\hcilibs_64bit_vs2010\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-DBUILDING_MATHHELPER_DLL %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(OutDir)libebongl_d$(TargetExt)</OutputFile>
+      <AdditionalDependencies>libmathhelp_d.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\tools\hcilibs_64bit_vs2010\lib;C:\tools\devil_64bit_vs2010\lib;C:\tools\assimp_64bit_vs2010\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;EBONGL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;EBONGL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\tools\assimp_64bit_vs2010\include;C:\tools\devil_64bit_vs2010\include;C:\tools\hcilibs_64bit_vs2010\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-DBUILDING_MATHHELPER_DLL %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;libmathhelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\tools\hcilibs_64bit_vs2010\lib;C:\tools\devil_64bit_vs2010\lib;C:\tools\assimp_64bit_vs2010\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="EbonGL.hpp" />
+    <ClInclude Include="libebongl\EG_Color.hpp" />
+    <ClInclude Include="libebongl\EG_Engine.hpp" />
+    <ClInclude Include="libebongl\EG_EngineInt.hpp" />
+    <ClInclude Include="libebongl\EG_Light.hpp" />
+    <ClInclude Include="libebongl\EG_Polygon.hpp" />
+    <ClInclude Include="libebongl\EG_SafeScene.hpp" />
+    <ClInclude Include="libebongl\EG_SceneElement.hpp" />
+    <ClInclude Include="libebongl\EG_Settings.hpp" />
+    <ClInclude Include="libebongl\EG_Utils.hpp" />
+    <ClInclude Include="libebongl\sceneobjects\EG_Cuboid.hpp" />
+    <ClInclude Include="libebongl\sceneobjects\EG_Cylinder.hpp" />
+    <ClInclude Include="libebongl\sceneobjects\EG_Model.hpp" />
+    <ClInclude Include="libebongl\sceneobjects\EG_ModelData.hpp" />
+    <ClInclude Include="libebongl\sceneobjects\EG_ModelInt.hpp" />
+    <ClInclude Include="libebongl\sceneobjects\EG_Object.hpp" />
+    <ClInclude Include="libebongl\sceneobjects\EG_PointList.hpp" />
+    <ClInclude Include="libebongl\sceneobjects\EG_Sphere.hpp" />
+    <ClInclude Include="libebongl\utilities\EG_BoolVector.hpp" />
+    <ClInclude Include="libebongl\utilities\EG_ConfigComments.hpp" />
+    <ClInclude Include="libebongl\utilities\EG_ConfigWriter.hpp" />
+    <ClInclude Include="libebongl\utilities\EG_ConfigWriterInt.hpp" />
+    <ClInclude Include="libebongl\utilities\EG_LogWriter.hpp" />
+    <ClInclude Include="libebongl\utilities\EG_Mutex.hpp" />
+    <ClInclude Include="libebongl\utilities\EG_String.hpp" />
+    <ClInclude Include="libebongl\utilities\EG_StringInternal.hpp" />
+    <ClInclude Include="libebongl\utilities\EG_TimeKeeper.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="libebongl\EG_Color.cpp" />
+    <ClCompile Include="libebongl\EG_Engine.cpp" />
+    <ClCompile Include="libebongl\EG_EngineInt.cpp" />
+    <ClCompile Include="libebongl\EG_Light.cpp" />
+    <ClCompile Include="libebongl\EG_Polygon.cpp" />
+    <ClCompile Include="libebongl\EG_SafeScene.cpp" />
+    <ClCompile Include="libebongl\EG_SceneElement.cpp" />
+    <ClCompile Include="libebongl\EG_Utils.cpp" />
+    <ClCompile Include="libebongl\sceneobjects\EG_Cuboid.cpp" />
+    <ClCompile Include="libebongl\sceneobjects\EG_Cylinder.cpp" />
+    <ClCompile Include="libebongl\sceneobjects\EG_Model.cpp" />
+    <ClCompile Include="libebongl\sceneobjects\EG_ModelData.cpp" />
+    <ClCompile Include="libebongl\sceneobjects\EG_ModelInt.cpp" />
+    <ClCompile Include="libebongl\sceneobjects\EG_Object.cpp" />
+    <ClCompile Include="libebongl\sceneobjects\EG_PointList.cpp" />
+    <ClCompile Include="libebongl\sceneobjects\EG_Sphere.cpp" />
+    <ClCompile Include="libebongl\utilities\EG_BoolVector.cpp" />
+    <ClCompile Include="libebongl\utilities\EG_ConfigComments.cpp" />
+    <ClCompile Include="libebongl\utilities\EG_ConfigWriter.cpp" />
+    <ClCompile Include="libebongl\utilities\EG_ConfigWriterInt.cpp" />
+    <ClCompile Include="libebongl\utilities\EG_LogWriter.cpp" />
+    <ClCompile Include="libebongl\utilities\EG_Mutex.cpp" />
+    <ClCompile Include="libebongl\utilities\EG_String.cpp" />
+    <ClCompile Include="libebongl\utilities\EG_StringInternal.cpp" />
+    <ClCompile Include="libebongl\utilities\EG_TimeKeeper.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

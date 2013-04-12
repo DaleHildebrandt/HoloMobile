@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Cuboid</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Cuboid</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A 3D OpenGL box. EG_Cuboid inherits from <a href="egobject.html">EG_Object</a>.
+</p>
+
+<ul>
+    <li><a href="#constructor1">EG_Cuboid</a>(void)</li>
+    <li><a href="#constructor2">EG_Cuboid</a>(const EG_Cuboid &amp;source)</li>
+    <li>EG_Cuboid&amp; operator<a href="#equal">=</a> (const EG_Cuboid &amp;source)</li>
+    <li>virtual EG_Object* <a href="#generateInstance">generateInstance</a>(void)</li>
+    <li>GLdouble <a href="#getDepth">getDepth</a>(void)</li>
+    <li>GLdouble <a href="#getHeight">getHeight</a>(void)</li>
+    <li>const EG_Polygon* <a href="#getPolygon">getPolygon</a>(unsigned int index)</li>
+    <li>MHTypes::Point3D <a href="#getVertex">getVertex</a>(unsigned int index)</li>
+    <li>GLdouble <a href="#getWidth">getWidth</a>(void)</li>
+    <li>unsigned int <a href="#numPolygons">numPolygons</a>(void)</li>
+    <li>bool <a href="#inside">inside</a>(const MHTypes::Point3D &amp;thePoint)</li>
+    <li>void <a href="#setSize">setSize</a>(GLdouble newWidth, GLdouble newHeight, GLdouble newDepth)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_Cuboid</a>(void)</h3>
+<p>
+Default constructor, creates a cube with a <a href="#getWidth">width</a>, <a href="#getHeight">height</a> and <a href="#getDepth">depth</a> of 1.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EG_Cuboid</a>(const EG_Cuboid &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a cuboid that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_Cuboid&amp; operator<a name="equal">=</a> (const EG_Cuboid &amp;<span class="param">source</span>)</h3>
+<p>
+Sets this cuboid to be a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual EG_Object* <a name="generateInstance">generateInstance</a>(void)</h3>
+<p>
+Returns a deep copy of this Cuboid.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLdouble <a name="getDepth">getDepth</a>(void)</h3>
+<p>
+Returns the Cuboid's depth.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLdouble <a name="getHeight">getHeight</a>(void)</h3>
+<p>
+Returns the Cuboid's height.
+</p>
+
+<p>
+<br />
+</p>
+<h3>const EG_Polygon* <a name="getPolygon">getPolygon</a>(unsigned int <span class="param">index</span>)</h3>
+<p>
+Returns a polygon making up one of this Cuboid's faces. <i>index</i> should be a value between 0 and <a href="#numPolygons">numPolygons</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>MHTypes::Point3D <a name="getVertex">getVertex</a>(unsigned int <span class="param">index</span>)</h3>
+<p>
+Returns a vertex making up one of this Cuboid's corners. <i>index</i> specifies the corner to retrieve, and should be a value between 0 and 7.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLdouble <a name="getWidth">getWidth</a>(void)</h3>
+<p>
+Returns the Cuboid's width.
+</p>
+
+<p>
+<br />
+</p>
+<h3>unsigned int <a name="numPolygons">numPolygons</a>(void)</h3>
+<p>
+Returns the number of polygons making up this cuboid.
+</p>
+
+<p>
+<br />
+</p>
+<h3>bool <a name="inside">inside</a>(const MHTypes::Point3D &amp;<span class="param">thePoint</span>)</h3>
+<p>
+Returns true if <i>thePoint</i> is inside of this Cuboid. This function only works properly if the Cuboid hasn't been rotated.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setSize">setSize</a>(GLdouble <span class="param">newWidth</span>, GLdouble <span class="param">newHeight</span>, GLdouble <span class="param">newDepth</span>)</h3>
+<p>
+Set the Cuboid's <a href="#getWidth">width</a>, <a href="#getHeight">height</a> and <a href="#getDepth">depth</a>.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

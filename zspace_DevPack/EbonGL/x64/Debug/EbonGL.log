@@ -1,0 +1,71 @@
+﻿Build started 27/02/2013 12:45:02 PM.
+     1>Project "C:\VisBox_Development_Pack\EbonGL\EbonGL.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "x64\Debug\EbonGL.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "x64\Debug\EbonGL.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\tools\devil_64bit_vs2010\include /IC:\tools\assimp_64bit_vs2010\include /IC:\tools\hcilibs_64bit_vs2010\include /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D EBONGL_EXPORTS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt libebongl\EG_Color.cpp libebongl\EG_Engine.cpp libebongl\EG_EngineInt.cpp libebongl\EG_Light.cpp libebongl\EG_Polygon.cpp libebongl\EG_SafeScene.cpp libebongl\EG_SceneElement.cpp libebongl\EG_Utils.cpp libebongl\sceneobjects\EG_Cuboid.cpp libebongl\sceneobjects\EG_Cylinder.cpp libebongl\sceneobjects\EG_Model.cpp libebongl\sceneobjects\EG_ModelData.cpp libebongl\sceneobjects\EG_ModelInt.cpp libebongl\sceneobjects\EG_Object.cpp libebongl\sceneobjects\EG_PointList.cpp libebongl\sceneobjects\EG_Sphere.cpp libebongl\utilities\EG_BoolVector.cpp libebongl\utilities\EG_ConfigComments.cpp libebongl\utilities\EG_ConfigWriter.cpp libebongl\utilities\EG_ConfigWriterInt.cpp libebongl\utilities\EG_LogWriter.cpp libebongl\utilities\EG_Mutex.cpp libebongl\utilities\EG_String.cpp libebongl\utilities\EG_StringInternal.cpp libebongl\utilities\EG_TimeKeeper.cpp -DBUILDING_MATHHELPER_DLL 
+         EG_TimeKeeper.cpp
+         EG_StringInternal.cpp
+         EG_String.cpp
+         EG_Mutex.cpp
+         EG_LogWriter.cpp
+         EG_ConfigWriterInt.cpp
+         EG_ConfigWriter.cpp
+         EG_ConfigComments.cpp
+         EG_BoolVector.cpp
+         EG_Sphere.cpp
+         EG_PointList.cpp
+         EG_Object.cpp
+         EG_ModelInt.cpp
+         EG_ModelData.cpp
+         EG_Model.cpp
+         EG_Cylinder.cpp
+         EG_Cuboid.cpp
+         EG_Utils.cpp
+         EG_SceneElement.cpp
+         EG_SafeScene.cpp
+         Generating Code...
+         Compiling...
+         EG_Polygon.cpp
+         EG_Light.cpp
+         EG_EngineInt.cpp
+         EG_Engine.cpp
+         EG_Color.cpp
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"C:\VisBox_Development_Pack\EbonGL\x64\Debug\libebongl_d.lib" /NOLOGO x64\Debug\EG_Color.obj
+         x64\Debug\EG_Engine.obj
+         x64\Debug\EG_EngineInt.obj
+         x64\Debug\EG_Light.obj
+         x64\Debug\EG_Polygon.obj
+         x64\Debug\EG_SafeScene.obj
+         x64\Debug\EG_SceneElement.obj
+         x64\Debug\EG_Utils.obj
+         x64\Debug\EG_Cuboid.obj
+         x64\Debug\EG_Cylinder.obj
+         x64\Debug\EG_Model.obj
+         x64\Debug\EG_ModelData.obj
+         x64\Debug\EG_ModelInt.obj
+         x64\Debug\EG_Object.obj
+         x64\Debug\EG_PointList.obj
+         x64\Debug\EG_Sphere.obj
+         x64\Debug\EG_BoolVector.obj
+         x64\Debug\EG_ConfigComments.obj
+         x64\Debug\EG_ConfigWriter.obj
+         x64\Debug\EG_ConfigWriterInt.obj
+         x64\Debug\EG_LogWriter.obj
+         x64\Debug\EG_Mutex.obj
+         x64\Debug\EG_String.obj
+         x64\Debug\EG_StringInternal.obj
+         x64\Debug\EG_TimeKeeper.obj
+         EbonGL.vcxproj -> C:\VisBox_Development_Pack\EbonGL\x64\Debug\libebongl_d.lib
+       FinalizeBuildStatus:
+         Deleting file "x64\Debug\EbonGL.unsuccessfulbuild".
+         Touching "x64\Debug\EbonGL.lastbuildstate".
+     1>Done Building Project "C:\VisBox_Development_Pack\EbonGL\EbonGL.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:15.19

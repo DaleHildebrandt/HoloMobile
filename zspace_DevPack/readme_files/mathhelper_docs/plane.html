@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class Plane</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class Plane</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+This class lets us create a surface by specifying three points on the plane. The order of the points matters, as it affects the direction of the <a href="#surfaceNormal">surface normal</a>.
+</p>
+
+<ul>
+    <li><a href="#constructor1">Plane</a>(void)</li>
+    <li><a href="#constructor2">Plane</a>(const Point3D &amp;newPoint1, const Point3D &amp;newPoint2, const Point3D &amp;newPoint3)</li>
+    <li>void <a href="#fromPoints">fromPoints</a>(const Point3D &amp;newPoint1, const Point3D &amp;newPoint2, const Point3D &amp;newPoint3)</li>
+    <li>std::vector&lt;MHFloat&gt; <a href="#getEquation">getEquation</a>(void)</li>
+    <li>MHFloat <a href="#getSide">getSide</a>(const Point3D &amp;position)</li>
+    <li>bool <a href="#lineIntersect">lineIntersect</a>(const Point3D &amp;lineA, const Point3D &amp;lineB, Point3D &amp;intersect)</li>
+    <li>MHVector <a href="#surfaceNormal">surfaceNormal</a>(void)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">Plane</a>(void)</h3>
+<p>
+Default constructor. The created plane is invalid, and <a href="#fromPoints">fromPoints</a> should be called before using the other functions.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">Plane</a>(const <a href="point3d.html">Point3D</a> &amp;<span class="param">newPoint1</span>, const <a href="point3d.html">Point3D</a> &amp;<span class="param">newPoint2</span>, const <a href="point3d.html">Point3D</a> &amp;<span class="param">newPoint3</span>)</h3>
+<p>
+Constructor, creates a plane that intersects the provided points.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="fromPoints">fromPoints</a>(const <a href="point3d.html">Point3D</a> &amp;<span class="param">newPoint1</span>, const <a href="point3d.html">Point3D</a> &amp;<span class="param">newPoint2</span>, const <a href="point3d.html">Point3D</a> &amp;<span class="param">newPoint3</span>)</h3>
+<p>
+Constructs a plane from the specified points.
+</p>
+
+<p>
+<br />
+</p>
+<h3>std::vector&lt;<a href="install.html#MHFloat">MHFloat</a>&gt; <a name="getEquation">getEquation</a>(void)</h3>
+<p>
+Returns a vector with four elements A, B, C and D from the general equation of a plane: Ax + By + Cz + D = 0.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="getSide">getSide</a>(const <a href="point3d.html">Point3D</a> &amp;<span class="param">position</span>)</h3>
+<p>
+getSide tells us which side of the plane <i>position</i> is located. It returns:
+</p>
+<ul>
+    <li><b>&gt; 0</b> Point is on the same side as the <a href="#surfaceNormal">surface normal</a>.</li>
+    <li><b>0</b> Point intersects the plane.</li>
+    <li><b>&lt; 0</b> Point is on the opposite side of the <a href="#surfaceNormal">surface normal</a>.</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3>bool <a name="lineIntersect">lineIntersect</a>(const <a href="point3d.html">Point3D</a> &amp;<span class="param">lineA</span>, const <a href="point3d.html">Point3D</a> &amp;<span class="param">lineB</span>, <a href="point3d.html">Point3D</a> &amp;<span class="param">intersect</span>)</h3>
+<p>
+Given two points that make up a line, finds the point of intersection between the line and this plane, and stores it in <i>intersect</i>. lineIntersect returns false if the line is parallel to the plane.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static <a href="mhvector.html">MHVector</a> <a name="surfaceNormal">surfaceNormal</a>(void)</h3>
+<p>
+Given the three points that were used to construct the plane, return a normal vector with length 1 that is perpendicular to the front surface. The front is the side where point1, point2 and point3 are arranged in a clockwise direction. (clockwise winding)
+</p>
+
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+</body>
+</html>

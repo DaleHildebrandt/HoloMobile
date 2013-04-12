@@ -1,0 +1,14 @@
+EbonGL Log File
+
+EG_ModelInt::loadMesh(): loading dwarf2.b3d
+OpenGL Version: 4.1.0
+Vendor: NVIDIA Corporation
+Renderer: Quadro 4000/PCI/SSE2
+ 
+Initializing OpenGL context...
+Loading 'axe.jpg'
+Binding to OpenGL...
+Loading 'dwarf.jpg'
+Binding to OpenGL...
+Loading 'dwarf2.jpg'
+Binding to OpenGL...

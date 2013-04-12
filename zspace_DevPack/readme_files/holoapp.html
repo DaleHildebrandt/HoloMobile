@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class HoloApp</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class HoloApp</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+HoloApp is designed to be inherited from when creating your main application class. It merges GLUT and VRJuggler drawing code, allowing us to develop on a workstation with GLUT, and have the same code work on a 3D VRJuggler-compatible display. There are only a few differences to be aware of:
+</p>
+<ul>
+    <li>HoloApp provides access to a wand's position, orientation, and button presses, though these are only avaiable under VRJuggler. Under GLUT, the buttons will always be in the 'up' position, and the orientations and positions will be (0, 0, 0).</li>
+    <li>GLUT provides simple keyboard and mouse input with the <a href="#motion">motion</a>, <a href="#mouse">mouse</a> and <a href="#keyboard">keyboard</a> functions. These event handlers will never be called in VRJuggler mode.</li>
+    <li>In VRJuggler mode, we can navigate through the scene with <a href="#moveCamera">moveCamera</a>, <a href="#rotateCamera">rotateCamera</a> and <a href="#setCameraRotation">setCameraRotation</a>. Under GLUT, we should instead use the <a href="#lookAt">lookAt</a> function.</li>
+    
+</ul>
+<p>
+HoloApp relies on two helper classes, Navigation and InputHandler. These three classes are bundled with a sample Visual Studio solution (HoloLoader). They can't easily be placed in a seperate library, such as EbonGL, due to their reliance on VRJuggler. Instead, the solution has two projects, one for building in GLUT mode, and one for building in VRJuggler mode. Among other things, the GLUT project defines the EG_GLUT_MODE macro. You can use this macro to determine which functions to use:
+</p>
+<pre class="dycode">
+#ifdef EG_GLUT_MODE
+    HoloApp::lookAt(MHTypes::Point3D(offsetX, offsetY + 3.5, offsetZ + 4),
+                    MHTypes::Point3D(offsetX, offsetY + 3.5, offsetZ - 100),
+                    MHTypes::MHVector(0, 1, 0));
+#else
+    moveCamera(MHTypes::MHVector(offsetX, offsetY, offsetZ));
+#endif
+</pre>
+
+<p>
+HoloApp provides four event handlers that should be implemented by the child class:
+</p>
+<ol>
+    <li><a href="#initApp">initApp</a> Called before any OpenGL contexts are initialized. EbonGL's EG_Model should be instantiated here.</li>
+    <li><a href="#contextInitApp">contextInitApp</a> Called once for every OpenGL context we're creating. This will be once in GLUT, and multiple times in VRJuggler. Context-specific data such as EG_Model textures should be loaded here.</li>
+    <li><a href="#postInitialization">postInitialization</a> Called after all contexts have initialized. EG_Models can be added to <a href="#glEngine">glEngine</a> here.</li>
+    <li><a href="#mainLoop">mainLoop</a> This function is periodically called at <a href="#ENGINE_INTERVAL">ENGINE_INTERVAL</a> millisecond-intervals. (Should normally be 10 ms) Program logic should be implemented here.</li>
+</ol>
+
+<h3>Public Methods</h3>
+<ul>
+    <li><a href="#constructor">HoloApp</a>(void *newKernel, unsigned int numContexts)</li>
+    <li>void <a href="#lookAt">lookAt</a>(MHTypes::Point3D cameraOrigin, MHTypes::Point3D targetPoint, MHTypes::MHVector upVector)</li>
+    <li>void <a href="#moveCamera">moveCamera</a>(MHTypes::MHVector movementVector)</li>    
+    <li>void <a href="#rotateCamera">rotateCamera</a>(MHTypes::EulerAngle amount)</li>
+    <li>virtual void <a href="#run">run</a>(void)</li>
+    <li>void <a href="#setCameraRotation">setCameraRotation</a>(MHTypes::EulerAngle newRotation)</li>
+    <li>void <a href="#setNavVelocity">setNavVelocity</a>(double newValue)</li>
+    <li>void <a href="#stopApp">stopApp(void)</a></li>
+    <li>void <a href="#updateNav">updateNav</a>(bool forwardButtonDown, bool reverseButtonDown, bool lookButtonDown, MHTypes::EulerAngle absWandOrient, MHTypes::EulerAngle cameraOrient)</li>
+</ul>
+
+<h3>Public Member Variables</h3>
+<ul>
+    <li>static const int <a href="#ENGINE_INTERVAL">ENGINE_INTERVAL</a></li>
+    <li>static const int <a href="#FAR_CLIPPING_DIST">FAR_CLIPPING_DIST</a></li>
+    <li>static const int <a href="#FIELD_OF_VIEW">FIELD_OF_VIEW</a></li>
+    <li>static const int <a href="#NEAR_CLIPPING_DIST">NEAR_CLIPPING_DIST</a></li>    
+</ul>
+
+<h3>Protected Methods</h3>
+<ul>
+    <li>virtual void <a href="#contextInitApp">contextInitApp</a>(unsigned int myContext)</li>
+    <li>virtual void <a href="#initApp">initApp</a>(void)</li>
+    <li>virtual void <a href="#keyboard">keyboard</a>(unsigned char key, int x, int y)</li>    
+    <li>virtual void <a href="#mainLoop">mainLoop</a>(MHTypes::EulerAngle cameraOrient, MHTypes::EulerAngle wandOrient, MHTypes::EulerAngle absWandOrient, MHTypes::Point3D wandPos, std::vector&lt;bool&gt; buttonPressed, std::vector<bool> buttonReleased, std::vector<bool> buttonDown)</li>
+    <li>virtual void <a href="#motion">motion</a>(int x, int y)</li>
+    <li>virtual void <a href="#mouse">mouse</a>(int button, int state, int x, int y)</li>
+    <li>virtual void <a href="#postInitialization">postInitialization</a>(void)</li>
+</ul>
+
+<h3>Protected Member Variables</h3>
+<ul>
+    <li>EbonGL::EG_Engine *<a href="#glEngine">glEngine</a></li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor">HoloApp</a>(void *<span class="param">newKernel</span>, unsigned int <span class="param">numContexts</span>)</h3>
+<p>
+The default constructor. In VRJuggler mode, <i>newKernel</i> should point to a vrj::Kernel, which will spawn VRJuggler events. In GLUT mode, <i>newKernel</i> is ignored and can be set to NULL. <i>numContexts</i> is the number of OpenGL contexts to create - this will normally be one for each eye and display combination. For example, in a stereo-vision configuration with a floor and main screen, we would have four contexts. In GLUT mode, <i>numContexts</i> should always be set to 1.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="lookAt">lookAt</a>(MHTypes::Point3D <span class="param">cameraOrigin</span>, MHTypes::Point3D <span class="param">targetPoint</span>, MHTypes::MHVector <span class="param">upVector</span>)</h3>
+<p>
+This function sets the camera position and orientation within the scene. It only works in GLUT mode, VRJuggler programs should call <a href="#moveCamera">moveCamera</a>, <a href="#rotateCamera">rotateCamera</a> and <a href="#setCameraRotation">setCameraRotation</a> instead.
+</p>
+<p>
+<i>cameraOrigin</i> is the camera's position in the scene. <i>targetPoint</i> is the point the camera is facing. <i>upVector</i> defines how the camera is rotated. (which direction is 'up'). It should normally be (0, 1, 0) to match VRJuggler's default "up" direction.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="moveCamera">moveCamera</a>(MHTypes::MHVector <span class="param">movementVector</span>)</h3>
+<p>
+Moves the camera position by the amount specified in <i>movementVector</i>. Successive calls to moveCamera are cumulative. This function is VRJuggler-specific, use <a href="#lookAt">lookAt</a> when in GLUT mode.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="rotateCamera">rotateCamera</a>(MHTypes::EulerAngle <span class="param">amount</span>)</h3>
+<p>
+Move the camera orientation by the specified <i>amount</i>. Successive calls to rotateCamera are cumulative. This function is VRJuggler-specific, use <a href="#lookAt">lookAt</a> when in GLUT mode.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual void <a name="run">run</a>(void)</h3>
+<p>
+Call run to start the program. This is a blocking method, and won't return until the program halts. <a href="#mainLoop">mainLoop</a> will be called periodically, and the graphics will be updated on-screen.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setCameraRotation">setCameraRotation</a>(MHTypes::EulerAngle <span class="param">newRotation</span>)</h3>
+<p>
+Set the camera's orientation in the scene. This function is VRJuggler-specific, use <a href="#lookAt">lookAt</a> when in GLUT mode.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setNavVelocity">setNavVelocity</a>(double <span class="param">newValue</span>)</h3>
+<p>
+Set the speed at which the camera viewpoint moves when <a href="#updateNav"> is called. <i>newValue</i> is given in scene coordinates per logic update. If <a href="#ENGINE_INTERVAL">ENGINE_INTERVAL</a> is 10 milliseconds, we would update the logic 100 times per second.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="stopApp">stopApp(void)</h3>
+<p>
+Stop the program, causing <a href="#run">run</a> to return.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="updateNav">updateNav</a>(bool <span class="param">forwardButtonDown</span>, bool <span class="param">reverseButtonDown</span>, bool <span class="param">lookButtonDown</span>, MHTypes::EulerAngle <span class="param">absWandOrient</span>, MHTypes::EulerAngle <span class="param">cameraOrient</span>)</h3>
+<p>
+HoloApp provides built-in navigation through a scene with updateNav. When <i>forwardButtonDown</i> or <i>reverseButton</i> are true, the camera will move forwards and backwards respectively. The direction of movement is given by the absolute wand orientation, <i>absWandOrient</i>. When <i>lookButtonDown</i> is true, the user can change the camera orientation, but not position.</i>
+</p>
+<p>
+<i>cameraOrient</i> should be set to the camera's current orientation in the scene. If updateNav is called once every time <i>mainLoop</i> executes, the user will move through the scene at the speed specified by <a href="#setNavVelocity">setNavVelocity</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static const int <a name="ENGINE_INTERVAL">ENGINE_INTERVAL</a></h3>
+<p>
+The <a href="#mainLoop">mainLoop</a> function will be periodically called at this interval, in milliseconds.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static const int <a name="FAR_CLIPPING_DIST">FAR_CLIPPING_DIST</a></h3>
+<p>
+Objects farther than FAR_CLIPPING_DIST from the camera's location will not be drawn. The value is in scene coordinates.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static const int <a name="FIELD_OF_VIEW">FIELD_OF_VIEW</a></h3>
+<p>
+The scene camera's viewport width, in degrees.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static const int <a name="NEAR_CLIPPING_DIST">NEAR_CLIPPING_DIST</a></h3>
+<p>
+Objects closer than NEAR_CLIPPING_DIST to the camera will not be drawn. The value is in scene coordinates.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual void <a name="contextInitApp">contextInitApp</a>(unsigned int <span class="param">myContext</span>)</h3>
+<p>
+This event handler is called once for every OpenGL context in the program. It will normally be called once in GLUT mode, and several times in VRJuggler mode. Context-specific data, such as textures, should be loaded here.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual void <a name="initApp">initApp</a>(void)</h3>
+<p>
+This event handler is called before any OpenGL contexts are initialized. It's a good place to create new instances of EG_Model, as we can then load the model's textures in <a href="#contextInitApp">contextInitApp</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual void <a name="keyboard">keyboard</a>(unsigned char <span class="param">key</span>, int <span class="param">x</span>, int <span class="param">y</span>)</h3>
+<p>
+This event handler is called whenever GLUT detects a new keystroke. It will never be called when in VRJuggler mode.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual void <a name="mainLoop">mainLoop</a>(MHTypes::EulerAngle <span class="param">cameraOrient</span>, MHTypes::EulerAngle <span class="param">wandOrient</span>, MHTypes::EulerAngle <span class="param">absWandOrient</span>, MHTypes::Point3D <span class="param">wandPos</span>, std::vector<bool> <span class="param">buttonPressed</span>, std::vector<bool> <span class="param">buttonReleased</span>, std::vector<bool> <span class="param">buttonDown</span>)</h3>
+<p>
+The mainLoop function is an event handler that's periodically called every <a href="#ENGINE_INTERVAL">ENGINE_INTERVAL</a> milliseconds. Program logic should be placed here. The parameters are set to the camera's position in the scene, and the latest data from the wand if in VRJuggler mode. They should be ignored in GLUT mode.
+</p>
+<ul>
+    <li><i>cameraOrient</i> The camera's current position in the scene, in scene coordinates.</li>
+    <li><i>wandOrient</i> The wand's orientation in the scene, in degrees.</li>
+    <li><i>absWandOrient</i> The wand's position relative to the screen, in degrees.</li>
+    <li><i>wandPos</i> The wand's position in the scene, in degrees.</li>
+    <li><i>buttonPressed</i>True if the corresponding button has been pressed since the last time mainLoop was called.</li>
+    <li><i>buttonReleased</i>True if the corresponding button has been released since the last time mainLoop was called.</li>
+    <li><i>buttonDown</i>True if the corresponding button is currently down.</li>
+</ul>
+<p>
+The vectors containing button data will have NUM_DEVICE_BUTTONS elements. They can be referred to with the ButtonType enumeration:
+</p>
+<pre class="dycode">
+enum ButtonType
+{
+    BT_TRIGGER,
+    BT_FAR_LEFT,
+    BT_BOTTOM_RIGHT,
+    BT_FAR_RIGHT,
+    BT_HAT
+};//ButtonType
+</pre>
+<p>
+To check if the trigger has been pressed, we would do something like this:
+</p>
+<pre class="dycode">
+if (buttonPressed.at(BT_TRIGGER)
+</pre>
+
+<p>
+<br />
+</p>
+<h3>virtual void <a name="motion">motion</a>(int <span class="param">x</span>, int <span class="param">y</span>)</h3>
+<p>
+Event handler, called whenever the mouse moves to a new position over the GLUT window. This event handler will never be called in VRJuggler mode.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual void <a name="mouse">mouse</a>(int <span class="param">button</span>, int <span class="param">state</span>, int <span class="param">x</span>, int <span class="param">y</span>)</h3>
+<p>
+Event handler called whenever a mouse button is pressed or released. This event handler will never be called in VRJuggler mode.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual void <a name="postInitialization">postInitialization</a>(void)</h3>
+<p>
+This event handler is called after all OpenGL contexts have been initialized. It's a good place to add EG_Models to the <a href="#glEngine">glEngine</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EbonGL::EG_Engine *<a name="glEngine">glEngine</a></h3>
+<p>
+The EbonGL::EG_Engine that holds all objects in the scene. See EbonGL's documentation for more information.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</p>
+
+</body>
+</html>

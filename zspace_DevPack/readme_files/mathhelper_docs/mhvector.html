@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class MHVector</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class MHVector</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A vector represents a magnitude and a direction. It has three components x, y and z. The vector can be visualized as a line segment that starts at (0, 0, 0) and ends at (x, y, z). The line length is the magnitude.
+</p>
+
+<h3>Member Functions</h3>
+<ul>
+    <li><a href="#constructor1">MHVector</a>(void)</li>
+    <li><a href="#constructor2">MHVector</a>(MHFloat newX, MHFloat newY, MHFloat newZ)</li>
+    <li><a href="#constructor3">MHVector</a>(const MHVector &amp;source)</li>
+    <li>MHVector <a href="#crossProduct">crossProduct</a>(const MHVector &amp;vectorTwo)</li>
+    <li>void <a href="#fromQuaternion">fromQuaternion</a>(const Quaternion &amp;source)</li>
+    <li>MHVector <a href="#normalize">normalize</a>(void)</li>
+</ul>
+
+<h3>Member Variables</h3>
+<ul>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#x">x</a></li>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#y">y</a></li>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#z">z</a></li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">MHVector</a>(void)</h3>
+<p>
+Default constructor, creates an vector with <a href="#x">x</a>, <a href="#y">y</a> and <a href="#z">z</a> set to zero.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">MHVector</a>(<a href="install.html#MHFloat">MHFloat</a> <span class="param">newX</span>, <a href="install.html#MHFloat">MHFloat</a> <span class="param">newY</span>, <a href="install.html#MHFloat">MHFloat</a> <span class="param">newZ</span>)</h3>
+<p>
+Constructor, sets <a href="#x">x</a>, <a href="#y">y</a> and <a href="#z">z</a> to the provided values.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor3">MHVector</a>(const MHVector &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates an MHVector that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>MHVector <a name="crossProduct">crossProduct</a>(const MHVector &amp;<span class="param">vectorTwo</span>)</h3>
+<p>
+Returns the cross product between this vector and <i>vectorTwo</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="fromQuaternion">fromQuaternion</a>(const <a href="quaternion.html">Quaternion</a> &amp;<span class="param">source</span>)</h3>
+<p>
+Before calling fromQuaternion, this vector should have one or more of <a href="#x">x</a>, <a href="#y">y</a> or <a href="#z">z</a> non-zero. We create a Point3D at (x, y, z) and rotate it by <i>source</i>. The resulting position is stored as the new vector. If only one of x, y or z is non-zero, we're essentially taking a forward direction and causing it to point towards the direction given by the quaternion.
+</p>
+
+<p>
+<br />
+</p>
+<h3>MHVector <a name="normalize">normalize</a>(void)</h3>
+<p>
+Returns a vector with the same direction as this one, but with a length of 1.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="x">x</a></h3>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="y">y</a></h3>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="z">z</a></h3>
+<p>
+The elements that make up the vector.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+</body>
+</html>

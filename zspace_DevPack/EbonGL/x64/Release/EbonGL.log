@@ -1,0 +1,42 @@
+﻿Build started 27/02/2013 12:13:57 PM.
+     1>Project "C:\VisBox_Development_Pack\EbonGL\EbonGL.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Release\EbonGL.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\tools\assimp_64bit_vs2010\include /IC:\tools\devil_64bit_vs2010\include /IC:\tools\hcilibs_64bit_vs2010\include /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D EBONGL_EXPORTS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt libebongl\EG_SafeScene.cpp -DBUILDING_MATHHELPER_DLL 
+         EG_SafeScene.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"C:\VisBox_Development_Pack\EbonGL\x64\Release\libebongl.lib" /NOLOGO /LTCG x64\Release\EG_Color.obj
+         x64\Release\EG_Engine.obj
+         x64\Release\EG_EngineInt.obj
+         x64\Release\EG_Light.obj
+         x64\Release\EG_Polygon.obj
+         x64\Release\EG_SafeScene.obj
+         x64\Release\EG_SceneElement.obj
+         x64\Release\EG_Utils.obj
+         x64\Release\EG_Cuboid.obj
+         x64\Release\EG_Cylinder.obj
+         x64\Release\EG_Model.obj
+         x64\Release\EG_ModelData.obj
+         x64\Release\EG_ModelInt.obj
+         x64\Release\EG_Object.obj
+         x64\Release\EG_PointList.obj
+         x64\Release\EG_Sphere.obj
+         x64\Release\EG_BoolVector.obj
+         x64\Release\EG_ConfigComments.obj
+         x64\Release\EG_ConfigWriter.obj
+         x64\Release\EG_ConfigWriterInt.obj
+         x64\Release\EG_LogWriter.obj
+         x64\Release\EG_Mutex.obj
+         x64\Release\EG_String.obj
+         x64\Release\EG_StringInternal.obj
+         x64\Release\EG_TimeKeeper.obj
+         EbonGL.vcxproj -> C:\VisBox_Development_Pack\EbonGL\x64\Release\libebongl.lib
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\EbonGL.unsuccessfulbuild".
+         Touching "x64\Release\EbonGL.lastbuildstate".
+     1>Done Building Project "C:\VisBox_Development_Pack\EbonGL\EbonGL.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.62
