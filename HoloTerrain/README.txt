@@ -9,11 +9,11 @@ This project requires the use of a zSpace 3D stereoscopic system, Vicon motion t
 ## Setup
 Turn on Vicon system; ensure it is loaded with a working configuration (calibrated, etc.). Verify that objects for the mobile device, index finger, and thumb are all correctly recognized by the Vicon system and match the names used in the zSpace code. For the default calibration file that is provided, you must set the origin of the Vicon coordinate system by placing the calibration wand in front of the zSpace screen (where you would typically have a keyboard). Refer to the following figure for orienting the calibration wand correctly (notice that the intersection point of the wand is positioned more to the right of the screen than the left):
 
-			|			|
-			| zSpace Screen	|
-			 ---------------
+				|		|
+				| zSpace Screen	|
+			 	---------------
 					|
-		Calib. Wand	|
+		Calib. Wand		|
 			====---------
 					|
 			
