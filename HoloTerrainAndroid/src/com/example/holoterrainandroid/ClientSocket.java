@@ -74,6 +74,21 @@ public class ClientSocket extends AsyncTask<Handler, Void, Void>{
 		modeConfirmed = false;
 	}
 	
+	public boolean sendMessage(String line){
+		boolean result = false;
+		
+		if(isSetup()){
+			out_Thread.outputLine = line;
+			modeConfirmation = line;
+			out_Thread.newCommand = true;
+			modeConfirmed = false;
+			
+			result = true;
+		}
+		
+		return result;
+	}
+	
 	//Checks to see if the current mode is confirmed or not
 	public void updateModeConfirmation(String line){
 
@@ -96,6 +111,18 @@ public class ClientSocket extends AsyncTask<Handler, Void, Void>{
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	//Check if the input/output sockets are setup and ready to be used
+	public boolean isSetup(){
+		boolean result = false;
+		if(out_Thread != null && in_Thread != null){
+			if(out_Thread.isSetup && in_Thread.isSetup){
+				result = true;
+			}
+		}
+		
+		return result;
 	}
 
 }

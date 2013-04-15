@@ -32,6 +32,7 @@ public class Input_SocketThread extends Thread
 
 	String inputLine; //Holds most recently read line from socket
 	BufferedReader in; //Reads from socket
+	boolean isSetup = false;
 
 	
 	public Input_SocketThread(Socket socket, Handler handler) 
@@ -57,9 +58,10 @@ public class Input_SocketThread extends Thread
 		
 	public void run() 
 	{
-	
+		isSetup = true;
 		try 
 		{
+			
 			while ( (inputLine = in.readLine()) != null) 
 			{
 				int msgCode = -1;

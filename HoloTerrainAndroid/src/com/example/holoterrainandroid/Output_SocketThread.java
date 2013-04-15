@@ -17,6 +17,7 @@ public class Output_SocketThread extends Thread {
 	String outputLine= "marcos;123;12;8;23;23;23;23;23;90"; //Holds the string to output (gibberish by default)
 	PrintWriter out ; //Used to write output to socket
 	boolean newCommand; //Has the current message (ie. outputLine) changed since the last send?
+	boolean isSetup = false;
 
 
 	public Output_SocketThread(Socket sock, Handler handler) {
@@ -40,6 +41,7 @@ public class Output_SocketThread extends Thread {
 			
 			
 	public void run() {
+		isSetup = true;
 		while (true){
 			
 			//Only send if a new string has been sent, or a previously sent string hasn't received a confirmation message back.

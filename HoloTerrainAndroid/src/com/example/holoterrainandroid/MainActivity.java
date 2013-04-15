@@ -7,23 +7,19 @@
 
 package com.example.holoterrainandroid;
 
-import java.io.InputStream;
-
-import com.example.holoterrainandroid.ClientSocket;
-import com.example.holoterrainandroid.R;
-
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Point;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ToggleButton;
 
 public class MainActivity extends Activity {
@@ -49,9 +45,11 @@ public class MainActivity extends Activity {
 	final double MAP3D_X = 32.0;
 	final double MAP3D_Z = 32.0;
 	
-	boolean modeConfirmed;
+	boolean modeConfirmed; //Has the current mode switch message been confirmed to be received by the other end of the socket
 	private Handler handler; //Handles incoming messages over socket
 	DrawView drawView; //Draws 2D map with overlay items
+	private String annotation; //Annotation used in the creation of POIs and ROIs
+	private String currMsgType; //What is the current message that we are sending (used to distinguish between POI & ROI for annotation creation)
 	
 	//Buttons for selecting the various modes
 	ToggleButton buttonPlacePath;
@@ -91,63 +89,83 @@ public class MainActivity extends Activity {
 	
 	//##Button Handlers##
 	 public void placePath(View view) {
-		 socket.setOutputString("placepath");
 		 
-		 Log.e(LOG_TAG, "Error: Socket Not Initialized");
-	
-	     modeConfirmed = false;
-
-	     uncheckAllButtons();
-	     buttonPlacePath.setChecked(true);
+		 if(sendMessage("placepath")){
+		     modeConfirmed = false;
+		     uncheckAllButtons();
+		     buttonPlacePath.setChecked(true);
+		 }
+		 else{
+			 buttonPlacePath.setChecked(false);
+		 }
+		 
 	 }
 	 public void drawPath(View view) {
-		 socket.setOutputString("drawpath");
 
-		 Log.e(LOG_TAG, "Error: Socket Not Initialized");
-	     modeConfirmed = false;
+		 if(sendMessage("drawpath")){
+		     modeConfirmed = false;
+		     uncheckAllButtons();
+		     buttonDrawPath.setChecked(true);
+		 }
+		 else{
+			 buttonDrawPath.setChecked(true);
+		 }
 
-	     uncheckAllButtons();
-	     buttonDrawPath.setChecked(true);
+	     
 	 }
 	 
 	 public void placeRoi(View view) {
-		 socket.setOutputString("placeroi");
-
-		 Log.e(LOG_TAG, "Error: Socket Not Initialized");
-	     modeConfirmed = false;
-
-	     uncheckAllButtons();
-	     buttonPlaceRoi.setChecked(true);
+		 String message = "placeroi";
+		 
+		 if(sendMessage("placeroi")){
+		     modeConfirmed = false;
+		     uncheckAllButtons();
+		     buttonPlaceRoi.setChecked(true);
+		 }
+		 else{
+			 buttonPlaceRoi.setChecked(false);
+		 }
+		 
 	 }
+	 
 	 public void placePoi(View view) {
-		 socket.setOutputString("placepoi");
+		 openTextEntryDialog("placepoi");
 
-		 Log.e(LOG_TAG, "Error: Socket Not Initialized");
-	     modeConfirmed = false;
-	     
-	     uncheckAllButtons();
-	     buttonPlacePoi.setChecked(true);	 
+//		 if(sendMessage("placepoi")){
+//		     modeConfirmed = false;
+//		     uncheckAllButtons();
+//		     buttonPlacePoi.setChecked(true);
+//		 }
+//		 else
+//			 buttonPlacePoi.setChecked(false);
+//		 annotationSet = false;
+//		 Log.e("Sent MESSAGE", "poi sent with annotation:" + annotation);
+
 	 }
+	 
 	 public void filterHeight(View view) {
-		 socket.setOutputString("filterheight");
-
-		 Log.e(LOG_TAG, "Error: Socket Not Initialized");
 		 
-	     modeConfirmed = false;
+		 if(sendMessage("filterheight")){
+		     modeConfirmed = false;
+		     uncheckAllButtons();
+		     buttonFilterHeight.setChecked(true);
+		 }
+		 else
+			 buttonFilterHeight.setChecked(false);
 	     
-	     uncheckAllButtons();
-	     buttonFilterHeight.setChecked(true);
 	 }
+	 
 	 public void selectHeight(View view){
-		 socket.setOutputString("selectheight");
 		 
-		 Log.e(LOG_TAG, "Error: Socket Not Initialized");
-		 
-		 modeConfirmed = false;
-		 
-		 uncheckAllButtons();
-		 buttonSelectHeight.setChecked(true);
+		 if(sendMessage("selectheight")){
+		     modeConfirmed = false;
+		     uncheckAllButtons();
+		     buttonSelectHeight.setChecked(true);
+		 }
+		 else
+			 buttonSelectHeight.setChecked(false);
 	 }
+	 
 	 private void uncheckAllButtons(){
 		 buttonPlacePath.setChecked(false);
 		 buttonDrawPath.setChecked(false);
@@ -284,11 +302,76 @@ public class MainActivity extends Activity {
 
 	}
 	
+	//Sends a message over the socket
+	//returns: true if successful
+	//		   false if unsuccessful
+	private boolean sendMessage(String message){
+		boolean result = false;
+		//Make sure socket exists
+		if(socket != null){
+			
+			//Attempt to send message
+			if(socket.sendMessage(message))
+				result = true;
+			else
+				Log.e(LOG_TAG, "Error: Input/Output Socket Not Established, cannot send \"" + message + "\"");
+		}
+		else
+			Log.e(LOG_TAG, "Error: Socket Not Initialized, cannot send \"" + message + "\"");
+		
+		return result;
+	}
+	
 	//Given a point in 3D Terrain coordinates, create a corresponding point in the 2D coordinates
 	private Point createDisplayPoint(Double x, Double z){
 		Point result;
 		result = new Point((int)((x/MAP3D_X)*MAP2D_X), (int)((-z/MAP3D_Z)*MAP2D_Z));
 		return result;
+	}
+	
+	//Opens a dialog window, allowing the user to enter text (currently used specifically for setting poi & roi annotation)
+	private void openTextEntryDialog(String message) {
+		currMsgType = message;
+		 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	     builder.setTitle("Enter annotation for POI");
+
+	     // Set up the input
+	     final EditText input = new EditText(this);
+	     // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+	     input.setInputType(InputType.TYPE_CLASS_TEXT);
+	     builder.setView(input);
+
+	     // Set up the buttons
+	     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+	         @Override
+	         public void onClick(DialogInterface dialog, int which) {
+	             annotation = input.getText().toString();
+	             
+	             //Place poi with annotation
+	             if(currMsgType.equals("placepoi")){
+	            	 
+	            	 if(sendMessage("placepoi," + annotation)){
+		    		     modeConfirmed = false;
+		    		     uncheckAllButtons();
+		    		     buttonPlacePoi.setChecked(true);
+		    		 }
+		    		 else
+		    			 buttonPlacePoi.setChecked(false);
+
+	            	 
+	             }
+	             
+	             
+	         }
+	     });
+	     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+	         @Override
+	         public void onClick(DialogInterface dialog, int which) {
+	             dialog.cancel();
+	         }
+	     });
+
+	     builder.show();
 	}
 
 }
