@@ -14,7 +14,7 @@ Turn on Vicon system; ensure it is loaded with a working configuration (calibrat
 			 	 ---------------
 					|
 		Calib. Wand		|
-			====---------
+			====------------|---	
 					|
 			
 Make sure the ViconDataStreamClient code has the correct IP Address of the system running the Vicon software. Launch the HoloTerrain application. The window will likely appear as completely silver. Launch the accompanying android Application on the mobile device that is being tracked. Now, if you hold the mobile device in front of you, with the top of the device pointed to the screen, you should see a green terrain on a black background appear in front of you. The green terrain should follow the movements of the mobile device.
