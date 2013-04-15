@@ -11,7 +11,7 @@ Turn on Vicon system; ensure it is loaded with a working configuration (calibrat
 
 				|		|
 				| zSpace Screen	|
-			 	---------------
+			 	 ---------------
 					|
 		Calib. Wand		|
 			====---------
