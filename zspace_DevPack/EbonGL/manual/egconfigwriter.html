@@ -1,0 +1,135 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_ConfigWriter</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_ConfigWriter</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A simple configuration file manager, intended to make it easy to hand edit the file, or to have the program update configuration values.
+</p>
+<p>
+File Format:
+</p>
+<ul>
+    <li>Each entry in the file has 0 or more comments, an identifier, and a value</li>
+    <li>Comments start with a #, IDs start with a %, and the value starts with a &gt;</li>
+    <li>There should be no spaces between lines in a given entry</li>
+</ul>
+<p>
+Example:
+</p>
+<pre class = "dycode">
+  #This is my descriptive comment
+  #Comments work great
+  %My Favorite Color
+  &gt;Blue
+</pre>
+</p>
+
+<p>
+By using the key "My Favorite Color", we can load the value <i>Blue</i> from the file, or change its value, with one line of code.
+</p>
+
+<p>
+<br />
+</p>
+<ul>
+    <li>static EG_String <a href="#intToStr">intToStr</a>(int number)<br /><br /></li>
+    <li>static bool <a href="#loadBool">loadBool</a>(const EG_String &amp;fileName, const EG_String &amp;configID)</li>
+    <li>static double <a href="#loadDouble">loadDouble</a>(const EG_String &amp;fileName, const EG_String &amp;configID)</li>
+    <li>static int <a href="#loadInt">loadInt</a>(const EG_String &amp;fileName, const EG_String &amp;configID)</li>
+    <li>static EG_String <a href="#loadString">loadString</a>(const EG_String &amp;fileName, const EG_String &amp;configID)<br /><br /></li>
+    <li>static void <a href="#setPath">setPath</a>(const EG_String &amp;newPath)</li>
+    <li>static bool <a href="#strToInt">strToInt</a>(const EG_String &amp;text, int &amp;theInt)<br /><br /></li>
+    <li>static void <a href="#writeBool">writeBool</a>(const EG_String &amp;fileName, const EG_String &amp;configID, bool newBool)</li>
+    <li>static void <a href="#writeDouble">writeDouble</a>(const EG_String &amp;fileName, const EG_String &amp;configID, double newDouble)</li>
+    <li>static void <a href="#writeInt">writeInt</a>(const EG_String &amp;fileName, const EG_String &amp;configID, int newInt)</li>
+    <li>static void <a href="#writeString">writeString</a>(const EG_String &amp;fileName, const EG_String &amp;configID, const EG_String &amp;newString)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3>static EG_String <a name="intToStr">intToStr</a>(int <span class="param">number</span>)</h3>
+<p>
+A convenience function that converts <i>number</i> to an EG_String.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static bool <a name="loadBool">loadBool</a>(const EG_String &amp;<span class="param">fileName</span>, const EG_String &amp;<span class="param">configID</span>)</h3>
+<h3>static double <a name="loadDouble">loadDouble</a>(const EG_String &amp;<span class="param">fileName</span>, const EG_String &amp;<span class="param">configID</span>)</h3>
+<h3>static int <a name="loadInt">loadInt</a>(const EG_String &amp;<span class="param">fileName</span>, const EG_String &amp;<span class="param">configID</span>)</h3>
+<h3>static EG_String <a name="loadString">loadString</a>(const EG_String &amp;<span class="param">fileName</span>, const EG_String &amp;<span class="param">configID</span>)</h3>
+<p>
+These functions load a value from file. <i>fileName</i> is the name of the file to read from. <i>configID</i> is a unique identifier for the value we want to read. For example, "My Favorite Color". <i>configID</i> is case-sensitive. If the file couldn't be read, or if <i>configID</i> wasn't found, these functions will throw an exception.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static void <a name="setPath">setPath</a>(const EG_String &amp;<span class="param">newPath</span>)</h3>
+<p>
+Set the path to the directory containing the config file(s). By default, the path is the current directory. <i>newPath</i> should end with a /.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static bool <a name="strToInt">strToInt</a>(const EG_String &amp;<span class="param">text</span>, int &amp;<span class="param">theInt</span>)</h3>
+<p>
+Utility function to convert a string into an integer. Returns false if <i>text</i> did not contain a valid integer.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static void <a name="writeBool">writeBool</a>(const EG_String &amp;<span class="param">fileName</span>, const EG_String &amp;<span class="param">configID</span>, bool <span class="param">newBool</span>)</h3>
+<h3>static void <a name="writeDouble">writeDouble</a>(const EG_String &amp;<span class="param">fileName</span>, const EG_String &amp;<span class="param">configID</span>, double <span class="param">newDouble</span>)</h3>
+<h3>static void <a name="writeInt">writeInt</a>(const EG_String &amp;<span class="param">fileName</span>, const EG_String &amp;<span class="param">configID</span>, int <span class="param">newInt</span>)</h3>
+<h3>static void <a name="writeString">writeString</a>(const EG_String &amp;<span class="param">fileName</span>, const EG_String &amp;<span class="param">configID</span>, const EG_String &amp;<span class="param">newString</span>)</h3>
+<p>
+These functions write a value to a configuration file. <i>fileName</i> is the file to write to, and <i>configID</i> is a unique identifier for this value. For example, "My Favorite Color". <i>configID</i> is case-sensitive. If <i>configID</i> wasn't found, a new entry will be created for it.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

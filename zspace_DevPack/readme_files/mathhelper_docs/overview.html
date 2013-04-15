@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Rotation Overview</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>3D Rotation Overview</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+<br />
+</p>
+<p>
+Here we'll cover the basics of Euler Angles, gimbal lock, quaternions and rotation matrices.
+</p>
+
+<p>
+<br />
+</p>
+<h2>Euler Angles</h2>
+
+<p>
+<br />
+</p>
+<h3>What Are They?</h3>
+
+<p>
+Euler angles are the most intuitive way of representing rotation. They are made of three seperate angles, given as (x,y,z). We can use them to specify any orientation or rotation amount in 3D space. In MathHelper, we name the angles pitch, yaw and roll. These terms are taken from flight dynamics, and make the angles easier to visualize.
+</p>
+
+<ul>
+    <li><b>Pitch</b>: the angle at which the plane is climbing</li>
+    <li><b>Yaw</b>: the direction the plane is travelling</li>
+    <li><b>Roll</b>: the tilt of the plane's wings (ie, one wing is lower than the other)</li>
+</ul>
+
+<div style="text-align:center;">
+    <img src = "flight_dynamics.png" alt="Flight Dynamics" />
+</div>
+
+<p>
+<br />
+</p>
+<h3>Rotation Direction</h3>
+
+<p>
+In the Math and Quaternion FAQ, I found: "Mathematical convention requires that a positive rotation angle generates a clockwise rotation when looking from the origin towards the positive end of the rotation axis." This is the way MathHelper's Euler Angles are implemented. Imagine you have a coordinate system where x increases to the right, y increases upwards, and z increases forwards (into the screen):
+</p>
+
+<div style="text-align:center;">
+    <img src = "euler_axes.png" alt="Euler Axes" />
+</div>
+
+<p>
+A positive amount of yaw (along the y axis) creates a rotation in the direction specified by the brown circle. If were were at the bottom of this picture, looking up along the y-axis, we would see that the circle rotates in a clockwise direction.
+</p>
+
+<p>
+Unfortunately, there's no real pre-set agreement on what the (x,y,z) of a Euler Angle should represent, or in which direction we should rotate in. If you encounter Euler Angles that were calculated with other systems, you will probably have to convert them to MathHelper's convention before they can be used.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Gimbal Lock</h3>
+<p>
+Imagine you have an object that you would like to rotate on-screen. You have the object's current orientation (A), and the orientation you'd like it to end up facing (B). To show a smooth animation we need to calculate many intermediate orientations that form a 'rotational path' between A and B. We would then draw the object at each orientation in the path, to show it turning towards the final orientation.
+</p>
+<p>
+Sound good? The problem is that using Euler Angles alone will often create strange, jerky motion with sudden unexpected changes in direction. This is due to Gimbal Lock, which happens when one angle is rotated to be parallel to another:
+</p>
+
+<div style="text-align:center;">
+    <img src = "gimbal_lock.gif" alt="Gimbal Lock" />
+</div>
+
+<p>
+In this graphic, the pitch is modified until the plane is facing straight up. (Pitch is parallel to yaw). Now, changing either yaw or roll gives us rotation along the same axis! We've lost a degree of freedom, and can only change the plane's pitch and roll. When this happens, we get a strange jump in our animated rotation, as the gimbals from the picture suddenly flip to new positions. The object will continue rotating towards the desired orienation, but from a different starting point.
+</p>
+
+<p>
+<br />
+</p>
+<h2>Quaternions</h2>
+
+<p>
+<br />
+</p>
+<h3>What Are They?</h3>
+<p>
+A Quaternion represents an orientation in space, similar to a Euler Angle. However, Quaternions let us make smooth rotational animations, and are not susceptible to Gimbal Lock. They have four components, written as (w,x,y,z). The exact details of how Quaternions actually work are quite complex. We can think of a Quaternion as a 'black box' where Euler Angles go in, and smooth rotations come out without needing to understand the inner workings.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Spherical Linear Interpolation (SLERP)</h3>
+<p>
+Say we have two Quaternions, A and B. We'd like to draw an object that's facing in direction A, and smoothly rotate it to face towards B. This is where SLERP comes in - it rotates A a fraction of the distance towards B. SLERP takes four parameters:
+</p>
+
+<ul>
+    <li>The <b>initial</b> quaterion.</li>
+    <li>The <b>destination</b> quaternion.</li>
+    <li>The amount of <b>rotational distance</b> to cover, given as a number between 0 (returns the initial quaternion) and 1 (returns the destination).</li>
+    <li>The <b>type</b> of SLERP to perform - we can choose to follow the shortest path (rotation &lt;= 180 degrees) or the longest path (rotation &gt;= 180 degrees)</li>
+</ul>
+
+<p>
+And that's it! If we wanted to show 100 frames of animation, we would perform a SLERP 100 times, each time incrementing the rotational distance by 0.01.
+</p>
+
+<p>
+<br />
+</p>
+<h2>Rotation Matrices</h2>
+
+<p>
+<br />
+</p>
+<h3>What Are They?</h3>
+<p>
+Rotation Matrices do the math to actually perform the rotation. We can convert a Euler Angle or a Quaternion into a rotation matrix, which can then rotate a point by the specified amount. The matrix is a 3x3 grid of floating-point numbers. There are also 4x4 matrices that will do rotation and translation in a single operation, but here we'll stick to rotation alone.
+</p>
+
+<p>
+<br />
+</p>
+<h3>We Can Only Rotate Points</h3>
+<p>
+A rotation matrix takes a single point in 3D space, and rotates it by the amount in the Euler Angle or Quaternion we used to generate the matrix. To rotate a 3D object made up of lines and vertices, we would apply the rotation matrix to each vertex individually, then redraw the lines connecting them.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Rotations Are About The Origin</h3>
+<p>
+The origin is given as the point at (0,0,0) in the 3D space. Whenever a point P is rotated, it travels a given distance around the origin. Imagine a sphere that's centered on the origin. The sphere's radius is equal to P's distance from the origin. When we rotate P by &Theta; degrees, it moves along the sphere's surface in the direction of the rotation.
+</p>
+
+<div style="text-align:center;">
+    <img src = "rotation.png" alt="Rotation" />
+</div>
+
+<p>
+Most of the time, we'd like to rotate points around some coordinates other than the origin. For example, say we want to make a cube spin. Each of the cube's vertices should be rotated around the cube's center point by some amount, even if the cube is not centered on the origin. For each vertex in the cube, we would perform the following operation:
+</p>
+
+<ol>
+    <li>Translate the vertex to the origin. This can be done by subtracting it by the cube's center position. Eg, if the cube is centered on (5, 10, 20), we would subtract 5 from the vertex's x-coordinate, 10 from the vertex's y-coordinate, and 20 from the vertex's z-coordinate.<br /><br /></li>
+    <li>Perform the rotation with a rotation matrix.<br /><br /></li>
+    <li>Translate the vertex back to the cube's position. We undo the first step, and add 5, 10, and 20 to the vertex's coordinates.</li>
+</ol>
+
+<p>
+<br />
+</p>
+<h2>Summary</h2>
+<p>
+Here's a quick summary of the steps needed to rotate a 3D point.
+</p>
+<ol>
+    <li>Calculate the rotation matrix that represents the rotation. We can convert Euler Angles and Quaternions into matrices.<br /><br /></li>
+
+    <li>Translate the point to the origin.<br /><br /></li>
+
+    <li>Use the matrix to perform the rotation.<br /><br /></li>
+
+    <li>Translate the point back to its object-coordinates.</li>
+</ol>
+
+<p>
+Remember, to perform smooth rotations, we need to represent the object's starting orientation and final orientation as Quaternions, and interpolate between them.
+</p>
+<p>
+Happy Coding!<br />
+-David
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</p>
+
+<p>
+<br />
+</p>
+<h2>Image Licensing</h2>
+<p>
+The images in this document are provided under the following license. See <a href="http://creativecommons.org/licenses/by-sa/3.0/">creativecommons.org</a> for a complete license description.
+</p>
+
+<p>
+<br />
+</p>
+<p>
+This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license.
+</p>
+<dl>
+    <dt>You are free:<br /><br /></dt>
+
+    <dd>to share - to copy, distribute and transmit the work<br /><br /></dd>
+    <dd>to remix - to adapt the work<br /><br /></dd>
+    <dd>to make commercial use of the work<br /><br /></dd>
+
+    <dt>Under the following conditions:<br /><br /></dt>
+
+    <dd>attribution - You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).<br /><br /></dd>
+
+    <dd>share alike - If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.</dd>
+</dl>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+</body>
+</html>

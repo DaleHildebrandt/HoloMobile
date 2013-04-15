@@ -1,0 +1,31 @@
+﻿Build started 25/02/2013 5:20:22 PM.
+     1>Project "C:\VisBox_Development_Pack\hololoader\HoloLoader.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Int\ReleaseGLUT\HoloLoaderGLUT.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\tools\devil_64bit_vs2010\include /IC:\tools\assimp_64bit_vs2010\include /IC:\tools\hcilibs_64bit_vs2010\include /I. /I\include /I\include /Zi /nologo /W3 /WX- /O2 /Ob1 /Oy- /D CPPDOM_DYN_LINK /D BOOST_ALL_DYN_LINK /D JUGGLER_OPT /D NDEBUG /D _CONSOLE /D WIN32 /GF /Gm- /EHsc /MD /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Int\ReleaseGLUT\\" /Fd"Int\ReleaseGLUT\vc100.pdb" /Gd /TP /wd4244 /wd4251 /wd4275 /wd4290 /errorReport:prompt source\internal\HoloApp.cpp source\internal\InputHandler.cpp source\internal\Navigation.cpp source\main.cpp source\HoloLoader.cpp -DEG_GLUT_MODE 
+         HoloApp.cpp
+         InputHandler.cpp
+         Navigation.cpp
+         main.cpp
+         HoloLoader.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"ReleaseGLUT\HoloLoaderGLUT.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\tools\devil_64bit_vs2010\lib /LIBPATH:C:\tools\assimp_64bit_vs2010\lib /LIBPATH:\lib /LIBPATH:\lib /LIBPATH:C:\tools\hcilibs_64bit_vs2010\lib comctl32.lib ws2_32.lib opengl32.lib glu32.lib assimp.lib devil.lib libebongl.lib libmathhelp.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Int\ReleaseGLUT\HoloLoaderGLUT.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"ReleaseGLUT\HoloLoaderGLUT.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"ReleaseGLUT\HoloLoaderGLUT.lib" /MACHINE:X64 Int\ReleaseGLUT\HoloApp.obj
+         Int\ReleaseGLUT\InputHandler.obj
+         Int\ReleaseGLUT\Navigation.obj
+         Int\ReleaseGLUT\main.obj
+         Int\ReleaseGLUT\HoloLoader.obj /LTCG 
+         Generating code
+         Finished generating code
+         HoloLoader.vcxproj -> C:\VisBox_Development_Pack\hololoader\ReleaseGLUT\HoloLoaderGLUT.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"ReleaseGLUT\HoloLoaderGLUT.exe;#1" /manifest Int\ReleaseGLUT\HoloLoaderGLUT.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Int\ReleaseGLUT\HoloLoaderGLUT.unsuccessfulbuild".
+         Touching "Int\ReleaseGLUT\HoloLoaderGLUT.lastbuildstate".
+     1>Done Building Project "C:\VisBox_Development_Pack\hololoader\HoloLoader.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.94

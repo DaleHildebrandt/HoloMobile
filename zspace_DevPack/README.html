@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Human Computer Interaction Labs 3D Programming Suite</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Human Computer Interaction Labs 3D Programming Suite</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+<p>
+These tools and documentation are meant to greatly ease development on a 3D stereo-vision system that is configured with VRJuggler. They let us write programs on non-3D systems, and run the same program in stereo vision and VRJuggler's head-tracking. 
+</p>
+<p>
+EbonGL and HoloApp were developed by: 
+<p>
+<dd>
+    <dt>Human Computer Interaction Lab</dt> 
+    <dt>Computer Science Department</dt>
+    <dt>University of Manitoba</dt>
+    <dt>Canada</dt>
+</dd>
+<img src="readme_files/umanitoba.gif" alt="University of Manitoba"> 
+
+<p>
+<br />
+</p>
+<h2>Developer Tools Installation</h2>
+<p>
+This package contains all the libraries needed for development on a 2D system. To configure a new VRJuggler system, download the VRJuggler libraries from the HCI website. All libraries are 64-bit, and were compiled with Visual Studio 2010.
+</p>
+<p>
+To install the libraries, copy the <i>tools</i> sub-directory to C:\. (root directory) You will need to add the C:\tools\allbin directory to your PATH variable. As of Windows 7, this can be done by:
+</p>
+<ol>
+    <li>Start->Control Panel->System and Security->System</li>
+    <li>Advanced System Settings->Environment Variables...</li>
+    <li>Add C:\tools\allbin to the PATH System Variable. Note that paths are seperated by semicolons.
+</ol>
+<p>
+Afterwards, you will need to restart any terminal windows or instances of Visual Studio for the changes to take effect.
+</p>
+
+<p>
+<br />
+</p>
+<h2>Compiling a Sample Program</h2>
+<p>
+The HoloLoader sample program is provided in the hololoader subdirectory. Creating a new Visual Studio project with VRJuggler support is very difficult. It's almost always easier to copy the hololoader solution and rename it with your program's name.
+</p>
+<p>
+HoloLoader has two projects, both with the same source files. One project is for VRJuggler mode, and will produce an executable suitable for stereo 3D environments. The other is a GLUT project, which can run on almost any OpenGL capable computer.
+</p>
+<p>
+With a few exceptions, the same code will work under both projects, letting us write code in GLUT, then re-compile it in VRJuggler mode when it's ready for the big screen.
+</p>
+
+<p>
+<br />
+</p>
+<h2>VisBox Getting Started Guide</h2>
+<p>
+This guide will help to to get started using the VisBox 3D system. It includes calibration, running stereo programs, and basic troubleshooting information.
+</p>
+<p>
+<a href="readme_files/VisBox_Howto.pdf">VisBox_Howto.pdf</a>
+</p>
+
+<p>
+<br />
+</p>
+<h2>MathHelper Library</h2>
+<p>
+MathHelper contains functions for rotating and translating 3D objects. It has quaternions, euler angles, 3D vectors, rotation matrices and more.
+</p>
+<p>
+<a href="readme_files/mathhelper_docs/index.html">MathHelper Manual</a>
+</p>
+
+<p>
+<br />
+</p>
+<h2>EbonGL Library</h2>
+<p>
+The EbonGL library contains high-level features for displaying 3D objects. It can load models with textures, supports lighting and smooth shading, has basic shadowing and supports stereo vision through VRJuggler.
+</p>
+<p>
+<a href="readme_files/ebongl_docs/index.html">EbonGL Manual</a>
+</p>
+
+<p>
+<br />
+</p>
+<h2>HoloApp Class</h2>
+<p>
+The HoloApp class is included with the HoloLoader sample program. It lets us write programs that work with either GLUT or VRJuggler, and allows the same program to run on both stereo and non-stereo enabled systems.
+</p>
+<p>
+<a href="readme_files/holoapp.html">HoloApp Manual</a>
+</p>
+
+
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</p>
+
+</body>
+</html>

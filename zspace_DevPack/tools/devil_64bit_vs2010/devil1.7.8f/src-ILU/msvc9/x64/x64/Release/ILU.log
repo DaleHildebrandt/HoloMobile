@@ -1,0 +1,23 @@
+﻿Build started 7/9/2012 2:28:38 PM.
+     1>Project "C:\tools\devil-1.7.8\DevIL\src-ILU\msvc9\ILU.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\x64\Release\ILU.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       ResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         ILU.vcxproj -> C:\tools\devil-1.7.8\DevIL\src-ILU\msvc9\ILU.dll
+       PostBuildEvent:
+         copy C:\tools\devil-1.7.8\DevIL\src-ILU\msvc9\ILU.dll c:\windows\system32
+         :VCEnd
+                 1 file(s) copied.
+       FinalizeBuildStatus:
+         Deleting file "x64\x64\Release\ILU.unsuccessfulbuild".
+         Touching "x64\x64\Release\ILU.lastbuildstate".
+     1>Done Building Project "C:\tools\devil-1.7.8\DevIL\src-ILU\msvc9\ILU.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.12

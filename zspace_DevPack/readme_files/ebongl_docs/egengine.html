@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Engine</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Engine</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+EG_Engine contains every object to be drawn in a scene. Graphical objects that inherit from <a href="egobject.html">EG_Object</a> can be added to the scene with <a href="#addSolid">addSolid</a> or <a href="#addTransparent">addTransparent</a>, and removed with <a href="#remove">remove</a>. EG_Engine provides an ambient light source, as well as 8 extra lights that can be accessed through <a href="#getLight">getLight</a>.
+</p>
+<p>
+EG_Engine integrates with VRJuggler to provide stereo vision and perspective correction based on head tracking. VRJuggler
+</p>
+
+<p>
+The <a href="#requestLock">requestLock</a> function should be called before modifying either lights or objects that are part of the scene, since EG_Engine may be drawing in another thread.
+</p>
+
+<ul>
+    <li><a href="#constructor">EG_Engine</a>(void)</li>
+    <li>void <a href="#addSolid">addSolid</a>(EG_Object *newObject)</li>
+    <li>void <a href="#addTransparent">addTransparent</a>(EG_Object *newObject)</li>
+    <li>void <a href="#clearBuffer">clearBuffer</a>(void)</li>
+    <li>void <a href="#clearScene">clearScene</a>(void)</li>
+    <li>void <a href="#contextInit">contextInit</a>(void)</li>
+    <li>void <a href="#draw">draw</a>(int glContextID)</li>
+    <li>EG_Color <a href="#getAmbientLight">getAmbientLight</a>(void)</li>
+    <li>EG_Light* <a href="#getLight">getLight</a>(unsigned int index)</li>
+    <li>void <a href="#releaseLock">releaseLock</a>(void)</li>
+    <li>void <a href="#remove">remove</a>(EG_Object *theObject)</li>
+    <li>void <a href="#requestLock">requestLock</a>(void)</li>
+    <li>void <a href="#setAmbientLight">setAmbientLight</a>(EG_Color newColor)</li>
+    <li>void <a href="#setNavMatrix">setNavMatrix</a>(const std::vector<GLfloat> &amp;newNavMatrix)</li>
+    <li>void <a href="#setShadows">setShadows</a>(bool enabled)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor">EG_Engine</a>(void)</h3>
+<p>
+Default constructor, creates a new graphics scene. Most programs should only ever need a single instance of EG_Engine.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="addSolid">addSolid</a>(EG_Object *<span class="param">newObject</span>)</h3>
+<p>
+Add a solid object to the scene. If objects with <a href="egcolor.html#alpha">transparency</a> are added here, it's possible to get incorrect rendering. The EG_Engine takes ownership of <i>newObject</i>, and will delete it when it is destroyed, or when <a href="#clearScene">clearScene</a> is called.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="addTransparent">addTransparent</a>(EG_Object *<span class="param">newObject</span>)</h3>
+<p>
+Add a transparent object to the scene. If solid objects are added here, it's possible to get incorrect rendering. The EG_Engine takes ownership of <i>newObject</i>, and will delete it when it is destroyed, or when <a href="#clearScene">clearScene</a> is called.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="clearBuffer">clearBuffer</a>(void)</h3>
+<p>
+Clears the current output buffer before we begin drawing to it. If you're using VRJuggler, it should be called by VRJuggler's GlApp::bufferPreDraw function.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="clearScene">clearScene</a>(void)</h3>
+<p>
+Deletes all objects currently contained in the scene.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="contextInit">contextInit</a>(void)</h3>
+<p>
+Call contextInit immediately after a new OpenGL context is created to initialize it. This function sets up lights, shading, transparency, and other OpenGL options for the context. If you're using VRJuggler, it should be called in VRJuggler's GlApp::contextInit function.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="draw">draw</a>(int <span class="param">glContextID</span>)</h3>
+<p>
+Re-draws the scene in the specified OpenGL context. In VRJuggler, draw should be called from GLApp::draw(). VRJuggler may call GLApp::draw() simultaneously from different threads, and will automatically set an OpenGL context before GLApp::draw() is called. Obtaining the context ID is a little tricky.
+</p>
+<p>
+Imagine we have four contexts we need to keep track of. VRJuggler provides the ability to store context-specific data in a variable. If we declare a variable like this:
+</p>
+<p class="dycode">
+vrj::GlContextData&lt;int&gt; myContextID;
+</p>
+<p>
+We'll end up with four copies of it - one per context. The value of myContextID will change depending on which OpenGL context it's called from. VRJuggler calls its GLApp::contextInit function once per context, which is a good place to set the contextID:
+</p>
+<pre class="dycode">
+void MyGLApp::contextInit(void)
+{
+    contextInitMutex.lock();
+
+    (*myContextID) = contextIDStamper;
+    contextIDStamper++;
+
+    contextInitMutex.unlock();
+}
+</pre>
+<p>
+Note that we always have to de-reference these context-specific variables with (*varName) to access the contents. We would set the first context to 0, then increment by one each time contextInit is called. Now when VRJuggler calls GLApp::draw(), we can use (*myContextID) as the parameter to pass to EG_Engine::draw().
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="egcolor.html">EG_Color</a> <a name="getAmbientLight">getAmbientLight</a>(void)</h3>
+<p>
+Returns the color of the ambient light that's illuminating the scene. The RGB values will vary between 0 and 1, and alpha will always be 1.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_Light* <a name="getLight">getLight</a>(unsigned int <span class="param">index</span>)</h3>
+<p>
+EG_Engine stores the available OpenGL lights in an array, and getLight returns the light at the specified <i>index</i>. <i>index</i> should vary between 0 and <a href="eglight.html#MAX_LIGHTS">EG_Light::MAX_LIGHTS</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="releaseLock">releaseLock</a>(void)</h3>
+<p>
+Tell EG_Engine that you've finished making changes to the scene, and drawing can resume. releaseLock should be used together with <a href="#requestLock">requestLock</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="remove">remove</a>(EG_Object *object)</h3>
+<p>
+Removes the specified <i>object</i> from the scene. EG_Engine relinquishes control of it, and it is the caller's responsibility to delete <i>object</i> when finished with it.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="requestLock">requestLock</a>(void)</h3>
+<p>
+Since EG_Engine may be drawing in another thread, we have to call requestLock before adding any objects to the scene, modifying any existing objects, or changing any of the lights. Call <a href="#releaseLock">releaseLock</a> when you are finished making changes so that drawing can resume.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setAmbientLight">setAmbientLight</a>(<a href="egcolor.html">EG_Color</a> <span class="param">newColor</span>)</h3>
+<p>
+Set the color and intensity of the ambient light that's illuminating the scene. <i>newColor</i>'s alpha value is ignored.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setNavMatrix">setNavMatrix</a>(const std::vector<GLfloat> &amp;<span class="param">newNavMatrix</span>)</h3>
+<p>
+Sets the camera position and orientation in the screen. <i>newNavMatrix</i> is a 4x4 rotation and translation matrix that will rotate and offset the camera from (0, 0, 0). This function is meant to be used with the HoloLib library, which has a Navigation class that can generate the appropriate matrices.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setShadows">setShadows</a>(bool <span class="param">enabled</span>)</h3>
+<p>
+Enable or disable shadows in the scene. By default, shadows are disabled. Shadows should only be enabled for simple scenes with relatively few objects, since the time to calculate them grows exponentially with the number of polygons.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

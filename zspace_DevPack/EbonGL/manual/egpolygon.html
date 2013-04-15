@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Polygon</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Polygon</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+The EG_Polygon class is used internally by graphical objects. For example, <a href="egcuboid.html">EG_Cuboid</a> consists of six EG_Polygons. EG_Polygon doesn't inherit from <a href="egobject.html">EG_Object</a>, and can't be added to an <a href="egengine.html">EG_Engine</a> directly.
+</p>
+
+<p>
+A polygon consists of a series of vertices that make up a face. For efficiency, these vertices aren't stored in EG_Polygon. Instead, we give it a pointer to an std::vector of vertices, where each group of three adjacent elements make up the x, y and z coordinates of a vertex. The polygon stores the indexes of its vertices within the vector. This may or may not be the entire vector, and lets us re-use vertices if they're shared among polygons.
+</p>
+
+<ul>
+    <li><a href="#constructor1">EG_Polygon</a>(void)</li>
+    <li><a href="#constructor2">EG_Polygon</a>(std::vector&lt;GLdouble&gt; &amp;newVertices)</li>
+    <li><a href="#constructor3">EG_Polygon</a>(const EG_Polygon &amp;source)</li>
+    <li>EG_Polygon&amp; operator<a href="#equal">=</a> (const EG_Polygon &amp;source)</li>
+    <li>void <a href="#addIndex">addIndex</a>(GLushort newIndex)</li>
+    <li>void <a href="#draw">draw</a>(GLenum drawingType)</li>
+    <li>unsigned int <a href="#getNumVertices">getNumVertices</a>(void) const</li>
+    <li>MHTypes::Point3D <a href="#getVertex">getVertex</a>(unsigned int index) const</li>
+    <li>void <a href="#setVertices">setVertices</a>(std::vector&lt;GLdouble&gt; &amp;newVertices)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_Polygon</a>(void)</h3>
+<p>
+Default constructor, creates a polygon with zero vertices.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EG_Polygon</a>(std::vector&lt;GLdouble&gt; &amp;<span class="param">newVertices</span>)</h3>
+<p>
+Constructor. Sets the vertex vector to use, but does not assign any specific vertices to this polygon. <i>newVertices</i> should contain groups of three elements, each of which is the x, y, z coordinate of a vertex.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor3">EG_Polygon</a>(const EG_Polygon &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a polygon that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_Polygon&amp; operator<a name="equal">=</a> (const EG_Polygon &amp;<span class="param">source</span>)</h3>
+<p>
+Sets this polygon to be a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="addIndex">addIndex</a>(GLushort <span class="param">newIndex</span>)</h3>
+<p>
+Adds the vertex beginning at vertices[<i>newIndex</i> * 3] to this polygon. Objects' outer faces should have their vertices arranged an a clockwise direction for proper lighting. EG_Polygon the first three vertices to calculate lighting effects, and these should not all lie on the same line. Creating concave polygons may result in graphical artifacts.
+</p>
+<p>
+This function should only be called if this polygon has been assigned a <a href="#setVertices">vertex vector</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="draw">draw</a>(GLenum <span class="param">drawingType</span>)</h3>
+<p>
+Draws this polygon. <i>drawingType</i> determines how the polygon will be drawn, and can be one of GL_POINT, GL_LINE or GL_FILL. This function should be called by the <a href="egobject.html">graphical object</a> that contains this polygon.
+</p>
+
+<p>
+<br />
+</p>
+<h3>unsigned int <a name="getNumVertices">getNumVertices</a>(void) const</h3>
+<p>
+Returns the number of vertices in this polygon. This will be equal to the number of times <a href="#addIndex">addIndex</a> was called.
+</p>
+
+<p>
+<br />
+</p>
+<h3>MHTypes::Point3D <a name="getVertex">getVertex</a>(unsigned int <span class="param">index</span>) const</h3>
+<p>
+Returns the vertex at the specified <i>index</i>. If <a href="#addIndex">addIndex</a> were called three times, then getVertex(2) would return the last vertex added.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setVertices">setVertices</a>(std::vector&lt;GLdouble&gt; &amp;<span class="param">newVertices</span>)</h3>
+<p>
+Set the vertex vector to <i>newVertices</i>. <i>newVertices</i> should contain groups of three elements, each of which is the x, y, z coordinate of a vertex.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

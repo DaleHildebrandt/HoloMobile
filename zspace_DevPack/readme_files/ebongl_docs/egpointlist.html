@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_PointList</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_PointList</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A list of OpenGL points. These points are drawn as dots in the scene. Each point has its own position, and the position of all points can be changed at once with <a href="egobject.html#setPosition">setPosition</a>.
+</p>
+<p>
+Points are drawn as squares, or circles if antialiasing is enabled. They always face the viewer, and are not perspective-corrected. (Distant points will be drawn at the same size as nearby ones.) EG_PointList inherits from <a href="egobject.html">EG_Object</a>.
+</p>
+
+<ul>
+    <li><a href="#constructor1">EG_PointList</a>(void)</li>
+    <li><a href="#constructor2">EG_PointList</a>(const EG_PointList &amp;source)</li>
+    <li>EG_PointList&amp; operator<a href="#equal">=</a> (const EG_PointList &amp;source)</li>
+    <li>void <a href="#addPoint">addPoint</a>(const MHTypes::Point3D &amp;newPoint)</li>
+    <li>void <a href="#clearPoints">clearPoints</a>(void)</li>
+    <li>virtual EG_Object* <a href="#generateInstance">generateInstance</a>(void)</li>
+    <li>const EG_Polygon* <a href="#getPolygon">getPolygon</a>(unsigned int index)</li>
+    <li>unsigned int <a href="#numPolygons">numPolygons</a>(void)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_PointList</a>(void)</h3>
+<p>
+Default constructor, creates an empty list.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EG_PointList</a>(const EG_PointList &amp;source)</h3>
+<p>
+Copy constructor, creates a point list that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_PointList&amp; operator<a name="equal">=</a> (const EG_PointList &amp;source)</h3>
+<p>
+Sets this EG_PointList to be a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="addPoint">addPoint</a>(const MHTypes::Point3D &amp;newPoint)</h3>
+<p>
+Adds <i>newPoint</i> to the point list.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="clearPoints">clearPoints</a>(void)</h3>
+<p>
+Removes all points from the list.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual EG_Object* <a name="generateInstance">generateInstance</a>(void)</h3>
+<p>
+Returns a deep copy of this EG_PointList.
+</p>
+
+<p>
+<br />
+</p>
+<h3>const EG_Polygon* <a name="getPolygon">getPolygon</a>(unsigned int index)</h3>
+<p>
+This function will always return NULL, as there are no polygons in a point list.
+</p>
+
+<p>
+<br />
+</p>
+<h3>unsigned int <a name="numPolygons">numPolygons</a>(void)</h3>
+<p>
+Returns the number of polygons in this EG_PointList, which will always be zero.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

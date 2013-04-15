@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class Matrix3x3</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class Matrix3x3</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+Quaternions and Euler Angles store a rotation amount, but can't actually rotate any points. We can convert them into a Matrix3x3, and then rotate points using <a href="#rotatePoint">rotatePoint</a>. Matrix3x3 is stricly for rotation, and translation should be handled seperately.
+</p>
+
+<p>
+Internally, the matrix is laid out like so:
+</p>
+<pre>
+0 1 2
+3 4 5
+6 7 8
+</pre>
+
+<p>
+You can manually access the elements with the <a href="#get">get</a> and <a href="#set">set</a> functions.
+</p>
+
+<ul>
+    <li><a href="#constructor1">Matrix3x3</a>(void)</li>
+    <li><a href="#constructor2">Matrix3x3</a>(const Matrix3x3 &amp;source)</li>
+    <li>MHFloat <a href="#determinant">determinant</a>(void)</li>
+    <li>void <a href="#fromEuler1">fromEuler</a>(const EulerAngle &amp;euler)</li>
+    <li>void <a href="#fromEuler2">fromEuler</a>(MHFloat pitch, MHFloat yaw, MHFloat roll)</li>
+    <li>MHFloat <a href="#get">get</a>(unsigned int index)</li>
+    <li>bool <a href="#inverse">inverse</a>(Matrix3x3 &amp;inverted)</li>
+    <li>Point3D <a href="#rotatePoint">rotatePoint</a>(const Point3D &amp;original)</li>
+    <li>void <a href="#set">set</a>(unsigned int index, MHFloat newValue)</li>
+    <li>EulerAngle <a href="#toEuler">toEuler</a>(void)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">Matrix3x3</a>(void)</h3>
+<p>
+Default constructor, creates a matrix where every entry is zero.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">Matrix3x3</a>(const Matrix3x3 &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a matrix that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="determinant">determinant</a>(void)</h3>
+<p>
+Returns the matrix's determinant.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="fromEuler1">fromEuler</a>(const <a href="eulerangle.html">EulerAngle</a> &amp;<span class="param">rotation</span>)</h3>
+<h3>void <a name="fromEuler2">fromEuler</a>(<a href="install.html#MHFloat">MHFloat</a> <span class="param">pitch</span>, <a href="install.html#MHFloat">MHFloat</a> <span class="param">yaw</span>, <a href="install.html#MHFloat">MHFloat</a> <span class="param">roll</span>)</h3>
+<p>
+Sets this matrix to represent the specified <i>rotation</i>, which should be in degrees.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="get">get</a>(unsigned int <span class="param">index</span>)</h3>
+<p>
+Returns the matrix element at the specified <i>index</i>. The indices are laid out like so:
+</p>
+
+
+<p>
+<br />
+</p>
+<h3>bool <a name="inverse">inverse</a>(Matrix3x3 &amp;<span class="param">inverted</span>)</h3>
+<p>
+Sets <i>inverted</i> to be the inverse of this matrix. Returns false if this matrix's <a href="#determinant">determinant</a> is near zero, and the inverse couldn't be computed.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="point3d.html">Point3D</a> <a name="rotatePoint">rotatePoint</a>(const <a href="point3d.html">Point3D</a> &amp;<span class="param">original</span>)</h3>
+<p>
+Rotates the point around the origin, and returns its new position.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="set">set</a>(unsigned int <span class="param">index</span>, <a href="install.html#MHFloat">MHFloat</a> <span class="param">newValue</span>)</h3>
+<p>
+Set the matrix element at <i>index</i> to <i>newValue</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="eulerangle.html">EulerAngle</a> <a name="toEuler">toEuler(void)</a></h3>
+<p>
+Converts the rotation in this matrix to a Euler Angle.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+</body>
+</html>

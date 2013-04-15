@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Light</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Light</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<h3>Member Functions</h3>
+<ul>
+    <li><a href="#constructor">EG_Light</a>(unsigned int newIndex)</li>
+    <li>EG_Light&amp; operator<a href="#equal">=</a> (const EG_Light &amp;source)</li>
+    <li>void <a href="#disable">disable</a>(void)</li>
+    <li>void <a href="#enable">enable</a>(void)</li>
+    <li>bool <a href="#getEnabled">getEnabled</a>(void)</li>
+    <li>MHTypes::Point3D <a href="#getPosition">getPosition</a>(void)</li>
+    <li>void <a href="#setAmbient">setAmbient</a>(EG_Color newColor)</li>
+    <li>void <a href="#setDiffuse">setDiffuse</a>(EG_Color newColor)</li>
+    <li>void <a href="#setDirection">setDirection</a>(const MHTypes::EulerAngle &amp;newDirection)</li>
+    <li>void <a href="#setPosition">setPosition</a>(const MHTypes::Point3D &amp;newPosition)</li>
+    <li>void <a href="#setToLocal">setToLocal</a>(const MHTypes::Point3D &amp;newPosition, const MHTypes::EulerAngle &amp;newDirection)</li>
+    <li>void <a href="#setToDirectional">setToDirectional</a>(const MHTypes::EulerAngle &amp;newDirection)</li>
+    <li>void <a href="#setSpecular">setSpecular</a>(EG_Color newColor)</li>
+</ul>
+
+<h3>Member Variables</h3>
+<ul>
+    <li>static const unsigned int <a href="#MAX_LIGHTS">MAX_LIGHTS</a></li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor">EG_Light</a>(unsigned int newIndex)</h3>
+<p>
+This constructor is meant for use by EG_Engine, which creates a pool of lights for use by the program. Rather than creating your own lights, you should access the lights contained in <a href="egengine.html#getLight">EG_Engine</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_Light&amp; operator<a name="equal">=</a> (const EG_Light &amp;<span class="param">source</span>)</h3>
+<p>
+Sets this light to have the same settings as <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="disable">disable</a>(void)</h3>
+<p>
+Disable the light. Lights 1 to <a href="#MAX_LIGHTS">MAX_LIGHTS</a> are disabled by default.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="enable">enable</a>(void)</h3>
+<p>
+Enable this light. It will begin illuminating the scene based on its position and color.
+</p>
+
+<p>
+<br />
+</p>
+<h3>bool <a name="getEnabled">getEnabled</a>(void)</h3>
+<p>
+Returns true if this light is currently illuminating the scene, false otherwise.
+</p>
+
+<p>
+<br />
+</p>
+<h3>MHTypes::Point3D <a name="getPosition">getPosition</a>(void)</h3>
+<p>
+Returns this light's position. The position will only be valid for <a href="#setToLocal">local</a> lights.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setAmbient">setAmbient</a>(<a href="egcolor.html">EG_Color</a> <span class="param">newColor</span>)</h3>
+<p>
+Set the light's ambient color. Ambient light:
+</p>
+<ul>
+    <li>Represents light that was reflected off one or more surfaces before illuminating the object.</li>
+    <li>Does not have an obvious source.</li>
+    <li>Scatters equally in all directions when it hits an object.</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setDiffuse">setDiffuse</a>(<a href="egcolor.html">EG_Color</a> <span class="param">newColor</span>)</h3>
+<p>
+Set the light's diffuse color. Diffuse light:
+</p>
+<ul>
+    <li>Comes from one direction.
+    <li>Is brighter if it hits the object straight on, rather than glancing off.
+    <li>Scatters equally in all directions when it hits an object.
+</ul>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setDirection">setDirection</a>(const MHTypes::EulerAngle &amp;<span class="param">newAngle</span>)</h3>
+<p>
+Set the light's direction to <i>newAngle</i>. This function currently has no effect on local lights, since spotlights aren't implemented. Local lights always emit light in all directions.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setPosition">setPosition</a>(const MHTypes::Point3D &amp;<span class="param">newPosition</span>)</h3>
+<p>
+Set the light's position. This only has an effect for <a href="#setToLocal">local</a> lights.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setToLocal">setToLocal</a>(const MHTypes::Point3D &amp;<span class="param">newPosition</span>, const MHTypes::EulerAngle &amp;<span class="param">newDirection</span>)</h3>
+<p>
+Configure this EG_Light to be a local light. Local lights are affected by their position - for example, a light bulb is a local light. Currently, setting newDirection does nothing, since spotlights aren't yet implemented. Local lights always shine in all directions.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setToDirectional">setToDirectional</a>(const MHTypes::EulerAngle &amp;<span class="param">newDirection</span>)</h3>
+<p>
+Configure this EG_Light to be a directional light. Directional lights have no position, and can be thought of as very far away. For example, the Sun is a directional light.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setSpecular">setSpecular</a>(EG_Color <span class="param">newColor</span>)</h3>
+<p>
+Set the light's specular color. Specular light:
+</p>
+<ul>
+    <li>Comes from one direction.
+    <li>Bounces off a surface in a preferred direction.
+    <li>Adds highlights, makes objects appear shiny.
+</ul>
+
+<p>
+<br />
+</p>
+<h3>static const unsigned int <a name="MAX_LIGHTS">MAX_LIGHTS</a></h3>
+<p>
+The number of OpenGL lights available in the scene. MAX_LIGHTS tells us how many lights can be accessed by EG_Engine's <a href="egengine.html#getLight">getLight</a> function.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

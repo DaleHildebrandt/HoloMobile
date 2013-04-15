@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EulerAngle</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EulerAngle</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A EulerAngle represents a rotation amount in 3D space. We can convert it into a <a href="matrix.html">Matrix3x3</a> to rotate a point, or into a <a href="quaternion.html">Quaternion</a> to calculate smooth rotations. See the <a href="overview.html">Rotation Overview</a> section for more details.
+</p>
+
+<h3>Member Functions</h3>
+<ul>
+    <li><a href="#constructor1">EulerAngle</a>(void)</li>
+    <li><a href="#constructor2">EulerAngle</a>(const EulerAngle &amp;source)</li>
+    <li><a href="#constructor3">EulerAngle</a>(MHFloat newPitch, MHFloat newYaw, MHFloat newRoll)</li>
+</ul>
+
+<h3>Member Variables</h3>
+<ul>
+    <li>MHFloat <a href="#pitch">pitch</a></li>
+    <li>MHFloat <a href="#yaw">yaw</a></li>
+    <li>MHFloat <a href="#roll">roll</a></li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EulerAngle</a>(void)</h3>
+<p>
+Default constructor, sets <a href="#pitch">pitch</a>, <a href="#yaw">yaw</a> and <a href="#roll">roll</a> to zero.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EulerAngle</a>(const EulerAngle &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, sets this EulerAngle to be a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor3">EulerAngle</a>(<a href="install.html#MHFloat">MHFloat</a> <span class="param">newPitch</span>, <a href="install.html#MHFloat">MHFloat</a> <span class="param">newYaw</span>, <a href="install.html#MHFloat">MHFloat</a> <span class="param">newRoll</span>)</h3>
+<p>
+Constructor, sets <a href="#pitch">pitch</a>, <a href="#yaw">yaw</a> and <a href="#roll">roll</a> to the specified values.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="pitch">pitch</a></h3>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="yaw">yaw</a></h3>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="roll">roll</a></h3>
+<p>
+The angles being stored in this object, publicly exposed for convenience.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

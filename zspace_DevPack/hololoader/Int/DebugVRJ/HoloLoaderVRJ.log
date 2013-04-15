@@ -1,0 +1,22 @@
+﻿Build started 26/02/2013 1:02:41 PM.
+     1>Project "C:\VisBox_Development_Pack\hololoader\HoloLoaderVRJ.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Int\DebugVRJ\HoloLoaderVRJ.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\tools\assimp_64bit_vs2010\include /I. /I\include /I\include /IC:\tools\hcilibs_64bit_vs2010\include /IC:\tools\devil_64bit_vs2010\include /Zi /nologo /W3 /WX- /Od /D CPPDOM_DYN_LINK /D BOOST_ALL_DYN_LINK /D JUGGLER_DEBUG /D _CONSOLE /D WIN32 /Gm- /EHsc /MDd /GS- /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Int\DebugVRJ\\" /Fd"Int\DebugVRJ\vc100.pdb" /Gd /TP /wd4244 /wd4251 /wd4275 /wd4290 /errorReport:prompt source\internal\HoloApp.cpp source\internal\InputHandler.cpp source\internal\Navigation.cpp source\main.cpp source\HoloLoader.cpp /Zm800 
+         HoloApp.cpp
+     1>c:\visbox_development_pack\hololoader\source\internal\HoloApp.hpp(29): fatal error C1083: Cannot open include file: 'vrj/vrjConfig.h': No such file or directory
+         InputHandler.cpp
+     1>c:\visbox_development_pack\hololoader\source\internal\InputHandler.hpp(30): fatal error C1083: Cannot open include file: 'gadget/Type/PositionInterface.h': No such file or directory
+         Navigation.cpp
+     1>c:\visbox_development_pack\hololoader\source\internal\InputHandler.hpp(30): fatal error C1083: Cannot open include file: 'gadget/Type/PositionInterface.h': No such file or directory
+         main.cpp
+     1>c:\visbox_development_pack\hololoader\source\internal/HoloApp.hpp(29): fatal error C1083: Cannot open include file: 'vrj/vrjConfig.h': No such file or directory
+         HoloLoader.cpp
+     1>c:\visbox_development_pack\hololoader\source\internal/HoloApp.hpp(29): fatal error C1083: Cannot open include file: 'vrj/vrjConfig.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\VisBox_Development_Pack\hololoader\HoloLoaderVRJ.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.60

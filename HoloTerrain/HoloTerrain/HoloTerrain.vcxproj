@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{80FB8056-561D-4FF0-BB4A-744757B519D5}</ProjectGuid>
+    <RootNamespace>HoloTerrain</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExecutablePath>C:\zTools\Bin;$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\boost32;C:\zTools\Inc;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <LibraryPath>C:\zTools\Lib;C:\boost32\stage\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ZSCommon_D.lib;ZSStereo_D.lib;ZSTracker_D.lib;glew32.lib;openGL32.lib;glu32.lib;SOIL.lib;ViconDataStreamSDK_CPP.lib;SDL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\source\calibration.txt" />
+    <None Include="..\source\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\Color3f.cpp" />
+    <ClCompile Include="..\source\Cube.cpp" />
+    <ClCompile Include="..\source\CustomStereoNoTracking.cpp" />
+    <ClCompile Include="..\source\Input\ViconDataStreamClient.cpp" />
+    <ClCompile Include="..\source\libmathhelp\EulerAngle.cpp" />
+    <ClCompile Include="..\source\libmathhelp\Matrix3x3.cpp" />
+    <ClCompile Include="..\source\libmathhelp\MHVector.cpp" />
+    <ClCompile Include="..\source\libmathhelp\Plane.cpp" />
+    <ClCompile Include="..\source\libmathhelp\Point2D.cpp" />
+    <ClCompile Include="..\source\libmathhelp\Point3D.cpp" />
+    <ClCompile Include="..\source\libmathhelp\Quaternion.cpp" />
+    <ClCompile Include="..\source\MathHelper.cpp" />
+    <ClCompile Include="..\source\Model\Calibrator.cpp" />
+    <ClCompile Include="..\source\Model\Finger.cpp" />
+    <ClCompile Include="..\source\Model\Tablet.cpp" />
+    <ClCompile Include="..\source\ObjectTracker.cpp" />
+    <ClCompile Include="..\source\OpenGlScene.cpp" />
+    <ClCompile Include="..\source\OpenGlWindow.cpp" />
+    <ClCompile Include="..\source\TabletServer.cpp" />
+    <ClCompile Include="..\source\Terrain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\Color3f.h" />
+    <ClInclude Include="..\source\Cube.h" />
+    <ClInclude Include="..\source\CustomStereoNoTracking.h" />
+    <ClInclude Include="..\source\Input\Client.h" />
+    <ClInclude Include="..\source\Input\ViconDataStreamClient.h" />
+    <ClInclude Include="..\source\libmathhelp\EulerAngle.hpp" />
+    <ClInclude Include="..\source\libmathhelp\Matrix3x3.hpp" />
+    <ClInclude Include="..\source\libmathhelp\MHSettings.hpp" />
+    <ClInclude Include="..\source\libmathhelp\MHVector.hpp" />
+    <ClInclude Include="..\source\libmathhelp\Plane.hpp" />
+    <ClInclude Include="..\source\libmathhelp\Point2D.hpp" />
+    <ClInclude Include="..\source\libmathhelp\Point3D.hpp" />
+    <ClInclude Include="..\source\libmathhelp\Quaternion.hpp" />
+    <ClInclude Include="..\source\MathHelper.hpp" />
+    <ClInclude Include="..\source\Model\Calibrator.h" />
+    <ClInclude Include="..\source\Model\Finger.h" />
+    <ClInclude Include="..\source\Model\Tablet.h" />
+    <ClInclude Include="..\source\ObjectTracker.h" />
+    <ClInclude Include="..\source\OpenGlScene.h" />
+    <ClInclude Include="..\source\OpenGlWindow.h" />
+    <ClInclude Include="..\source\PointLineDist.h" />
+    <ClInclude Include="..\source\TabletServer.h" />
+    <ClInclude Include="..\source\Terrain.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

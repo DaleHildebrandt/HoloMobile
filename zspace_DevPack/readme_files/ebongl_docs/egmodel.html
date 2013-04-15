@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Model</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Model</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+EG_Model lets us load and display a 3D model. It inherits from the <a href="egobject.html">EG_Object</a> class, and can be added to an <a href="egengine.html">EG_Engine</a> to display it. EG_Model uses the Open Asset Import Library to handle a wide variety of file formats. However, the texture data for the model must be seperate from the mesh data. There should be a single mesh file that represents the model's 3D shape. The mesh file will refer to 1 or more texture files, which are 2D images that are wrapped around the model. They are sometimes referred to as 'skins'.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Member Functions</h3>
+<ul>
+    <li><a href="#constructor1">EG_Model</a>(unsigned int numContexts)</li>
+    <li>bool <a href="#loadMesh">loadMesh</a>(const EG_String &amp;fileName)</li>
+    <li>bool <a href="#loadTextures">loadTextures</a>(unsigned int glContextID)</li>
+    <li>void <a href="#setScale">setScale</a>(double newScale)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3>Member Variables</h3>
+<ul>
+    <li>static const unsigned int <a href="#MAX_TEXTURE_DIMENSION">MAX_TEXTURE_DIMENSION</a></li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_Model</a>(unsigned int <span class="param">numContexts</span>)</h3>
+<p>
+Create a new EG_Model. <i>numContexts</i> should be set to the same value as the number of viewports in the <a href="egutils.html#initEbonGL">EG_Utils::initEbonGL</a>() function.
+</p>
+
+<p>
+<br />
+</p>
+<h3>bool <a name="loadMesh">loadMesh</a>(const <a href="egstring.html">EG_String</a> &amp;<span class="param">fileName</span>)</h3>
+<p>
+Load the model shape from the specified <i>fileName</i>. Returns false on errors and outputs an error message to log file. Textures must be stored in a seperate file, and loaded with <a href="#loadTextures">loadTextures</a>. This function should only be called inside VRJuggler's GlApp::init() function. That is, all models must be loaded before drawing starts.
+</p>
+
+<p>
+<br />
+</p>
+<h3>bool <a name="loadTextures">loadTextures</a>(unsigned int <span class="param">glContextID</span>)</h3>
+<p>
+Once a model's mesh has been loaded, we can load the texture data here. Returns false on errors and outputs an error message to log file.
+</p>
+<p>
+loadTextures must be called inside of VRJuggler's GLApp::contextInit() function. contextInit is called once to initialize each OpenGL context we'll be using, which should be the number of contexts we specified in the <a href="#constructor1">constructor</a>. <i>glContextID</i> should be set to a value from 0 to <a href="#constructor1">numContexts</a>. Each time GLApp::contextInit() is called, we'll increment <i>glContextID</i> by one, until each context has been initialized with the texture data.
+</p>
+<p>
+An EG_Model should not be added to <a href="egengine.html">EG_Engine</a> until all contexts have finished initializing. (Don't add it to the EG_Engine inside of GLApp::contextInit).
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setScale">setScale</a>(double <span class="param">newScale</span>)</h3>
+<p>
+Set the scale at which this model will be drawn. If <i>newScale</i> is 1, it will be drawn at 100% size, use 0.5 for 50% size, etc.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static const unsigned int <a name="MAX_TEXTURE_DIMENSION">MAX_TEXTURE_DIMENSION</a></h3>
+<p>
+Defines the maximum size that a single texture can have, in pixels. The maximum image size is MAX_TEXTURE_DIMENSION x MAX_TEXTURE_DIMENSION. This prevents us from loading images that are too large for OpenGL to display.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

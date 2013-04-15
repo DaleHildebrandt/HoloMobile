@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class Quaternion</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class Quaternion</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A Quaternion consists of four floating-point values that represent a rotation amount. Their primary advantage is that they can calculate smooth rotations with <a href="#slerp">Spherical Linear intERPolation</a> (SLERP). You will need to convert Quaternions into rotation matrices before you can actually rotate a point.
+</p>
+
+<h3>Member Functions</h3>
+<ul>
+    <li><a href="#constructor1">Quaternion</a>(void)</li>
+    <li><a href="#constructor2">Quaternion</a>(const Quaternion &amp;source)</li>
+    <li>Quaternion <a href="#conjugate">conjugate</a>(void)</li>
+    <li>Quaternion <a href="#difference">difference</a>(const Quaternion &amp;quatTwo)</li>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#distance">distance</a>(Quaternion quatTwo) const</li>
+    <li>void <a href="#fromEuler1">fromEuler</a>(const EulerAngle &amp;eulerAngles)</li>
+    <li>void <a href="#fromEuler2">fromEuler</a>(<a href="install.html#MHFloat">MHFloat</a> pitch, <a href="install.html#MHFloat">MHFloat</a> yaw, <a href="install.html#MHFloat">MHFloat</a> roll)</li>
+    <li>Matrix3x3 <a href="#getRotationMatrix">getRotationMatrix</a>(void) const</li>
+    <li>Quaternion <a href="#inverse">inverse</a>(void)</li>
+    <li>Quaternion <a href="#multiply">multiply</a>(const Quaternion &amp;second) const</li>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#magnitude">magnitude</a>(void) const</li>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#normal">normal</a>(void) const</li>
+    <li>Quaternion <a href="#normalize">normalize</a>(void)</li>
+    <li>Quaternion <a href="#slerp">slerp</a>(const Quaternion &amp;quatTwo, <a href="install.html#MHFloat">MHFloat</a> amount, SlerpMethod method)</li>
+</ul>
+
+<h3>Member Variables</h3>
+<ul>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#w">w</a></li>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#x">x</a></li>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#y">y</a></li>
+    <li><a href="install.html#MHFloat">MHFloat</a> <a href="#z">z</a></li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">Quaternion</a>(void)</h3>
+<p>
+The default constructor, creates a Quaternion with w, x, y and z set to 0.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">Quaternion</a>(const Quaternion &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a Quaternion that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Quaternion <a name="conjugate">conjugate</a>(void)</h3>
+<p>
+Returns this Quaternion's conjugate, where x, y and z are all multiplied by -1.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Quaternion <a name="difference">difference</a>(const Quaternion &amp;<span class="param">quatTwo</span>)</h3>
+<p>
+The return value is the quaternion that will rotate this quaternion to <i>quatTwo</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="distance">distance</a>(Quaternion <span class="param">quatTwo</span>) const</h3>
+<p>
+Returns the rotational distance to <i>quatTwo</i> in degrees. <i>quatTwo</i> must be <a href="#normalize">normalized</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="fromEuler1">fromEuler</a>(const EulerAngle &amp;<span class="param">eulerAngles</span>)</h3>
+<p>
+Sets this Quaternion to the rotation given by <i>eulerAngles</i>, which should be in degrees.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="fromEuler2">fromEuler</a>(<a href="install.html#MHFloat">MHFloat</a> <span class="param">pitch</span>, MHFloat <span class="param">yaw</span>, MHFloat <span class="param">roll</span>)</h3>
+<p>
+Sets this Quaternion to the rotation given by <i>yaw</i>, <i>pitch</i>, and <i>roll</i>, which should be in degrees.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Matrix3x3 <a name="getRotationMatrix">getRotationMatrix</a>(void) const</h3>
+<p>
+Convert this Quaternion into a rotation matrix that we can use to rotate 3D points.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Quaternion <a name="inverse">inverse</a>(void)</h3>
+<p>
+Returns this quaternion's inverse. It's calculated by taking the Quaternion's <a href="#conjugate">conjugate</a> and dividing by the <a href="#normal">normal</a>. Throws an exception if the normal is zero.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Quaternion <a name ="multiply">multiply</a>(const Quaternion &amp;<span class="param">second</span>) const</h3>
+<p>
+Multiplies this Quaternion by <i>second</i> and returns the result. The effect is to rotate this Quaternion by <i>second</i>. This function is non-commutative, so the order of multiplications matter.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="magnitude">magnitude</a>(void) const</h3>
+<p>
+Returns the Quaternion's magnitude, which is the square root of the <a href="#normal">normal</a>. We can use the magnitude to check if the Quaternion needs to be <a href="#normalize">normalized</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="install.html#MHFloat">MHFloat</a> <a name="normal">normal</a>(void) const</h3>
+<p>
+Returns the Quaternion's normal, equal to w^2 + x^2 + y^2 + z^2.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Quaternion <a name="normalize">normalize</a>(void)</h3>
+<p>
+Returns the normalized version of this quaternion. After many calculations, Quaternions may eventually need to be normalized due to rounding errors on floating point numbers. You can test if the Quaternion needs normalizing if the <a href="#magnitude">magnitude</a> is beyond some threshold away from 1.
+</p>
+
+<p>
+<br />
+</p>
+<h3>Quaternion <a name="slerp">slerp</a>(const Quaternion &amp;<span class="param">quatTwo</span>, <a href="install.html#MHFloat">MHFloat</a> <span class="param">amount</span>, SlerpMethod <span class="param">method</span>)</h3>
+<p>
+Performs Spherical Linear intERPolation (SLERP) between this quaternion and <i>quatTwo</i>. <i>Amount</i> should be a value between zero (returns this quaternion) and 1 (returns quatTwo). If <i>amount</i> were 0.5, slerp would return a Quaternion that's midway between them.
+</p>
+<p>
+<i>method</i> specifies the type of rotation to produce. It can take one of the following values from the SlerpMethod enumeration:
+</p>
+<pre>
+    Q_SHORT              We'll use the shortest path. Rotation will be &lt;= 180 degrees.
+    Q_LONG               We'll use the longest path. Rotation will be &gt;= 180 degrees.
+    Q_CLOCKWISE          The rotation will be clockwise when viewed from above.
+    Q_COUNTER_CLOCKWISE  The rotation will be counter-clockwise when viewed from above.
+    Q_USER               The quaternions are interpolated exactly as given.
+</pre>
+
+<p>
+<br />
+</p>
+<h3>MHFloat <a name="w">w</a></h3>
+<h3>MHFloat <a name="x">x</a></h3>
+<h3>MHFloat <a name="y">y</a></h3>
+<h3>MHFloat <a name="z">z</a></h3>
+<p>
+These are the four values making up the Quaternion. They're publicly exposed for convenience.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+</body>
+</html>

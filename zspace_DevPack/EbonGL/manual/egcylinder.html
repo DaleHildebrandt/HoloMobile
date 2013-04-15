@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Cylinder</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Cylinder</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A hollow Cylinder. EG_Cylinder inherits from <a href="egobject.html">EG_Object</a>. We can adjust the radius of the top and base seperately to create cone-like shapes. The number of polygons making up the cylinder is determined by its number of <a href="#getStacks">stacks</a> and <a href="#getSlices">slices</a>.
+</p>
+
+<ul>
+    <li><a href="#constructor1">EG_Cylinder</a>(void)</li>
+    <li><a href="#constructor2">EG_Cylinder</a>(GLdouble radius, GLdouble height, GLint slices, GLint stacks)</li>
+    <li><a href="#constructor3">EG_Cylinder</a>(GLdouble base, GLdouble top, GLdouble height, GLint slices, GLint stacks)</li>
+    <li><a href="#constructor4">EG_Cylinder</a>(const EG_Cylinder &amp;source)>/li>
+    <li>EG_Cylinder&amp; operator<a href="#equal">=</a> (const EG_Cylinder &amp;source)</li>
+    <li>virtual EG_Object* <a href="#generateInstance">generateInstance</a>(void)</li>
+    <li>GLdouble <a href="#getBase">getBase</a>(void)</li>
+    <li>GLdouble <a href="#getTop">getTop</a>(void)</li>
+    <li>GLdouble <a href="#getHeight">getHeight</a>(void)</li>
+    <li>GLint <a href="#getSlices">getSlices</a>(void)</li>
+    <li>GLint <a href="#getStacks">getStacks</a>(void)</li>
+    <li>void <a href="#setBase">setBase</a>(GLdouble newBase)</li>
+    <li>void <a href="#setTop">setTop</a>(GLdouble newTop)</li>
+    <li>void <a href="#setHeight">setHeight</a>(GLdouble newHeight)</li>
+    <li>void <a href="#setSlices">setSlices</a>(GLint newSlices)</li>
+    <li>void <a href="#setStacks">setStacks</a>(GLint newStacks)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_Cylinder</a>(void)</h3>
+<p>
+Default constructor, creates a cylinder with <a href="#getBase">base</a> and <a href="#getTop">top</a> set to 0.5, <a href="#getSlices">slices</a> and <a href="#getStacks">stacks</a> set to 20, and <a href="#getHeight">height</a> set to 5.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EG_Cylinder</a>(GLdouble <span class="param">radius</span>, GLdouble <span class="param">height</span>, GLint <span class="param">slices</span>, GLint <span class="param">stacks</span>)</h3>
+<p>
+Normal constructor where you specify <a href="#getSlices">slices</a> and <a href="#getStacks">stacks</a>, and <a href="#getHeight">height</a>.  The <a href="#getBase">base</a> and <a href="#getTop">top</a> equal to the radius given.
+</p>
+
+
+<p>
+<br />
+</p>
+<h3><a name="constructor3">EG_Cylinder</a>(GLdouble <span class="param">base</span>, GLdouble <span class="param">top</span>, GLdouble <span class="param">height</span>, GLint <span class="param">slices</span>, GLint <span class="param">stacks</span>)</h3>
+<p>
+Glu-like constructor where you specify the <a href="#getBase">base</a>, <a href="#getTop">top</a>, <a href="#getHeight">height</a>, <a href="#getSlices">slices</a> and <a href="#getStacks">stacks</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor4">EG_Cylinder</a>(const EG_Cylinder &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a cylinder that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_Cylinder&amp; operator<a name="equal">=</a> (const EG_Cylinder &amp;<span class="param">source</span>)</h3>
+<p>
+Sets this cylinder to be a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual EG_Object* <a name="generateInstance">generateInstance</a>(void)</h3>
+<p>
+Returns a deep copy of this Cylinder.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLdouble <a name="getBase">getBase</a>(void)</h3>
+<p>
+Returns the size of the Cylinder's base.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLdouble <a name="getTop">getTop</a>(void)</h3>
+<p>
+Returns the size of the Cylinder's top.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLdouble <a name="getHeight">getHeight</a>(void)</h3>
+<p>
+Returns the Cylinders's height.
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLdouble <a name="getSlices">getSlices</a>(void)</h3>
+<p>
+Returns the number of slices in the Cylinder.
+Slices refer to the number of subdivisions around the z-axis (similar to lines of longitude).
+</p>
+
+<p>
+<br />
+</p>
+<h3>GLdouble <a name="getStacks">getStacks</a>(void)</h3>
+<p>
+Returns the number of stacks in the Cylinder.
+Stacks refer to the number of subdivisions along the z-axis (similar to lines of latitude)
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setBase">setBase</a>(GLdouble <span class="param">newBase</span>)</h3>
+<p>
+Sets the Cylinder's new base size.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setTop">setTop</a>(GLdouble <span class="param">newTop</span>)</h3>
+<p>
+Sets the Cylinder's new top size.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setHeight">setHeight</a>(GLdouble <span class="param">newHeight</span>)</h3>
+<p>
+Sets the Cylinder's new height.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setSlices">setSlices</a>(GLint <span class="param">newSlices</span>)</h3>
+<p>
+Sets the number of slices in the Cylinder.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setStacks">setStacks</a>(GLint <span class="param">newStacks</span>)</h3>
+<p>
+Sets the number of stacks in the Cylinder.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

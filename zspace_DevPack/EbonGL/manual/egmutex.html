@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Mutex</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Mutex</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+A simple cross-platform mutex.
+</p>
+
+<ul>
+    <li><a href="#constructor">EG_Mutex(void)</a></li>
+    <li>EG_String <a href="#getErrMsg">getErrMsg(void)</a></li>
+    <li>void <a href="#lock">lock(void)</a></li>
+    <li>void <a href="#unlock">unlock(void)</a></li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor">EG_Mutex(void)</a></h3>
+<p>
+Default constructor. Throws an exception if we couldn't create a new mutex.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a href="egstring.html">EG_String</a> <a name="getErrMsg">getErrMsg(void)</h3>
+<p>
+In the (very rare) event that one of the other classes throws an exception, you can get a description of the problem here.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="lock">lock(void)</a></h3>
+<p>
+Lock this mutex, waiting until it becomes unlocked if necessary. Throws an exception if we couldn't lock it.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="unlock">unlock(void)</h3>
+<p>
+Unlock this mutex. Throws an exception if we run into an error.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

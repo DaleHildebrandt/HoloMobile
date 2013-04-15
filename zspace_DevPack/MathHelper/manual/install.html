@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Installation</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Installation</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+Installation guides are provided for Linux and Windows:
+</p>
+
+<ul>
+    <li><a href="#linux">Linux Instructions</a></li>
+    <li><a href="#windows">Visual Studio Instructions</a></li>
+    <li><a href="#using">Using MathHelper</a></li>
+</ul>
+
+<p>
+<br />
+</p>
+<h2><a name="linux">Linux Instructions</a></h2>
+
+<p>
+These instructions should work on most Linux distributions.
+</p>
+
+<p>
+<br />
+</p>
+<h3>0. Requirements</h3>
+
+<p>
+The only requirement is the g++ compiler version 4 or later. Under Ubuntu, you can get g++ by installing the build-essential package.
+</p>
+
+<p>
+<br />
+</p>
+<h3>1. Compiling</h3>
+
+<p>
+Compiling is as simple as:
+</p>
+
+<ul>
+    <li>cd <i>mathhelper_directory</i></li>
+    <li>./configure</li>
+    <li>make</li>
+    <li>make install</li>
+</ul>
+
+<p>
+If you would like to install somewhere other than the default location, you can pass --prefix=/<i>my_location</i> to the configure script. The last step, make install, should be performed as root.
+</p>
+
+<p>
+<br />
+</p>
+<h3>2. Linking</h3>
+<p>
+Link your program to mathhelper and the math library:
+</p>
+<p>
+g++ MyProgram.cpp -lmathhelp -lm
+</p>
+
+<p>
+<br />
+</p>
+<h2><a name="windows">Visual Studio Instructions</a></h2>
+
+<p>
+A Visual Studio 2010 solution is provided to build MathHelper, named MathHelper.sln.
+</p>
+<p>
+It should produce libmathhelp.lib, or libmathhelp_d.lib in the debug version.
+</p>
+
+<p>
+<br />
+</p>
+<h2><a name="using">Using MathHelper</a></h2>
+
+<p>
+<br />
+</p>
+<h3>Include</h3>
+<p>
+To use MathHelper, include MathHelper.hpp:
+</p>
+<p class="dycode">
+#include "MathHelper.hpp"
+</p>
+
+<p>
+<br />
+</p>
+<h3>Namespace</h3>
+<p>
+All classes, enumerations and constants belong to the MHTypes namespace. They can be accessed either by adding the namespace:
+</p>
+<p class="dycode">
+using namespace MHTypes;
+</p>
+<p>
+or by specifying the scope:
+</p>
+<p class="dycode">
+MHTypes::Point3D myPoint;
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="MHFloat">MHFloat</a></h3>
+<p>
+The MathHelper classes use a custom variable type called MHFloat for their calculations. By default, MHFloat is a double. If you would like to set it to a different level of precision, you can find the definition in MHSettings.hpp:
+</p>
+<p class="dycode">
+typedef double MHFloat;
+</p>
+<p>
+Be sure to recompile MathHelper after changing MHFloat.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+</body>
+</html>

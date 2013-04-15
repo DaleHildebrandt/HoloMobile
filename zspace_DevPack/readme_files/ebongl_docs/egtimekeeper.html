@@ -1,0 +1,149 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_TimeKeeper</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_TimeKeeper</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+Provides the current time at a millisecond resolution. Each EG_TimeKeeper stores a time value that can be used to determine how much time has elapsed:
+</p>
+<pre class="dycode">
+EG_TimeKeeper myTime;
+
+//Store the current time
+myTime.updateTime();
+
+//Sleep for a second
+sleep(1);
+
+//Output the difference between the stored and current time
+cout &lt;&lt; myTime.timeElapsed() &lt;&lt; endl;
+</pre>
+
+<p>
+<br />
+</p>
+<ul>
+    <li><a href="#constructor1">EG_TimeKeeper</a>(void)</li>
+    <li><a href="#constructor2">EG_TimeKeeper</a>(const EG_TimeKeeper &amp;source)</li>
+    <li>EG_TimeKeeper&amp; operator<a href="#equal">=</a> (const EG_TimeKeeper &amp;source)</li>
+    <li>void <a href="#addTime">addTime</a>(uint32_t newTime)</li>
+    <li>uint16_t <a href="#getMilliseconds">getMilliseconds</a>(void)</li>
+    <li>uint32_t <a href="#getSeconds">getSeconds</a>(void)</li>
+    <li>void <a href="#setTime">setTime</a>(uint32_t newSeconds, uint16_t newMilliseconds)</li>
+    <li>uint32_t <a href="#timeElapsed">timeElapsed</a>(void)</li>
+    <li>void <a href="#updateTime">updateTime</a>(void)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_TimeKeeper</a>(void)</h3>
+<p>
+Default constructor, creates a new EG_TimeKeeper with a stored time of zero.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EG_TimeKeeper</a>(const EG_TimeKeeper &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates a EG_TimeKeeper with the same stored time as <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_TimeKeeper&amp; operator<a name="equal">=</a> (const EG_TimeKeeper &amp;<span class="param">source</span>)</h3>
+<p>
+Sets this object's stored time to be the same as <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="addTime">addTime</a>(uint32_t <span class="param">newTime</span>)</h3>
+<p>
+Adds the specified number of milliseconds to the stored time.
+</p>
+
+<p>
+<br />
+</p>
+<h3>uint16_t <a name="getMilliseconds">getMilliseconds</a>(void)</h3>
+<p>
+Returns the milliseconds component of the stored time.
+</p>
+
+<p>
+<br />
+</p>
+<h3>uint32_t <a name="getSeconds">getSeconds</a>(void)</h3>
+<p>
+Returns the seconds component of the stored time.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setTime">setTime</a>(uint32_t <span class="param">seconds</span>, uint16_t <span class="param">milliseconds</span>)</h3>
+<p>
+Sets the stored time to the specified number of <i>seconds</i> and <i>milliseconds</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>uint32_t <a name="timeElapsed">timeElapsed</a>(void)</h3>
+<p>
+Returns the difference between the stored time and the current time.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="updateTime">updateTime</a>(void)</h3>
+<p>
+Update the stored time to the current time.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

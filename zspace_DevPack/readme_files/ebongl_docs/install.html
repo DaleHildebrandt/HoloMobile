@@ -1,0 +1,188 @@
+<html>
+<head>
+<title>Installation</title>
+
+<style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+</style>
+</head>
+
+<body>
+<center><h1>Installation</h1></center>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+Installation guides are provided for the following platforms:
+</p>
+
+<ul>
+    <li><a href="#linux">Linux Instructions</a><br>
+    <li><a href="#windows">Visual Studio Instructions</a><br>
+    <li><a href="#using">Using EbonGL</a><br>
+</ul>
+
+<br>
+<h2><a name="linux">Linux Instructions</a></h2>
+
+<p>
+These instructions should work on most Linux distributions.
+</p>
+
+<p>
+<br />
+</p>
+<h3>0. Requirements</h3>
+
+<ul>
+    <li>g++ compiler version 4 or later</li>
+    <li>OpenGL development files, version 1.2 or later</li>
+    <li>GLUT development files</li>
+    <li>MathHelper library</li>
+    <li>Open Asset Import Library (Assimp)</li>
+    <li>Developer's Image Library (DevIL)</li>
+</ul>
+
+<p>
+Under Ubuntu, you can get g++ by installing the build-essential package. OpenGL and GLUT may be already installed along with your video card drivers, otherwise you can install them using the open-source packages mesa-common-dev and libglu1-mesa-dev.
+</p>
+
+<p>
+<br />
+</p>
+<h3>1. Compiling</h3>
+
+<p>
+Compiling is as simple as:
+</p>
+
+<ul>
+    <li>cd <i>ebongl_directory</i></li>
+    <li>./configure</li>
+    <li>make</li>
+    <li>make install</li>
+</ul>
+
+<p>
+If you would like to install somewhere other than the default location, you can pass --prefix=/my_location to the configure script. The last step, make install, should be performed as root.
+</p>
+
+<p>
+<br />
+</p>
+<h3>2. Linking</h3>
+<p>
+Link your program to EbonGL, MathHelper and the math library:
+</p>
+<p>
+g++ MyProgram.cpp -lebongl -lmathhelp -lm
+</p>
+<p>
+See the Assimp documentation for linking to Assimp and DevIL.
+</p>
+
+<p>
+<br />
+</p>
+<h2><a name="windows">Visual Studio Instructions</a></h2>
+
+<p>
+These instructions were tested on Windows 7.
+</p>
+
+<p>
+<br />
+</p>
+<h3>0. Requirements</h3>
+
+<ul>
+    <li>Visual Studio 2010 or later</li>
+    <li>OpenGL development files, version 1.2 or later</li>
+    <li>GLUT development files</li>
+    <li>MathHelper library</li>
+    <li>Open Asset Import Library (Assimp)</li>
+    <li>Developer's Image Library (DevIL)</li>
+</ul>
+
+<p>
+By default, EbonGL expects to find the MathHelper, DevIL and Assimp libraries in C:\tools.
+</p>
+<ul>
+    <li>MathHelper C:\tools\hcilibs_64bit_vs2010</li> 
+    <li>Assimp C:\tools\assimp_64bit_vs2010</li>
+    <li>DevIL C:\tools\devil_64bit_vs2010</li>
+</ul>
+
+<p>
+Each folder should contain the following subdirectories:
+</p>
+<ul>
+    <li>A \lib subdirectory for the library's .lib files
+    <li>An \include directory for the library's .hpp files
+</ul>
+
+<p>
+<br />
+</p>
+<h3>1. Building</h3>
+<p>
+A Visual Studio solution is provided for building EbonGL. Two files should be created:
+</p>
+<ul>
+    <li>Release Mode: libebongl.lib
+    <li>Debug Mode: libebongl_d.lib
+</ul>
+<p>
+The .lib files should be copied to your library folder. EbonGL's <i>libebongl</i> subdirectory should be copied to your /include folder, as well as EbonGL.hpp.
+</p>
+
+<p>
+<br />
+</p>
+<a name="using"><h2>Using EbonGL</h2>
+
+<h3>Include</h3>
+<p>
+To use EbonGL, include EbonGL.hpp:
+</p>
+<p class="dycode">
+#include "EbonGL.hpp"
+</p>
+
+<p>
+<br />
+</p>
+<h3>Namespace</h3>
+<p>
+All classes, enumerations and constants belong to the EbonGL namespace. They can be accessed either by adding the namespace:
+</p>
+<p class="dycode">
+using namespace EbonGL;
+</p>
+<p>
+or by specifying the scope:
+</p>
+<p class="dycode">
+EbonGL::EG_Color myColor;
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</p>
+<a href="index.html">Back to Contents</a>
+</body>
+</html>

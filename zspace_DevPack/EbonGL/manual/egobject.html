@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Object</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Object</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+All graphical objects that can be drawn in <a href="egengine.html">EG_Engine</a> inherit from EG_Object. EG_Object is an abstract class that represents an object's position, rotation, color, and other graphical settings.
+</p>
+
+<ul>
+    <li><a href="#constructor1">EG_Object</a>(void)</li>
+    <li><a href="#constructor2">EG_Object</a>(const EG_Object &amp;source)</li>
+    <li>EG_Object&amp; operator<a href="#equal">=</a> (const EG_Object &amp;source)</li>
+    <li>virtual EG_Object* <a href="#generateInstance">generateInstance</a>(void) = 0</li>
+    <li>EG_Color <a href="#getAmbientDiffuse">getAmbientDiffuse</a>(void)</li>
+    <li>virtual const EG_Polygon* <a href="#getPolygon">getPolygon</a>(unsigned int index) = 0</li>
+    <li>MHTypes::Point3D <a href="#getPosition">getPosition</a>(void)</li>
+    <li>MHTypes::EulerAngle <a href="#getRotation">getRotation</a>(void)</li>
+    <li>void <a href="#hide">hide</a>(void)</li>
+    <li>virtual unsigned int <a href="#numPolygons">numPolygons</a>(void) = 0</li>
+    <li>void <a href="#setAmbientDiffuse">setAmbientDiffuse</a>(const EG_Color &amp;newColor)</li>
+    <li>void <a href="#setLighting">setLighting</a>(bool enabled)</li>
+    <li>void <a href="#setPolygonMode">setPolygonMode</a>(GLenum newMode)</li>
+    <li>void <a href="#setPosition">setPosition</a>(const MHTypes::Point3D &amp;newPosition)</li>
+    <li>void <a href="#setShadowCasting">setShadowCasting</a>(bool enabled)</li>
+    <li>void <a href="#setShadowReceiving">setShadowReceiving</a>(bool enabled)</li>
+    <li>void <a href="#setRotation">setRotation</a>(const MHTypes::EulerAngle &amp;newRotation)</li>
+    <li>void <a href="#show">show</a>(void)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor1">EG_Object</a>(void)</h3>
+<p>
+Default constructor, creates a new graphics object.
+</p>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor2">EG_Object</a>(const EG_Object &amp;<span class="param">source</span>)</h3>
+<p>
+Copy constructor, creates an EG_Object that's a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_Object&amp; operator<a name="equal">=</a> (const EG_Object &amp;<span class="param">source</span>)</h3>
+<p>
+Sets this object to a copy of <i>source</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual EG_Object* <a name="generateInstance">generateInstance</a>(void) = 0</h3>
+<p>
+This function should be implemented by a child class. It returns an exact copy of this object, and is used internally by <a href="egengine.html">EG_Engine</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>EG_Color <a name="getAmbientDiffuse">getAmbientDiffuse</a>(void)</h3>
+<p>
+Returns this object's color.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual const EG_Polygon* <a name="getPolygon">getPolygon</a>(unsigned int <span class="param">index</span>) = 0</h3>
+<p>
+Returns one of the polygons making up this object. <i>index</i> indicates which polygon to retrive, and should be a number between 0 and <a href="#numPolygons">numPolygons</a> - 1.
+</p>
+
+<p>
+<br />
+</p>
+<h3>MHTypes::Point3D <a name="getPosition">getPosition</a>(void)</h3>
+<p>
+Returns this object's center coordinates.
+</p>
+
+<p>
+<br />
+</p>
+<h3>MHTypes::EulerAngle <a name="getRotation">getRotation</a>(void)</h3>
+<p>
+Returns this object's rotation, in degrees.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="hide">hide</a>(void)</h3>
+<p>
+Hides this object. The object is still part of the scene, but is not being drawn.
+</p>
+
+<p>
+<br />
+</p>
+<h3>virtual unsigned int <a name="numPolygons">numPolygons</a>(void) = 0</h3>
+<p>
+Returns the number of polygons in this object. Some objects, like <a href="egpointlist.html">points</a>, might not have any polygons.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setAmbientDiffuse">setAmbientDiffuse</a>(const EG_Color &amp;<span class="param">newColor</span>)</h3>
+<p>
+Set this object's color.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setLighting">setLighting</a>(bool <span class="param">enabled</span>)</h3>
+<p>
+If <i>enabled</i> is true, this object will be affected by light sources. If <i>enabled</i> is false, it will always be drawn at maximum brightness.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setPolygonMode">setPolygonMode</a>(GLenum <span class="param">newMode</span>)</h3>
+<p>
+Set the mode for drawing polygon faces. <i>newMode</i> can take one of the following values: GL_POINT, GL_LINE or GL_FILL.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setPosition">setPosition</a>(const MHTypes::Point3D &amp;<span class="param">newPosition</span>)</h3>
+<p>
+Set the position of the object's center, in scene coordinates.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setShadowCasting">setShadowCasting</a>(bool <span class="param">enabled</span>)</h3>
+<p>
+If <i>enabled</i> is true, this object will cast shadows. Set <i>enabled</i> to false to disable shadows. Shadows will only be cast if the EG_Engine has <a href="egengine.html#setShadows">shadows enabled</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setShadowReceiving">setShadowReceiving</a>(bool <span class="param">enabled</span>)</h3>
+<p>
+If <i>enabled</i> is true, this object will reflect shadows that were cast by another object.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="setRotation">setRotation</a>(const MHTypes::EulerAngle &amp;<span class="param">newRotation</span>)</h3>
+<p>
+Set the object's rotation. <i>newRotation</i> should be in degrees.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="show">show</a>(void)</h3>
+<p>
+Start drawing this object in the scene.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

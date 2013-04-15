@@ -1,0 +1,38 @@
+﻿Build started 4/12/2013 5:49:51 PM.
+     1>Project "C:\zspace_DevPack\hololoader\HoloLoader.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Int\DebugGLUT\HoloLoaderGLUT.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\tools\assimp_64bit_vs2010\include /I. /I\include /I\include /IC:\tools\hcilibs_64bit_vs2010\include /IC:\tools\devil_64bit_vs2010\include /IC:\tools\zspace_64bit\inc /Zi /nologo /W3 /WX- /Od /D CPPDOM_DYN_LINK /D BOOST_ALL_DYN_LINK /D JUGGLER_DEBUG /D _CONSOLE /D WIN32 /Gm- /EHsc /MDd /GS- /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Int\DebugGLUT\\" /Fd"Int\DebugGLUT\vc100.pdb" /Gd /TP /wd4244 /wd4251 /wd4275 /wd4290 /errorReport:prompt source\HoloLoader.cpp source\internal\HoloApp.cpp source\main.cpp /Zm800 -DEG_GLUT_MODE -DEG_ZSPACE_MODE 
+         HoloLoader.cpp
+         HoloApp.cpp
+     1>source\internal\HoloApp.cpp(421): warning C4482: nonstandard extension used: enum 'zspace::stereo::StereoFrustum::StereoEye' used in qualified name
+     1>source\internal\HoloApp.cpp(422): warning C4482: nonstandard extension used: enum 'zspace::stereo::StereoFrustum::StereoEye' used in qualified name
+         main.cpp
+         Generating Code...
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"DebugGLUT\HoloLoaderGLUT.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\zSpace64\zSpaceSDK\2.8.0.14536\Lib /LIBPATH:C:\tools\assimp_64bit_vs2010\lib /LIBPATH:C:\tools\hcilibs_64bit_vs2010\lib /LIBPATH:\lib /LIBPATH:c:\tools\devil_64bit_vs2010\lib /LIBPATH:\lib /LIBPATH:C:\tools\zspace_64bit\lib comctl32.lib ws2_32.lib opengl32.lib glu32.lib libmathhelp_d.lib libebongl_d.lib assimp.lib DevIL.lib ZSCommon_D.lib ZSStereo_D.lib ZSTracker_D.lib /MANIFEST /ManifestFile:"Int\DebugGLUT\HoloLoaderGLUT.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"DebugGLUT\HoloLoaderGLUT.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"DebugGLUT\HoloLoaderGLUT.lib" /MACHINE:X64 Int\DebugGLUT\HoloLoaderGLUT.exe.embed.manifest.res
+         Int\DebugGLUT\HoloApp.obj
+         Int\DebugGLUT\InputHandler.obj
+         Int\DebugGLUT\Navigation.obj
+         Int\DebugGLUT\ObjectTracker.obj
+         Int\DebugGLUT\main.obj
+         Int\DebugGLUT\HoloLoader.obj
+         Int\DebugGLUT\ModelLoader.obj
+         HoloLoader.vcxproj -> C:\zspace_DevPack\hololoader\DebugGLUT\HoloLoaderGLUT.exe
+       Manifest:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Int\DebugGLUT\HoloLoaderGLUT.exe.embed.manifest" /manifest Int\DebugGLUT\HoloLoaderGLUT.exe.intermediate.manifest
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         HoloLoader.vcxproj -> C:\zspace_DevPack\hololoader\DebugGLUT\HoloLoaderGLUT.exe
+       FinalizeBuildStatus:
+         Deleting file "Int\DebugGLUT\HoloLoaderGLUT.unsuccessfulbuild".
+         Touching "Int\DebugGLUT\HoloLoaderGLUT.lastbuildstate".
+     1>Done Building Project "C:\zspace_DevPack\hololoader\HoloLoader.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.93

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Class EG_Utils</title>
+    <meta http-equiv="content-type"
+        content="text/html;charset=utf-8" />
+
+    <style type="text/css">
+    <!--
+    .dycode {font-family: monospace;
+    color: green}
+    -->
+    <!--
+    .param {color: DarkGreen}
+    -->
+    </style>
+</head>
+
+<body>
+<div style="text-align:center;">
+    <h1>Class EG_Utils</h1>
+</div>
+<p>
+<br />
+<br />
+</p>
+
+<p>
+EG_Utils is a collection of utility functions that are used by multiple other classes within EbonGL. Creating an instance of EG_Utils and calling <a href="#initEbonGL">initEbonGL</a> should always be the first step in any EbonGL program.
+</p>
+
+<ul>
+    <li><a href="#constructor">EG_Utils</a>(void)</li>
+    <li>void <a href="#initEbonGL">initEbonGL</a>(unsigned int newViewports)</li>
+    <li>static void <a href="#addLog">addLog</a>(const EG_String &amp;newEntry)</li>
+    <li>static void <a href="#addVertex">addVertex</a>(std::vector<GLdouble> &amp;vertices, GLdouble vertexX, GLdouble vertexY, GLdouble vertexZ)</li>
+    <li>static void <a href="#fatalError">fatalError</a>(void)</li>
+    <li>static std::string <a href="#getErrMsg">getErrMsg</a>(void)</li>
+    <li>static unsigned int <a href="#getNumViewports">getNumViewports</a>(void)</li>
+    <li>static MHTypes::Point3D <a href="#getVertex">getVertex</a>(const std::vector<GLdouble> &amp;vertices, unsigned int index)</li>
+    <li>static EG_LogWriter* <a href="#log">log</a>(void)</li>
+    <li>static void <a href="#setColor">setColor</a>(std::vector<GLfloat> &amp;rgbaCol, MHTypes::MHFloat red, MHTypes::MHFloat green, MHTypes::MHFloat blue, MHTypes::MHFloat alpha)</li>
+    <li>static void <a href="#writeLog">writeLog</a>(const EG_String &amp;newEntry)</li>
+</ul>
+
+<p>
+<br />
+</p>
+<h3><a name="constructor">EG_Utils</a>(void)</h3>
+<p>
+Default constructor, creates a new EG_Utils. There should only ever be one EG_Utils per program.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static void <a name="addLog">addLog</a>(const <a href="egstring.html">EG_String</a> &amp;<span class="param">newEntry</span>)</h3>
+<p>
+Adds <i>newEntry</i> to the current line to add to EbonGL's log file. When you're finished with the current line, use <a href="#writeLog">writeLog</a> to output it to file and move to the next line.
+</p>
+
+<p>
+<br />
+</p>
+<h3>void <a name="initEbonGL">initEbonGL</a>(unsigned int <span class="param">newViewports</span>)</h3>
+<p>
+Initialize EbonGL. This function should be called before creating any <a href="egobject.html">graphics objects</a>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static void <a name="addVertex">addVertex</a>(std::vector<GLdouble> &amp;<span class="param">vertices</span>, GLdouble <span class="param">vertexX</span>, GLdouble <span class="param">vertexY</span>, GLdouble <span class="param">vertexZ</span>)</h3>
+<p>
+This convenience function adds a vertex to the specifed vector. We get three new elements, one for each of <i>vertexX</i>, <i>vertexY</i>, and <i>vertexZ</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static void <a name="fatalError">fatalError</a>(void)</h3>
+<p>
+Report that a fatal error has occurred, and the program should halt. This is intended to catch internal bugs.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static std::string <a name="getErrMsg">getErrMsg</a></h3>
+<p>
+Returns the most recent entry that was written to <a href="#log">log</a> file.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static unsigned int <a name="getNumViewports">getNumViewports</a>(void)</h3>
+<p>
+Returns the number of OpenGL viewports we're drawing to. Throws an exception if <a href="#initEbonGL">initEbonGL</a> hasn't been called.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static MHTypes::Point3D <a name="getVertex">getVertex</a>(const std::vector<GLdouble> &amp;<span class="param">vertices</span>, unsigned int <span class="param">index</span>)</h3>
+<p>
+Returns the vertex from the specified <i>index</i> in <i>vertices</i>. If <i>index</i> is 4, we'll use elements 12, 13, and 14 to get the vertice's x, y and z coordinates.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static EG_LogWriter* <a name="log">log</a>(void)</h3>
+<p>
+Returns a pointer to the <a href="eglogwriter.html">EG_LogWriter</a> EbonGL is using to record log messages.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static void <a name="setColor">setColor</a>(std::vector<GLfloat> &amp;<span class="param">rgbaCol</span>, MHTypes::MHFloat <span class="param">red</span>, MHTypes::MHFloat <span class="param">green</span>, MHTypes::MHFloat <span class="param">blue</span>, MHTypes::MHFloat <span class="param">alpha</span>)</h3>
+<p>
+Sets <i>rgbaCol</i> to be a four-element vector containing <i>red</i>, <i>green</i>, <i>blue</i> and <i>alpha</i>. Deletes any existing contents in <i>rgbaCol</i>.
+</p>
+
+<p>
+<br />
+</p>
+<h3>static void <a name="writeLog">writeLog</a>(const <a href="egstring.html">EG_String</a> &amp;<span class="param">newEntry</span>)</h3>
+<p>
+Outputs <i>newEntry</i> to the current line in EbonGL's log file, and moves to the next line.
+</p>
+
+<p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href="index.html">Back to Contents</a>
+</p>
+
+</body>
+</html>

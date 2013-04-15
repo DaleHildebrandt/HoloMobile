@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="libebongl\sceneobjects\EG_Cuboid.cpp">
+      <Filter>Scene Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\sceneobjects\EG_Cylinder.cpp">
+      <Filter>Scene Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\sceneobjects\EG_Model.cpp">
+      <Filter>Scene Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\sceneobjects\EG_ModelData.cpp">
+      <Filter>Scene Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\sceneobjects\EG_ModelInt.cpp">
+      <Filter>Scene Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\sceneobjects\EG_Object.cpp">
+      <Filter>Scene Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\sceneobjects\EG_PointList.cpp">
+      <Filter>Scene Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\sceneobjects\EG_Sphere.cpp">
+      <Filter>Scene Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\utilities\EG_BoolVector.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\utilities\EG_ConfigComments.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\utilities\EG_ConfigWriter.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\utilities\EG_ConfigWriterInt.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\utilities\EG_LogWriter.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\EG_Color.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\EG_Engine.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\EG_EngineInt.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\EG_Light.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\EG_Polygon.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\EG_SafeScene.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\EG_SceneElement.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\EG_Utils.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\utilities\EG_Mutex.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\utilities\EG_TimeKeeper.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\utilities\EG_String.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="libebongl\utilities\EG_StringInternal.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libebongl\sceneobjects\EG_Cuboid.hpp">
+      <Filter>Scene Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\sceneobjects\EG_Cylinder.hpp">
+      <Filter>Scene Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\sceneobjects\EG_Model.hpp">
+      <Filter>Scene Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\sceneobjects\EG_ModelData.hpp">
+      <Filter>Scene Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\sceneobjects\EG_ModelInt.hpp">
+      <Filter>Scene Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\sceneobjects\EG_Object.hpp">
+      <Filter>Scene Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\sceneobjects\EG_PointList.hpp">
+      <Filter>Scene Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\sceneobjects\EG_Sphere.hpp">
+      <Filter>Scene Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\utilities\EG_BoolVector.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\utilities\EG_ConfigComments.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\utilities\EG_ConfigWriter.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\utilities\EG_ConfigWriterInt.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\utilities\EG_LogWriter.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\EG_Color.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\EG_Engine.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\EG_EngineInt.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\EG_Light.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\EG_Polygon.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\EG_SafeScene.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\EG_SceneElement.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\EG_Settings.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\EG_Utils.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\utilities\EG_Mutex.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\utilities\EG_TimeKeeper.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\utilities\EG_String.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="libebongl\utilities\EG_StringInternal.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="EbonGL.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Scene Objects">
+      <UniqueIdentifier>{d9c68723-db23-48b6-bdf2-000068be8567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{bde144d7-ad56-4930-bb64-9926e01dfc13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{872f7078-3d8a-48d7-a396-396219f90b98}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

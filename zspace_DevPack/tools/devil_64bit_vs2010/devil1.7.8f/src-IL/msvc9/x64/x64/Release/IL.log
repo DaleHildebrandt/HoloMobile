@@ -1,0 +1,203 @@
+﻿Build started 7/9/2012 2:21:51 PM.
+     1>Project "C:\tools\devil-1.7.8\DevIL\src-IL\msvc9\IL.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "x64\x64\Release\IL.unsuccessfulbuild".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\tools\devil-1.7.8\dependencies\include" /I../../projects/msvc/extlibs/ /I../include /I../../include /Zi /nologo /W3 /WX- /O1 /Ob1 /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D IL_EXPORTS /D _VC80_UPGRADE=0x0600 /D _WINDLL /D _MBCS /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\../src/obj/x64/" /Fd".\../src/obj/x64/vc100.pdb" /Gd /TC /errorReport:prompt ..\src\altivec_common.c ..\src\altivec_typeconversion.c ..\src\il_alloc.c ..\src\il_bits.c ..\src\il_convbuff.c ..\src\il_convert.c ..\src\il_devil.c ..\src\il_endian.c ..\src\il_error.c ..\src\il_fastconv.c ..\src\il_files.c ..\src\il_header.c ..\src\il_icns.c ..\src\il_icon.c ..\src\il_internal.c ..\src\il_io.c ..\src\il_main.c ..\src\il_manip.c ..\src\il_neuquant.c ..\src\il_profiles.c ..\src\il_quantizer.c ..\src\il_register.c ..\src\il_rle.c ..\src\il_size.c ..\src\il_stack.c ..\src\il_states.c ..\src\il_utility.c ..\src\il_blp.c ..\src\il_bmp.c ..\src\il_cut.c ..\src\il_dcx.c "..\src\il_dds-save.c" ..\src\il_dds.c ..\src\il_dicom.c ..\src\il_doom.c ..\src\il_dpx.c ..\src\il_fits.c ..\src\il_ftx.c ..\src\il_gif.c ..\src\il_hdr.c ..\src\il_iff.c ..\src\il_ilbm.c ..\src\il_iwi.c ..\src\il_jp2.c ..\src\il_jpeg.c ..\src\il_lif.c ..\src\il_mdl.c ..\src\il_mng.c ..\src\il_mp3.c ..\src\il_pal.c ..\src\il_pcd.c ..\src\il_pcx.c ..\src\il_pic.c ..\src\il_pix.c ..\src\il_png.c ..\src\il_pnm.c ..\src\il_psd.c ..\src\il_psp.c ..\src\il_pxr.c ..\src\il_raw.c ..\src\il_rawdata.c ..\src\il_rot.c ..\src\il_sgi.c ..\src\il_sun.c ..\src\il_targa.c ..\src\il_texture.c ..\src\il_tiff.c ..\src\il_tpl.c ..\src\il_vtf.c ..\src\il_wal.c ..\src\il_wbmp.c ..\src\il_wdp.c ..\src\il_xpm.c
+         altivec_common.c
+         altivec_typeconversion.c
+         il_alloc.c
+         il_bits.c
+         il_convbuff.c
+         il_convert.c
+         il_devil.c
+         il_endian.c
+         il_error.c
+         il_fastconv.c
+         il_files.c
+         il_header.c
+         il_icns.c
+         il_icon.c
+         il_internal.c
+         il_io.c
+         il_main.c
+         il_manip.c
+         il_neuquant.c
+         il_profiles.c
+         Generating Code...
+         Compiling...
+         il_quantizer.c
+         il_register.c
+         il_rle.c
+         il_size.c
+         il_stack.c
+         il_states.c
+         il_utility.c
+         il_blp.c
+         il_bmp.c
+         il_cut.c
+         il_dcx.c
+         il_dds-save.c
+     1>..\src\il_dds-save.c(633): warning C4101: 'DXTCSize' : unreferenced local variable
+     1>..\src\il_dds-save.c(637): warning C4101: 'BlockData' : unreferenced local variable
+     1>..\src\il_dds-save.c(637): warning C4101: 'ByteData' : unreferenced local variable
+         il_dds.c
+         il_dicom.c
+         il_doom.c
+         il_dpx.c
+         il_fits.c
+         il_ftx.c
+         il_gif.c
+         il_hdr.c
+         Generating Code...
+         Compiling...
+         il_iff.c
+         il_ilbm.c
+         il_iwi.c
+         il_jp2.c
+         il_jpeg.c
+         il_lif.c
+         il_mdl.c
+         il_mng.c
+         il_mp3.c
+         il_pal.c
+         il_pcd.c
+         il_pcx.c
+         il_pic.c
+         il_pix.c
+         il_png.c
+         il_pnm.c
+         il_psd.c
+         il_psp.c
+         il_pxr.c
+         il_raw.c
+         Generating Code...
+         Compiling...
+         il_rawdata.c
+         il_rot.c
+         il_sgi.c
+         il_sun.c
+         il_targa.c
+         il_texture.c
+         il_tiff.c
+     1>..\src\il_tiff.c(328): warning C4244: '=' : conversion from 'tmsize_t' to 'uint32', possible loss of data
+     1>..\src\il_tiff.c(730): warning C4244: 'function' : conversion from 'tsize_t' to 'ILuint', possible loss of data
+     1>..\src\il_tiff.c(752): warning C4244: 'function' : conversion from 'tsize_t' to 'ILuint', possible loss of data
+     1>..\src\il_tiff.c(765): warning C4244: 'function' : conversion from 'toff_t' to 'ILint', possible loss of data
+     1>..\src\il_tiff.c(779): warning C4244: 'function' : conversion from 'toff_t' to 'ILint', possible loss of data
+         il_tpl.c
+         il_vtf.c
+         il_wal.c
+         il_wbmp.c
+         il_wdp.c
+         il_xpm.c
+         Generating Code...
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\tools\devil-1.7.8\dependencies\include" /I../../projects/msvc/extlibs/ /I../include /I../../include /Zi /nologo /W3 /WX- /O1 /Ob1 /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D IL_EXPORTS /D _VC80_UPGRADE=0x0600 /D _WINDLL /D _MBCS /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\../src/obj/x64/" /Fd".\../src/obj/x64/vc100.pdb" /Gd /TP /errorReport:prompt ..\src\il_nvidia.cpp ..\src\il_squish.cpp ..\src\il_exr.cpp ..\src\il_utx.cpp
+         il_nvidia.cpp
+         il_squish.cpp
+         il_exr.cpp
+         il_utx.cpp
+         Generating Code...
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D NDEBUG /D _VC80_UPGRADE=0x0600 /l"0x0409" /I..\include /nologo /fo"x64\x64\Release\IL.res" IL.rc 
+     1>C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winuser.rh(789): warning RC4005: 'HTTRANSPARENT' : redefinition
+         
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"DevIL.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\tools\devil-1.7.8\dependencies\lib" lcms2_DLL.lib libtiff.lib libpng15.lib comdlg32.lib user32.lib advapi32.lib gdi32.lib shell32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib Delayimp.lib /DEF:".\il.def" /DELAYLOAD:"ilmimf.dll half.dll nvtt.dll" /MANIFEST /ManifestFile:"x64\x64\Release\DevIL.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"../../lib/vc9/x64/DevIL.pdb" /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"../../lib/vc9/x64/DevIL.lib" /MACHINE:X64 /DLL x64\x64\Release\IL.res
+         .\../src/obj/x64/altivec_common.obj
+         .\../src/obj/x64/altivec_typeconversion.obj
+         .\../src/obj/x64/il_alloc.obj
+         .\../src/obj/x64/il_bits.obj
+         .\../src/obj/x64/il_convbuff.obj
+         .\../src/obj/x64/il_convert.obj
+         .\../src/obj/x64/il_devil.obj
+         .\../src/obj/x64/il_endian.obj
+         .\../src/obj/x64/il_error.obj
+         .\../src/obj/x64/il_fastconv.obj
+         .\../src/obj/x64/il_files.obj
+         .\../src/obj/x64/il_header.obj
+         .\../src/obj/x64/il_icns.obj
+         .\../src/obj/x64/il_icon.obj
+         .\../src/obj/x64/il_internal.obj
+         .\../src/obj/x64/il_io.obj
+         .\../src/obj/x64/il_main.obj
+         .\../src/obj/x64/il_manip.obj
+         .\../src/obj/x64/il_neuquant.obj
+         .\../src/obj/x64/il_nvidia.obj
+         .\../src/obj/x64/il_profiles.obj
+         .\../src/obj/x64/il_quantizer.obj
+         .\../src/obj/x64/il_register.obj
+         .\../src/obj/x64/il_rle.obj
+         .\../src/obj/x64/il_size.obj
+         .\../src/obj/x64/il_squish.obj
+         .\../src/obj/x64/il_stack.obj
+         .\../src/obj/x64/il_states.obj
+         .\../src/obj/x64/il_utility.obj
+         .\../src/obj/x64/il_blp.obj
+         .\../src/obj/x64/il_bmp.obj
+         .\../src/obj/x64/il_cut.obj
+         .\../src/obj/x64/il_dcx.obj
+         ".\../src/obj/x64/il_dds-save.obj"
+         .\../src/obj/x64/il_dds.obj
+         .\../src/obj/x64/il_dicom.obj
+         .\../src/obj/x64/il_doom.obj
+         .\../src/obj/x64/il_dpx.obj
+         .\../src/obj/x64/il_exr.obj
+         .\../src/obj/x64/il_fits.obj
+         .\../src/obj/x64/il_ftx.obj
+         .\../src/obj/x64/il_gif.obj
+         .\../src/obj/x64/il_hdr.obj
+         .\../src/obj/x64/il_iff.obj
+         .\../src/obj/x64/il_ilbm.obj
+         .\../src/obj/x64/il_iwi.obj
+         .\../src/obj/x64/il_jp2.obj
+         .\../src/obj/x64/il_jpeg.obj
+         .\../src/obj/x64/il_lif.obj
+         .\../src/obj/x64/il_mdl.obj
+         .\../src/obj/x64/il_mng.obj
+         .\../src/obj/x64/il_mp3.obj
+         .\../src/obj/x64/il_pal.obj
+         .\../src/obj/x64/il_pcd.obj
+         .\../src/obj/x64/il_pcx.obj
+         .\../src/obj/x64/il_pic.obj
+         .\../src/obj/x64/il_pix.obj
+         .\../src/obj/x64/il_png.obj
+         .\../src/obj/x64/il_pnm.obj
+         .\../src/obj/x64/il_psd.obj
+         .\../src/obj/x64/il_psp.obj
+         .\../src/obj/x64/il_pxr.obj
+         .\../src/obj/x64/il_raw.obj
+         .\../src/obj/x64/il_rawdata.obj
+         .\../src/obj/x64/il_rot.obj
+         .\../src/obj/x64/il_sgi.obj
+         .\../src/obj/x64/il_sun.obj
+         .\../src/obj/x64/il_targa.obj
+         .\../src/obj/x64/il_texture.obj
+         .\../src/obj/x64/il_tiff.obj
+         .\../src/obj/x64/il_tpl.obj
+         .\../src/obj/x64/il_utx.obj
+         .\../src/obj/x64/il_vtf.obj
+         .\../src/obj/x64/il_wal.obj
+         .\../src/obj/x64/il_wbmp.obj
+         .\../src/obj/x64/il_wdp.obj
+         .\../src/obj/x64/il_xpm.obj /ignore:4197 
+         libtiff.lib(jdmarker.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+            Creating library ../../lib/vc9/x64/DevIL.lib and object ../../lib/vc9/x64/DevIL.exp
+         Generating code
+         Finished generating code
+     1>LINK : warning LNK4199: /DELAYLOAD:ilmimf.dll half.dll nvtt.dll ignored; no imports found from ilmimf.dll half.dll nvtt.dll
+         IL.vcxproj -> C:\tools\devil-1.7.8\DevIL\src-IL\msvc9\DevIL.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"DevIL.dll;#2" /manifest x64\x64\Release\DevIL.dll.intermediate.manifest
+       PostBuildEvent:
+         copy C:\tools\devil-1.7.8\DevIL\src-IL\msvc9\DevIL.dll c:\windows\system32
+         :VCEnd
+                 1 file(s) copied.
+       FinalizeBuildStatus:
+         Deleting file "x64\x64\Release\IL.unsuccessfulbuild".
+         Touching "x64\x64\Release\IL.lastbuildstate".
+     1>Done Building Project "C:\tools\devil-1.7.8\DevIL\src-IL\msvc9\IL.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:22.76

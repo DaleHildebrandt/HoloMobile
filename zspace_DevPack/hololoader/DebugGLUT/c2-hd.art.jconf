@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?org-vrjuggler-jccl-settings configuration.version="3.0"?>
+<configuration xmlns="http://www.vrjuggler.org/jccl/xsd/3.0/configuration" name="Configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vrjuggler.org/jccl/xsd/3.0/configuration http://www.vrjuggler.org/jccl/xsd/3.0/configuration.xsd">
+   <elements>
+      <input_manager name="Input Manager" version="2">
+         <driver_path>/usr/lib64/gadgeteer/drivers/</driver_path>
+         <driver>DTrack_drv</driver>
+      </input_manager>
+      <alias name="VJWand" version="1">
+         <proxy>Wand Proxy</proxy>
+      </alias>
+      <position_proxy name="Wand Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>0</unit>
+         <position_filters>
+            <position_transform_filter name="Position Filters" version="1">
+               <pre_translate>0.0</pre_translate>
+               <pre_translate>0.0</pre_translate>
+               <pre_translate>0.0</pre_translate>
+               <pre_rotation>0.0</pre_rotation>
+               <pre_rotation>0.0</pre_rotation>
+               <pre_rotation>0.0</pre_rotation>
+               <custom_scale>1.0</custom_scale>
+               <device_units>1.0</device_units>
+               <post_translate>0.0</post_translate>
+               <post_translate>0.0</post_translate>
+               <post_translate>0.0</post_translate>
+<!---
+               <post_rotation>-90.0</post_rotation>
+               <post_rotation>-90.0</post_rotation>
+               <post_rotation>90.0</post_rotation>
+               <post_rotation>-45.0</post_rotation>
+-->
+               <post_rotation>0.0</post_rotation>
+               <post_rotation>0.0</post_rotation>
+               <post_rotation>0.0</post_rotation>
+            </position_transform_filter>
+         </position_filters>
+      </position_proxy>
+      <position_proxy name="Head Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>1</unit>
+         <position_filters>
+            <position_transform_filter name="Position Filters" version="1">
+               <pre_translate>0.0</pre_translate>
+               <pre_translate>0.0</pre_translate>
+               <pre_translate>0.0</pre_translate>
+               <pre_rotation>0.0</pre_rotation>
+               <pre_rotation>0.0</pre_rotation>
+               <pre_rotation>0.0</pre_rotation>
+               <custom_scale>1.0</custom_scale>
+               <device_units>1.0</device_units>
+               <post_translate>0.0</post_translate>
+               <post_translate>0.0</post_translate>
+               <post_translate>0.0</post_translate>
+<!--
+               <post_rotation>-90.0</post_rotation>
+               <post_rotation>-90.0</post_rotation>
+-->
+               <post_rotation>0.0</post_rotation>
+               <post_rotation>0.0</post_rotation>
+               <post_rotation>0.0</post_rotation>
+            </position_transform_filter>
+         </position_filters>
+      </position_proxy>
+      <digital_proxy name="Button 0 Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>0</unit>
+      </digital_proxy>
+      <digital_proxy name="Button 1 Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>1</unit>
+      </digital_proxy>
+      <digital_proxy name="Button 2 Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>2</unit>
+      </digital_proxy>
+      <digital_proxy name="Button 3 Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>3</unit>
+      </digital_proxy>
+      <digital_proxy name="Button 4 Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>4</unit>
+      </digital_proxy>
+      <digital_proxy name="Button 5 Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>5</unit>
+      </digital_proxy>
+      <analog_proxy name="Analog 0 Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>0</unit>
+      </analog_proxy> 
+      <analog_proxy name="Analog 1 Proxy" version="1">
+         <device>DTrackDevice0</device>
+         <unit>1</unit>
+      </analog_proxy>
+     <alias name="VJHead" version="1">
+         <proxy>Head Proxy</proxy>
+      </alias>
+      <alias name="VJButton5" version="1">
+         <proxy>Button 0 Proxy</proxy>
+      </alias>
+      <alias name="VJButton4" version="1">
+         <proxy>Button 1 Proxy</proxy>
+      </alias>
+      <alias name="VJButton0" version="1">
+         <proxy>Button 2 Proxy</proxy>
+      </alias>
+      <alias name="VJButton1" version="1">
+         <proxy>Button 3 Proxy</proxy>
+      </alias>
+      <alias name="VJButton2" version="1">
+         <proxy>Button 4 Proxy</proxy>
+      </alias>
+      <alias name="VJButton3" version="1">
+         <proxy>Button 5 Proxy</proxy>
+      </alias>
+      <alias name="VJAnalog0" version="1">
+         <proxy>Analog 0 Proxy</proxy>
+      </alias>
+      <alias name="VJAnalog1" version="1">
+         <proxy>Analog 1 Proxy</proxy>
+      </alias>
+      <dtrack name="DTrackDevice0" version="1">
+         <receive_port>5000</receive_port>
+         <server_name>192.168.0.1</server_name>
+       <!--  <server_name>192.168.1.4</server_name>   -->
+         <command_port>5001</command_port>
+         <min>-1.0</min>
+         <max>1.0</max>
+<!--         <device_host>vismini</device_host> -->
+      </dtrack>
+   </elements>
+</configuration>
+
