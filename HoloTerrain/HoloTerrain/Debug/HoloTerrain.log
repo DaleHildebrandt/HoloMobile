@@ -1,16 +1,51 @@
-﻿Build started 4/11/2013 4:41:09 PM.
+﻿Build started 4/15/2013 7:26:41 PM.
      1>Project "C:\Users\z-space\HoloMobile\HoloTerrain\HoloTerrain\HoloTerrain.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\HoloTerrain.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\Terrain.cpp
          Terrain.cpp
-     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(298): warning C4101: 'color' : unreferenced local variable
-     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1214): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(180): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(184): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(187): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(190): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(288): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(289): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(378): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(378): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(378): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(524): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(524): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(524): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(544): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(544): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(545): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(545): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(592): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(593): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(594): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(595): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'GLfloat', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(302): warning C4101: 'color' : unreferenced local variable
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(613): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'int', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(613): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'int', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(616): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(616): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(616): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(616): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(616): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(616): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1151): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1152): warning C4244: 'argument' : conversion from 'MHTypes::MHFloat' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1186): warning C4244: '=' : conversion from 'MHTypes::MHFloat' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1189): warning C4244: '=' : conversion from 'MHTypes::MHFloat' to 'float', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1221): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
-     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1256): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1263): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1294): warning C4244: 'return' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1301): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\z-space\holomobile\holoterrain\source\terrain.cpp(1313): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.exe" /NOLOGO ZSCommon_D.lib ZSStereo_D.lib ZSTracker_D.lib glew32.lib openGL32.lib glu32.lib SOIL.lib ViconDataStreamSDK_CPP.lib SDL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\HoloTerrain.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.lib" /MACHINE:X86 Debug\Color3f.obj
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.exe" /NOLOGO ZSCommon_D.lib ZSStereo_D.lib ZSTracker_D.lib glew32.lib openGL32.lib glu32.lib SOIL.lib ViconDataStreamSDK_CPP.lib SDL.lib openglut.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\HoloTerrain.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.lib" /MACHINE:X86 Debug\Color3f.obj
          Debug\Cube.obj
          Debug\CustomStereoNoTracking.obj
          Debug\ViconDataStreamClient.obj
@@ -30,6 +65,7 @@
          Debug\OpenGlWindow.obj
          Debug\TabletServer.obj
          Debug\Terrain.obj
+         Debug\Tokenizer.obj
          LINK : C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.exe not found or not built by the last incremental link; performing full link
          HoloTerrain.vcxproj -> C:\Users\z-space\HoloMobile\HoloTerrain\Debug\HoloTerrain.exe
        Manifest:
@@ -41,4 +77,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.37
+Time Elapsed 00:00:01.02

@@ -8,6 +8,7 @@
 //////////////////////////////////////////////////////////////////////////////
 #include "GL\glew.h"
 #include <GL\glew.h>
+#include <GL\openglut.h>
 #include "OpenGlScene.h"
 
 #include <SOIL.h>
@@ -193,7 +194,9 @@ void OpenGlScene::render(bool msg, Calibrator* calibrator, Tablet* samsungTab, F
   //glBindTexture(GL_TEXTURE_2D, texture[currTexture]);
   
   //renderNoTexCube();
-  //renderAxes();
+  renderText();
+  renderAxes();
+
   //calibrator->render();
   terrain = samsungTab->getTerrain();
   //Interaction testing
@@ -314,6 +317,22 @@ fail:
 //NON-FUNCTIONAL
 void OpenGlScene::renderText(){
 
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glLineWidth(0.5f);
+	//glScalef(1/100.0f, 1/100.0f, 1/100.0f);
+	glScalef(1/5000.0f, 1/5000.0f, 1/50.0f);
+	glutStrokeString(GLUT_STROKE_ROMAN, (unsigned char*)"HoloTerrain");
+	glPopMatrix();
+
+	//glColor3f(1.0f,1.0f,1.0f);
+
+	//glPushMatrix();
+	////glScalef(1/1000.0f, 1/1000.0f, 1/1000.0f);
+	//glutStrokeString(GLUT_STROKE_ROMAN, (unsigned char*)"Hello World!");
+	
+	//glPopMatrix();
 /*	glPushMatrix();
 	glScalef(1/152.0, 1/152.0, 1/152.0);
 	glutStrokeCharacter(GLUT_STROKE_ROMAN, 'a');

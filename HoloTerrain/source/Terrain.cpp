@@ -6,9 +6,11 @@
 
 #include "Terrain.h"
 #include <windows.h>
-#include <gl/glu.h>
-#include <gl/glaux.h>
+#include "Tokenizer.h"
+//#include <gl/glu.h>
+//#include <gl/glaux.h>
 #include <gl/gl.h>
+#include <GL\openglut.h>
 
 #include "PointLineDist.h"
 #include <sstream>
@@ -177,6 +179,7 @@ int currDelay = 0;
 		//TODO: Modify cube constructor, moving these up to constructor
 		startCube->setSize(MAP_SCALE*1.5);
 		startCube->setColor(1.0f, 0.0f, 0.0f);
+		startCube->setText("Start");
 
 		roiCube->setSize(MAP_SCALE*1.5);
 		roiCube->setColor(1.0f, 0.0f, 1.0f);
@@ -186,6 +189,7 @@ int currDelay = 0;
 
 		endCube->setSize(MAP_SCALE*1.5);
 		endCube->setColor(0.0f, 0.0f, 1.0f);
+		endCube->setText("End");
 
 		fingerCube->setSize(MAP_SCALE* 1.5f);
 		fingerCube->setColor(1.0f, 1.0f, 0.0f);
@@ -461,31 +465,40 @@ int currDelay = 0;
 
 
 		}
+		glColor3f(1.0f, 1.0f, 1.0f);
+		//Try drawing text to the screen
+		//glutStrokeString(GLUT_STROKE_ROMAN, (unsigned char*)"some text");
 
 		//############################
 		//##      Draw Markers      ##
 		//############################
 
 			if(start){
+				startCube->setRotMat(rotMatrix);
 				startCube->setPosition(MHTypes::Point3D(start->x, (terrain[(int)(start->x *(1/MAP_SCALE))][(int)(start->z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , start->z));
 				startCube->render();
 			}
 
 			if(end){
+				endCube->setRotMat(rotMatrix);
 				endCube->setPosition(MHTypes::Point3D(end->x, (terrain[(int)(end->x *(1/MAP_SCALE))][(int)(end->z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , end->z));
 				endCube->render();
 			}
 
+			roiCube->setRotMat(rotMatrix);
 			roiCube->setPosition(MHTypes::Point3D(roi.x, (terrain[(int)(roi.x *(1/MAP_SCALE))][(int)(roi.z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , roi.z));
 			roiCube->render();
 
+			poiCube->setRotMat(rotMatrix);
 			poiCube->setPosition(MHTypes::Point3D(poi.x, (terrain[(int)(poi.x *(1/MAP_SCALE))][(int)(poi.z *(1/MAP_SCALE))][1]* (MAP_SCALE/20.0f)) + 0.02f , poi.z));
 			poiCube->render();
 
+			//render lightingCube once, so lighting is applied, then hide. (is what I'm assuming is happening here)
 			if(isFirst){
 				lightingCube->render();
 				isFirst = false;
 			}
+			
 				
 		glPopMatrix();
 		
@@ -677,30 +690,50 @@ int currDelay = 0;
 			OutputDebugString(ss.str().c_str());
 		}
 
+		//Tokenize message
+		Tokenizer *tok = new Tokenizer(msg, ",");
+		std::string token = tok->next();
+		//Prepare confirmation reply
+		ostringstream replyss;
+		replyss << "CFM," << msg;
+		std::string reply = replyss.str();
+
 		//Selecting type of interaction
-		if(msg == "placepath\n"){
+		if(token == "placepoi"){
+			token = tok->next();
+			poiCube->setText(token);
+			setInteractionMode(POI_MODE);
+			//server->sendData("placepoi\n");
+			server->sendData(reply.c_str());
+		}			
+		else if(msg == "placepath\n"){
 			setInteractionMode(ENDPOINT_DRAWING_MODE);
-			server->sendData("placepath\n");
+			//server->sendData("placepath\n");
+			server->sendData(reply.c_str());
 		}
 		else if(msg == "drawpath\n"){
 			setInteractionMode(DIRECT_DRAWING_MODE);
-			server->sendData("drawpath\n");
+			//server->sendData("drawpath\n");
+			server->sendData(reply.c_str());
 		}	
 		else if(msg == "placeroi\n"){
 			setInteractionMode(ROI_MODE);
-			server->sendData("placeroi\n");
+			//server->sendData("placeroi\n");
+			server->sendData(reply.c_str());
 		}	
 		else if(msg == "placepoi\n"){
 			setInteractionMode(POI_MODE);
-			server->sendData("placepoi\n");
+			//server->sendData("placepoi\n");
+			server->sendData(reply.c_str());
 		}
 		else if(msg == "filterheight\n"){
 			setInteractionMode(HEIGHT_FILTERING_MODE);
-			server->sendData("filterheight\n");
+			server->sendData(reply.c_str());
 		}
 		else if(msg == "selectheight\n"){
 			setInteractionMode(HEIGHT_SELECT_MODE);
-			server->sendData("selectheight\n");
+			//server->sendData("selectheight\n");
+			server->sendData(reply.c_str());
 		}
 		
 	}

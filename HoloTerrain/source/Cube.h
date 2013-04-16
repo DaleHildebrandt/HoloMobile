@@ -4,6 +4,7 @@
 #include "ZSpace\Common\Math\Vector3.h"
 #include "ZSpace\Common\Math\Math.h"
 #include "Color3f.h"
+#include <GL\openglut.h>
 
 class Cube{
 
@@ -21,11 +22,14 @@ public:
 	void show(void);
 	void setRotation(zspace::common::Radian angle, zspace::common::Vector3 axis);
 	void setRotMat(float* rotMat);
+	void setText(std::string text);
 
 private:
+	std::string text;
 	MHTypes::EulerAngle eulerAngle;
 	MHTypes::Quaternion quat;
 	float rotMatrix[16];
+	float invRotMatrix[16];
 	zspace::common::Radian cubeAngle;
 	zspace::common::Vector3 cubeAxis;
 	float cubeSize;

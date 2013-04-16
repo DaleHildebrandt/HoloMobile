@@ -9,7 +9,7 @@ using namespace std;
 
 //## Constructor ##
 Cube::Cube(void){
-
+	text = "Hello World!";
 	cubeSize = 0.05f;
 	color = new Color3f(1.0f, 0.0f, 0.0f);
 	loc = new MHTypes::Point3D(0.0f, 0.0f, 0.0f);
@@ -70,10 +70,20 @@ void Cube::setRotation(zspace::common::Radian angle, zspace::common::Vector3 axi
 	cubeAxis = axis;
 }
 
+void Cube::setText(std::string text)
+{
+	this->text = text;
+}
+
 void Cube::setRotMat(float* rotMat)
 {
 	for(int i = 0; i < 16; i++){
 		rotMatrix[i] = rotMat[i];
+	}
+
+	//Store the 4x4 inverse rotation matrix as well
+	for(int i = 0; i <16; i++){
+		invRotMatrix[i] = rotMatrix[((i%4)*4) + (i/4)];
 	}
 }
 
@@ -101,6 +111,7 @@ void Cube::show()
 
 void Cube::render()
 {
+	int textLength;
   if(!isHidden){
 	  glColor3f(color->getRed(), color->getGreen(), color->getBlue()); //set color
 	  glMatrixMode(GL_MODELVIEW);
@@ -108,7 +119,7 @@ void Cube::render()
 	  
 	  glTranslatef(loc->x, loc->y, loc->z); //Position cube
 	  glTranslatef(trans->x, trans->y, trans->z); //Additional translation to cube
-	  glMultMatrixf(rotMatrix); //Rotate cube
+	  //glMultMatrixf(rotMatrix); //Rotate cube
 
 	  // Render the cube
 	  glBegin(GL_QUADS);
@@ -159,7 +170,26 @@ void Cube::render()
 	  glTexCoord2d(1.0,1.0); glVertex3f(-halfSize,  halfSize,  halfSize);
 
 	  glEnd();
+	  if(!text.empty()){
 
+		textLength = glutStrokeLength(GLUT_STROKE_ROMAN, (unsigned char*)(text.c_str()));
+		glPushMatrix();
+		glColor3f(1.0f, 0.0f, 0.0f);
+		glLineWidth(3.0f);
+		glTranslatef(0.0f, 0.01f, 0.0f);
+		glMultMatrixf(invRotMatrix);
+		//glRotatef(90,0.0f, 1.0f, 0.0f);
+		glScalef(1/20000.0f, 1/20000.0f, 200);
+		glTranslatef(-textLength/2.0f, 0.0f, 0.0f);
+
+		glutStrokeString(GLUT_STROKE_ROMAN, (unsigned char*)(text.c_str()));
+		glPopMatrix();
+
+
+
+
+	  }
+	  
 	  glPopMatrix(); //Restore pre-cube view matrix
   }	
 

@@ -35,7 +35,7 @@
 #include "Color3f.h"
 
 
-#include <GL\glut.h>
+//#include <GL\glut.h>
 
 
 #include "MathHelper.hpp"

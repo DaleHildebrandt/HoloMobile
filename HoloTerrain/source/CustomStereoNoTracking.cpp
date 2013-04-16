@@ -295,7 +295,7 @@ void renderFrame()
 
 
   // Render the scene for each eye.
-  //renderScene(zspace::stereo::StereoFrustum::STEREO_EYE_LEFT);
+  renderScene(zspace::stereo::StereoFrustum::STEREO_EYE_LEFT);
   renderScene(zspace::stereo::StereoFrustum::STEREO_EYE_RIGHT);
 
   // Flush the render buffers.
