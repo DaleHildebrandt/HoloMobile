@@ -104,7 +104,7 @@ public class Input_SocketThread extends Thread
 					msgCode = CLEAR_ROI_MODE;
 				}
 				//Command confirmation messages
-				else if(tokens.length == 1){
+				else if(tokens.length > 1 && tokens[0].equals("CFM")){
 					msgCode = CONFIRM_MODE;
 				}
 				//Command setting height

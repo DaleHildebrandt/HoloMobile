@@ -92,7 +92,7 @@ public class ClientSocket extends AsyncTask<Handler, Void, Void>{
 	//Checks to see if the current mode is confirmed or not
 	public void updateModeConfirmation(String line){
 
-		if(line.equals(modeConfirmation)){
+		if(line.equals("CFM," + modeConfirmation)){
 			modeConfirmed = true;
 		}
 	}
