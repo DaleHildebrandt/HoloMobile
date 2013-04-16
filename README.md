@@ -20,7 +20,7 @@ This HoloMobile application consists of two projects that communicate to one ano
 
 The first project can be found in the HoloTerrain folder. This project utilizes the zSpace system for drawing the holograms that appear to be attached to the mobile device. It also uses tracked data from the Vicon system for interactions and allows the hologram to move with the mobile device. For more details, see the [HoloTerrain README](HoloTerrain/README.md).
 
-The second project can be found in the HoloTerrainAndroid folder. This project is to be run on an Android mobile device. It provides a 2D GUI that allows the user to switch between the various interaction modes. It also features a 2D representation of the hologram displayed by the zSpace. For more details see the HoloTerrainAndroid README.
+The second project can be found in the HoloTerrainAndroid folder. This project is to be run on an Android mobile device. It provides a 2D GUI that allows the user to switch between the various interaction modes. It also features a 2D representation of the hologram displayed by the zSpace. For more details see the [HoloTerrainAndroid README] (HoloTerrainAndroid/README.md).
 
 
 ## Setup
@@ -37,10 +37,6 @@ There are three tracked objects that must be registered with the Vicon system un
 
 For the default calibration file (calibrates the real world coordinate system with the zSpace display coordinate system) to work correctly, you must set the origin of the Vicon coordinate system by placing the calibration wand in front of the zSpace screen (where you would typically have a keyboard). Refer to the following figure for orienting the calibration wand correctly (notice that the intersection point of the wand is positioned more to the right of the screen than the left):
 ![Position the ](images/SettingViconOrigin.jpg?raw=true)
-
-
-
-Place the zTools folder in your C: directory, so the project refereces the appropriate DLL, header, and lib files. There may be additional installation required,
 
 
 ## Interaction Modes
