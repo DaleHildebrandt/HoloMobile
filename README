@@ -36,7 +36,7 @@ There are three tracked objects that must be registered with the Vicon system un
 "terrain_thumb" - Used to track the thumb, on the same hand as the index finger object is. Allows the user to interact with the holographic image.
 
 For the default calibration file (calibrates the real world coordinate system with the zSpace display coordinate system) to work correctly, you must set the origin of the Vicon coordinate system by placing the calibration wand in front of the zSpace screen (where you would typically have a keyboard). Refer to the following figure for orienting the calibration wand correctly (notice that the intersection point of the wand is positioned more to the right of the screen than the left):
-![Alt text](http://github.com/DaleHildebrandt/HoloMobile/raw/master/SettingViconOrigin.jpg?raw=true)
+![Alt text](https://raw.github.com/DaleHildebrandt/HoloMobile/raw/master/SettingViconOrigin.jpg)
 
 
 
