@@ -20,7 +20,9 @@ This HoloMobile application consists of two projects that communicate to one ano
 
 The first project can be found in the HoloTerrain folder. This project utilizes the zSpace system for drawing the holograms that appear to be attached to the mobile device. It also uses tracked data from the Vicon system for interactions and allows the hologram to move with the mobile device. For more details, see the [HoloTerrain README](HoloTerrain/README.md).
 
-The second project can be found in the HoloTerrainAndroid folder. This project is to be run on an Android mobile device. It provides a 2D GUI that allows the user to switch between the various interaction modes. It also features a 2D representation of the hologram displayed by the zSpace. For more details see the [HoloTerrainAndroid README] (HoloTerrainAndroid/README.md).
+The second project can be found in the HoloTerrainAndroid folder. This project is to be run on an Android mobile device. It provides a 2D GUI that allows the user to switch between the various interaction modes. It also features a 2D representation of the hologram displayed by the zSpace. For more details, see the [HoloTerrainAndroid README] (HoloTerrainAndroid/README.md).
+
+Additionally, code to test socket communication has been included. For more details, see [TestSockets README] (TestSockets/README.md).
 
 
 ## Setup
