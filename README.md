@@ -10,7 +10,7 @@ I will refer to "terrain", "3D map", and "hologram" almost interchangeably. "And
 This project requires a number of different technologies in order to operate correctly:
 
 ### 1: zSpace System
-This includes a PC capable of running zSpace applications in stereoscopic 3D, the zSpace display & accompanying motion-tracked glasses. The zSpace stylus is only necessary if you require a custom calibration (detailed in the HoloTerrain README). The zSpace SDK version 2.8 (32-bit) was used to test the HoloTerrain project. According to infinite Z, makers of the zSpace, this application should be compatible with all future versions of the SDK, but not previous ones.
+This includes a PC capable of running zSpace applications in stereoscopic 3D, the zSpace display & accompanying motion-tracked glasses. The zSpace stylus is only necessary if you require a custom calibration (detailed in the [HoloTerrain README](HoloTerrain/README.md)). The zSpace SDK version 2.8 (32-bit) was used to test the HoloTerrain project. According to infinite Z, makers of the zSpace, this application should be compatible with all future versions of the SDK, but not previous ones.
 
 ### 2: Vicon Motion Tracking System
 This project was only tested using the Vicon Tracker software. It may be possible -- likely even -- that other Vicon software, such as Blade, may also work as well, but it remains to be tested. 
@@ -18,9 +18,9 @@ This project was only tested using the Vicon Tracker software. It may be possibl
 ## Organization
 This HoloMobile application consists of two projects that communicate to one another via socket communication.
 
-The first project can be found in the HoloTerrain folder. This project utilizes the zSpace system for drawing the holograms that appear to be attached to the mobile device. It also uses tracked data from the Vicon system for interactions and allows the hologram to move with the mobile device. For more details, see the README in the HoloTerrain folder.
+The first project can be found in the HoloTerrain folder. This project utilizes the zSpace system for drawing the holograms that appear to be attached to the mobile device. It also uses tracked data from the Vicon system for interactions and allows the hologram to move with the mobile device. For more details, see the [HoloTerrain README](HoloTerrain/README.md).
 
-The second project can be found in the HoloTerrainAndroid folder. This project is to be run on an Android mobile device. It provides a 2D GUI that allows the user to switch between the various interaction modes. It also features a 2D representation of the hologram displayed by the zSpace. For more details see the README in the HoloTerrainAndroid folder.
+The second project can be found in the HoloTerrainAndroid folder. This project is to be run on an Android mobile device. It provides a 2D GUI that allows the user to switch between the various interaction modes. It also features a 2D representation of the hologram displayed by the zSpace. For more details see the HoloTerrainAndroid README.
 
 
 ## Setup
@@ -36,7 +36,7 @@ There are three tracked objects that must be registered with the Vicon system un
 "terrain_thumb" - Used to track the thumb, on the same hand as the index finger object is. Allows the user to interact with the holographic image.
 
 For the default calibration file (calibrates the real world coordinate system with the zSpace display coordinate system) to work correctly, you must set the origin of the Vicon coordinate system by placing the calibration wand in front of the zSpace screen (where you would typically have a keyboard). Refer to the following figure for orienting the calibration wand correctly (notice that the intersection point of the wand is positioned more to the right of the screen than the left):
-![Alt text](images/SettingViconOrigin.jpg?raw=true)
+![Position the ](images/SettingViconOrigin.jpg?raw=true)
 
 
 
@@ -60,7 +60,8 @@ The user can place an upper and lower clipping plane in the hologram, causing on
 The user can select a particular height, with the 2D representation of the terrain on the Android device, only displaying areas of the map that are of similar height to the selected height.
 
 ## Communication Conventions
-Format: Messages are always delimeted by commas.
+### Format: 
+Messages are always delimeted by commas.
 
 ### Interaction Mode Selection:
 Typical communication begins with a message being sent from the Android device to the zSpace PC in order to change interaction modes. This is typically just the name of the mode (ie. "placepath"). However, with POIs and ROIs, it is accompanied by a string for setting the annotation (ie. "placepoi,Broken Bridge"). Once the zSpace receives this message, it sends back a confirmation message, by prefixing the original string with "CFM,"(ie. "CFM,placepoi,Broken Bridge), and then changes the interaction mode allowing the user to perform an interaction.
