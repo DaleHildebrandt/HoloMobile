@@ -74,3 +74,11 @@ Typical communication begins with a message being sent from the Android device t
 ### Interaction Updates:
 As interactions are being performed, the zSpace system sends messages back to allow the android device to update its 2D map to reflect what is being done on the 3D map (ie. A POI is located in the same position on both the 2D and 3D versions of the map). This message first identifies what needs to be modified, followed by the updated values, such as position on map, radius, ect (this will vary depending upon what is being updated).
 
+## Known Issues (ie. TODOs)
+### 3D Screenshots (low importance)
+Using the common screenshots methods ([Prt Scr] & Snipping Tool), screenshots only appear to take images of one of the two front framebuffers. This causes only a single image to appear in the resulting screenshot eliminating the double-image produced by 3D images. This is of low importance because, in most cases, the single-image shot is preferred over the double image.
+
+### Selection when Device is Rotated (medium-high importance)
+Selecting locations on the hologram causes a significant drop in accuracy the more the mobile device is rotated. In the current implementation, we take all the transformations applied to the terrain, and apply the inverse of those transformations to user's finger position to test where the finger intersects the terrain. This appears to be the correct approach, but something is clearly not being done correctly. This is of medium-high importance because it affects the user's ability to interact with the hologram in some of the less frequently used device orientations.
+
+
