@@ -33,12 +33,19 @@ The IP addresses for the various socket communications must be set appropriately
 In the zSpace code, set the IP address to the address of the Vicon PC. In the Android code, set the IP address to be the address of the zSpace PC.
 
 There are three tracked objects that must be registered with the Vicon system under the following names:
-"samsung_tab" - Represents the mobile device running the Android application. Allows the hologram to stay attached to the mobile device.
-"terrain_finger" - Used to track the index finger of the user. Allows the user to interact with the holographic image.
-"terrain_thumb" - Used to track the thumb, on the same hand as the index finger object is. Allows the user to interact with the holographic image.
+
+#### "samsung_tab"
+Represents the mobile device running the Android application. Allows the hologram to stay attached to the mobile device. Unlike the other two objects that need to be registered, this object needs to be created at a specific orientation, as shown in the following image:
+![](images/MobileDeviceOrientation.jpeg?raw=true "Correct placement of the Mobile device upon creation in the Vicon System")
+
+#### "terrain_finger"
+Used to track the index finger of the user. Allows the user to interact with the holographic image.
+
+#### "terrain_thumb"
+Used to track the thumb, on the same hand as the index finger object is. Allows the user to interact with the holographic image.
 
 For the default calibration file (calibrates the real world coordinate system with the zSpace display coordinate system) to work correctly, you must set the origin of the Vicon coordinate system by placing the calibration wand in front of the zSpace screen (where you would typically have a keyboard). Refer to the following figure for orienting the calibration wand correctly (notice that the intersection point of the wand is positioned more to the right of the screen than the left):
-![Position the ](images/SettingViconOrigin.jpg?raw=true)
+![Position the ](images/SettingViconOrigin.jpg?raw=true "Correct placement of the Vicon Calibration Wand for setting the origin under the default configuration")
 
 
 ## Interaction Modes

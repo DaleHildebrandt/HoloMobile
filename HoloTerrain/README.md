@@ -7,17 +7,14 @@ HoloTerrain is a 32-bit VC++ project created in Visual Studio 2010. It draws an 
 This project requires the use of a zSpace 3D stereoscopic system, Vicon motion tracking system, and a mobile Android device (with the accompanying Android application) in order to run. It also requires the installation of the zSpace (32-bit) SDK. This project uses SDK version 2.8. According to zSpace, this project should work on newer versions of the SDK, but I have yet to verify that.
 
 ## Setup
-Turn on Vicon system; ensure it is loaded with a working configuration (calibrated, etc.). Verify that objects for the mobile device, index finger, and thumb are all correctly recognized by the Vicon system and match the names used in the zSpace code. For the default calibration file that is provided, you must set the origin of the Vicon coordinate system by placing the calibration wand in front of the zSpace screen (where you would typically have a keyboard). Refer to the following figure for orienting the calibration wand correctly (notice that the intersection point of the wand is positioned more to the right of the screen than the left):
+Upon startup, the window will likely appear as completely silver. Launch the accompanying android Application on the mobile device that is being tracked and it should become a black window. Now, if you hold the mobile device in front of you, with the top of the device pointed to the screen, you should see a green terrain on a black background appear in front of you. The green terrain should follow the movements of the mobile device.
 
-				|		|
-				| zSpace Screen	|
-			 	 ---------------
-					|
-		Calib. Wand		|
-			====------------|---	
-					|
-			
-Make sure the ViconDataStreamClient code has the correct IP Address of the system running the Vicon software. Launch the HoloTerrain application. The window will likely appear as completely silver. Launch the accompanying android Application on the mobile device that is being tracked. Now, if you hold the mobile device in front of you, with the top of the device pointed to the screen, you should see a green terrain on a black background appear in front of you. The green terrain should follow the movements of the mobile device.
+If you don't see the terrain, try moving the device all around the tracked space. Try rotating the device as well.
+
+## Custom Calibration
+It is strongly recommended that you use the default calibration file provided. However, if for some reason you are unable to set the Vicon origin as outlined in the Setup section of the ![HoloMobile README](../README.md), then you can initiate a new calibration by pressing [Ctrl] + [C] while the application is running. In order for the calibration to work, you must first register the Vicon Stylus as a Vicon-Tracked Object under the name "zspace_stylus4".
+
+In order to complete the calibration, you must use the zSpace stylus to position a cube on top of another, stationary cube. In order to complete calibration, the cubes will need to be matched three times, with the position changing after every successful position match.
 
 ## Terrain Rendering
 The code that is used to render the Terrain was taken from:
