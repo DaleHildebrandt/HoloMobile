@@ -24,7 +24,7 @@ The code that is used to render the Terrain was taken from:
 http://www.codeproject.com/Articles/14154/OpenGL-Terrain-Generation-An-Introduction
 
 It generates a terrain based on a heightmap (a 32x32 24-bit grayscale image). Darker (black/drak grey) areas on the heightmap correspond to points of low elevation, while lighter areas (white/light grey) on the heightmap correspond to points of high elevation on the terrain.
-![heightmap](images/heightmap?raw=true)
+![heightmap](images/heightmap.bmp?raw=true)
 
 ## What is Referenced in Lib/Inc/Bin Folders
 ### zSpace SDK 2.8
