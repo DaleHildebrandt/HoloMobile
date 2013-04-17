@@ -26,7 +26,7 @@ http://www.codeproject.com/Articles/14154/OpenGL-Terrain-Generation-An-Introduct
 It generates a terrain based on a heightmap (a 32x32 24-bit grayscale image). Darker (black/drak grey) areas on the heightmap correspond to points of low elevation, while lighter areas (white/light grey) on the heightmap correspond to points of high elevation on the terrain. The following image is the default heightmap used:
 ![](images/heightmap.bmp?raw=true "Heightmap")
 The 3D Terrain produced from this heightmap:
-![](images/3DTerrain.jpg?raw=true "3D terrain generated from the above heightmap")
+![](images/3DTerrain.JPG?raw=true "3D terrain generated from the above heightmap")
 
 ## What is Referenced in Lib/Inc/Bin Folders
 ### zSpace SDK 2.8
