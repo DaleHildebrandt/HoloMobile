@@ -19,6 +19,13 @@ Turn on Vicon system; ensure it is loaded with a working configuration (calibrat
 			
 Make sure the ViconDataStreamClient code has the correct IP Address of the system running the Vicon software. Launch the HoloTerrain application. The window will likely appear as completely silver. Launch the accompanying android Application on the mobile device that is being tracked. Now, if you hold the mobile device in front of you, with the top of the device pointed to the screen, you should see a green terrain on a black background appear in front of you. The green terrain should follow the movements of the mobile device.
 
+## Terrain Rendering
+The code that is used to render the Terrain was taken from:
+http://www.codeproject.com/Articles/14154/OpenGL-Terrain-Generation-An-Introduction
+
+It generates a terrain based on a heightmap (a 32x32 24-bit grayscale image). Darker (black/drak grey) areas on the heightmap correspond to points of low elevation, while lighter areas (white/light grey) on the heightmap correspond to points of high elevation on the terrain.
+![heightmap](images/heightmap?raw=true)
+
 ## What is Referenced in Lib/Inc/Bin Folders
 ### zSpace SDK 2.8
 Allows for the display and head-tracking of the zSpace system, and any other general zSpace-related functions. I also 
